@@ -1,0 +1,239 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteMaster.master.cs" Inherits="SchoolApp.Web.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link href="img/fav.png" rel="shortcut icon" type="image/x-icon" />
+
+    <!-- Title -->
+    <title>Ola</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom icon Fonts -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Konnect Slider -->
+    <link href="css/konnect-slider.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="css/animate.css" media="all" rel="stylesheet" type="text/css" />
+
+    <!-- Main CSS -->
+    <link href="css/theme.css" rel="stylesheet">
+    <link href="css/green.css" rel="stylesheet" id="style_theme">
+    <link href='<%= Page.ResolveClientUrl("~/css/project.css")%>' rel="stylesheet" type="text/css"/>
+    <asp:ContentPlaceHolder ID="CSSContent" runat="server"></asp:ContentPlaceHolder>
+
+</head>
+
+<!-- Body -->
+<body>
+    <form runat="server">
+        <asp:HiddenField runat="server" ID="hidSelectedStudent" />
+        <asp:ScriptManager runat="server" ID="ScriptManager1">
+        </asp:ScriptManager>
+        <!-- Pre Loader -->
+        <div class="loading">
+            <div class="loader"></div>
+        </div>
+        <!-- Scroll to Top -->
+        <a id="scroll-up"><i class="fa fa-angle-up"></i></a>
+        <!-- Top Bar  -->
+        <div class="konnect-info">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Top bar Left -->
+                    <div class="col-md-6 col-sm-8 hidden-xs">
+                        <ul>
+                            <li><i class="fa fa-paper-plane" aria-hidden="true"></i><a href="mailto:abc@outmail.com">abc@outmail.com</a></li>
+                            <li class="li-last"><i class="fa fa-volume-control-phone" aria-hidden="true"></i>(040) 123-4567</li>
+                        </ul>
+                    </div>
+
+                    <!-- Top bar Right -->
+                    <div class="col-md-6 col-sm-4">
+
+                        <ul class="konnect-float-right">
+                            <li class="li-last hidden-xs hidden-sm">
+                                <a target="_blank" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a target="_blank" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a target="_blank" href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                                <a target="_blank" href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                            </li>
+                            <li class="dropdown_category"><a href="" class="customer_login_btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-o"></i>Login <i class="caret"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="login.aspx?OP=School">School Login</a></li>
+                                    <li><a href="login.aspx?OP=Teacher"">Teacher Login</a></li>
+                                    <li><a href="login.aspx?OP=Parent"">Parent Login</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation + LOGO Area -->
+        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <!-- Responsive Menu -->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <img src="img/icons/menu.png" alt="menu" width="40">
+                    </button>
+                    <!-- Logo -->
+                    <a class="navbar-brand" href="default.aspx">
+                        <img class="logo-change"  src="<%= Page.ResolveClientUrl("~/img/logo-green.png")%>" alt="logo"></a>
+                </div>
+                <!-- Menu Items -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="default.aspx">Home</a></li>
+                        <li><a href="GetProduct.aspx">Get Product</a></li>
+                        <li><a href="Resources.aspx">Resources</a></li>
+                        <li><a href="RequestForDemo.aspx">Request Demo</a></li>
+                        <li><a href="faq.aspx">Faq</a></li>
+                        <li><a href="AboutUs.aspx">About Us</a></li>
+                        <li><a href="ContectUs.aspx">Contact Us</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+
+       
+                <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+            
+        <aside id="divid" runat="server" class="light-bg contact-address" style="display: none">
+            <div class="container">
+                <div class="row">
+                    <!-- Addresse-->
+                    <div class="col-md-4 contact-box">
+                        <img src="img/icons/location.png" alt="icon" class="template-contact-icon">
+                        <p>
+                            #Koramangala, Banglore<br>
+                            Karnataka, INDIA
+                        </p>
+                    </div>
+
+                    <!--     Phone Numbers-->
+                    <div class="col-md-4 contact-box">
+                        <img src="img/icons/phone.png" alt="icon" class="template-contact-icon">
+                        <p>
+                            +91 123-456789<br>
+                            +91 123-456780
+                        </p>
+                    </div>
+
+                    <!-- Email Details -->
+                    <div class="col-md-4 contact-box">
+                        <img src="img/icons/email.png" alt="icon" class="template-contact-icon">
+                        <p>
+                            info@abc123.com<br>
+                            sales@abc123.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!--Main footer-->
+        <section class="main-footer">
+            <div class="container">
+                <div class="row">
+                    <!--footer widget one-->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="footer-widget">
+                            <img src="img/logo-green.png" alt="" class="img-responsive logo-change">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa consectetur assumenda est unde animi. Repellat quibusdam et ad aut molestias, facere maxime expedita aperiam sint.</p>
+                        </div>
+                    </div>
+                    <!--/ footer widget one-->
+
+                    <!--footer widget Two-->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="footer-widget address">
+                            <h3>Contact</h3>
+                            <p>
+                                <i class="fa fa-address-card-o" aria-hidden="true"></i><span>#Koramangala, Banglore
+                                <br>
+                                    Karnataka, INDIA</span>
+                            </p>
+                            <p><i class="fa fa-envelope-o" aria-hidden="true"></i><span>youremail@yourdomain.com</span></p>
+                            <p>
+                                <i class="fa fa-volume-control-phone" aria-hidden="true"></i><span>+88 (0) 101 0000 000
+                                <br>
+                                    +88 (0) 202 0000 001</span>
+                            </p>
+                        </div>
+                    </div>
+                    <!--/ footer widget Two-->
+
+                    <!--footer widget Three-->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="footer-widget quicl-links">
+                            <h3>Quick Links</h3>
+                            <ul>
+                                <li><i class="fa fa-angle-right"></i><a href="default.aspx">Home</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="GetProduct.aspx">Get Product</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="Resources.aspx">Resources</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="RequestForDemo.aspx">Request Demo</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="faq.aspx">Faq</li>
+                                <li><i class="fa fa-angle-right"></i><a href="AboutUs.html">About Us</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="ContectUs.aspx">Contact Us</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="Login.aspx">Login</li>
+                                <li><i class="fa fa-angle-right"></i><a href="Register.aspx">Register</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--/ footer widget thre-->
+                </div>
+            </div>
+        </section>
+        <!--/Main Footer-->
+
+        <!--copyright Footer-->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 text-left">
+
+                        <!--Footer Social Icons-->
+                        <div class="contact-social">
+                            <p>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                                <a href="#"><i class="fa fa-youtube"></i></a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Footer Copy rights-->
+                    <div class="col-md-6 col-sm-6 text-right">
+                        <p>&copy; Copyright 2017</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- jQuery -->
+    </form>
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Konnect Slider JavaScript -->
+    <script src="js/jquery.flexslider.min.js" type="text/javascript"></script>
+    <script src="js/konnect-slider.js" type="text/javascript"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/default.js"></script>
+</body>
+</html>

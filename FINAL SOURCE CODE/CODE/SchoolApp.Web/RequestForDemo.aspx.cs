@@ -16,10 +16,10 @@ namespace SchoolApp.Web
         SchoolAppEntities DB = new SchoolAppEntities();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                BindComboBox();
-            }
+            //if (!IsPostBack)
+            //{
+            //    BindComboBox();
+            //}
         }
 
 

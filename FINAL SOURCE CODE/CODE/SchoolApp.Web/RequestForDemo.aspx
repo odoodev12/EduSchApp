@@ -74,7 +74,15 @@
               </div>
               <div class="form-group col-md-6">
                   <asp:Label ID="lblRole" runat="server" Text="Role">Role</asp:Label>
-                  <asp:DropDownList ID="drpRoles" required="" CssClass="form-control" runat="server" />
+                  <asp:DropDownList ID="drpRoles" required="" CssClass="form-control" runat="server" >
+                    <asp:ListItem Text="Head of Subject" Value="HeadOfSubject" Selected="true"></asp:ListItem>
+                    <asp:ListItem Text="Deputy Head of School Owner." Value="DeputyHead"></asp:ListItem>
+                    <asp:ListItem Text="School Admin" Value="SchoolAdmin"></asp:ListItem>
+                    <asp:ListItem Text="School IT Personnel" Value="SchoolITPersonnel"></asp:ListItem>
+                    <asp:ListItem Text="Head of School" Value="HeadOfSchool"></asp:ListItem>
+                    <asp:ListItem Text="Teacher" Value="Teacher"></asp:ListItem>
+                    <asp:ListItem Text="Other" Value="Other"></asp:ListItem>
+                    </asp:DropDownList>
               </div>
               <div class="form-group col-md-6">
                   <asp:Label ID="lblSchoolName" runat="server" Text="SchoolName">School Name</asp:Label>

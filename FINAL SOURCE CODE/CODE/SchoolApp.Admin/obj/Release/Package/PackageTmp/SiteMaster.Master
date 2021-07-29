@@ -1,0 +1,280 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteMaster.master.cs" Inherits="SchoolApp.Admin.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+        <asp:Literal runat="server" ID="littitle"></asp:Literal></title>
+    <asp:PlaceHolder runat="server">
+        <link href="Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <!-- Toastr style -->
+        <link href="Content/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+
+        <!-- Gritter -->
+        <link href="Scripts/plugins/gritter/jquery.gritter.css" rel="stylesheet" />
+        <link href="Content/css/animate.css" rel="stylesheet" />
+        <link href="Content/style.css" rel="stylesheet" />
+        <link href="Content/project.css" rel="stylesheet" />
+
+        <!-- Data Tables -->
+        <link href="Content/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+        <link href="Content/css/plugins/dataTables/dataTables.responsive.css" rel="stylesheet" />
+        <link href="Content/css/plugins/dataTables/dataTables.tableTools.min.css" rel="stylesheet" />
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <style>
+            /*@font-face {
+                font-family: "ej-webfont";
+                font-style: normal;
+                font-weight: normal;
+                src: url('<%= Page.ResolveClientUrl("~/Content/ej/common-images/ejicons.eot?#iefix-dzszjm")%>') format("embedded-opentype"), url('<%= Page.ResolveClientUrl("~/Content/ej/common-images/ejicons.woff?-dzszjm")%>') format("woff"), url('<%= Page.ResolveClientUrl("~/Content/ej/common-images/ejicons.ttf?-dzszjm")%>') format("truetype"), url('<%= Page.ResolveClientUrl("~/Content/ej/common-images/ejicons.svg?-dzszjm#ejicons")%>') format("svg");
+            }*/
+
+            .navbar-form-custom .form-control {
+                border: medium none !important;
+            }
+
+            body.mini-navbar .nav-header {
+                background-color: #0384cb !important;
+            }
+        </style>
+    </asp:PlaceHolder>
+    <asp:ContentPlaceHolder ID="CSSContent" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+        <asp:HiddenField runat="server" ID="hidSelectedStudent" />
+        <asp:ScriptManager runat="server" ID="ScriptManager1">
+            <Scripts>
+            </Scripts>
+        </asp:ScriptManager>
+        <div id="wrapper">
+            <nav class="navbar-default navbar-static-side" role="navigation">
+                <div class="sidebar-collapse">
+                    <ul class="nav metismenu" id="side-menu">
+                        <li class="nav-header">
+                            <div class="dropdown profile-element">
+                                <span>
+                                    <img src="Upload/university.png" class="image" height="80px" width="80px" alt="image" />
+
+                                </span>
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                    <span class="clear"><span class="block m-t-xs"><strong class="font-bold">
+                                        <asp:Label ID="lblUserName" runat="server"></asp:Label></strong>
+                                    </span><span class="text-muted text-xs block">
+                                        <asp:Label ID="lblUserType" runat="server"></asp:Label>
+                                        <b class="caret"></b></span></span></a>
+                                <ul class="dropdown-menu animated fadeInRight m-t-xs">
+
+                                    <li>
+                                        <asp:LinkButton ID="lnkResetMemorableWord" runat="server" OnClick="lnkResetMemorableWord_Click">Reset Memorable words</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkLogouts" runat="server" OnClick="lnkLogouts_Click">Logout</asp:LinkButton></li>
+                                    
+                                </ul>
+                            </div>
+                            <div class="logo-element">
+                                <img src="Upload/university.png" style="width: 50px; height: 50px;" />
+                            </div>
+                        </li>
+
+                        <li>
+                            <a href="Dashboard.aspx"><i class="fa fa-th-large"></i><span class="nav-label">Dashboard</span><span class="fa arrow"></span></a>
+                        </li>
+                        <% if (GetUserType() == "4" || GetUserType() == "2" || GetUserType() == "3" || GetAdmin() == true)
+                            {%>
+                        <li>
+                            <a href="SchoolList.aspx"><i class="fa fa-th-large"></i><span class="nav-label">School List</span><span class="fa arrow"></span></a>
+                        </li>
+                        <li>
+                            <a href="SchoolBulkUpload.aspx"><i class="fa fa-th-large"></i><span class="nav-label">School Bulk Upload</span><span class="fa arrow"></span></a>
+                        </li>
+                        <%} %>
+                        <% if (GetUserType() == "4" || GetUserType() == "3" || GetAdmin() == true)
+                            {%>
+                        <li>
+                            <a href="OrganisationUserList.aspx"><i class="fa fa-th-large"></i><span class="nav-label">Organisation Users</span><span class="fa arrow"></span></a>
+                        </li>
+                        <%} %>
+                        <% if (GetUserType() == "4" || GetUserType() == "3" || GetAdmin() == true)
+                            {%>
+                        <li>
+                            <a href="ClientSupportList.aspx"><i class="fa fa-th-large"></i><span class="nav-label">Client Support</span><span class="fa arrow"></span></a>
+                        </li>
+                        <%} %>
+                        <% if (GetUserType() == "4" || GetUserType() == "1" || GetUserType() == "3" || GetAdmin() == true)
+                            {%>
+                        <li>
+                            <a href="SchoolInvoiceList.aspx"><i class="fa fa-th-large"></i><span class="nav-label">School Invoice</span><span class="fa arrow"></span></a>
+                        </li>
+                        <%} %>
+                        <li>
+                            <a href="FAQ.aspx"><i class="fa fa-th-large"></i><span class="nav-label">FAQ</span><span class="fa arrow"></span></a>
+                        </li>
+                        <li>
+                            <a href="Resource.aspx"><i class="fa fa-th-large"></i><span class="nav-label">Resource</span><span class="fa arrow"></span></a>
+                        </li>
+                        <li>
+                            <a href="Reports.aspx"><i class="fa fa-th-large"></i><span class="nav-label">Report</span><span class="fa arrow"></span></a>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+            </nav>
+
+            <div id="page-wrapper" class="gray-bg dashbard-1">
+                <div class="row border-bottom">
+                    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                        <div class="navbar-header">
+                            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i></a>
+                            <div role="search" class="navbar-form-custom">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="nav navbar-top-links navbar-right">
+                            <li>
+                                <%--<span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>--%>
+                            </li>
+                            <li>
+                                <asp:LinkButton ID="lnkLogout" runat="server" OnClick="lnkLogout_Click"><i class="fa fa-sign-out"></i>Logout</asp:LinkButton>
+                            </li>
+                            <%--<li>
+                                <a class="right-sidebar-toggle">
+                                    <i class="fa fa-tasks"></i>
+                                </a>
+                            </li>--%>
+                        </ul>
+
+                    </nav>
+                </div>
+                <div class="wrapper wrapper-content">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+                </div>
+                <hr />
+                <div class="footer">
+                    <div class="pull-right">
+                        <small>© 2017-2018</small>
+                    </div>
+                    <div>
+                        Gatistavam Softech Pvt. Ltd.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+    <!-- Mainly scripts -->
+    <%--<script src="Scripts/jquery-2.1.1.js"></script>--%>
+
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="Scripts/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="Scripts/jquery.validate.min.js"></script>
+    <script src="Scripts/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="Scripts/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <%--<script src="Scripts/plugins/dataTables/dataTables.responsive.js"></script>--%>
+    <script src="Scripts/plugins/dataTables/dataTables.tableTools.min.js"></script>
+    <!-- Flot -->
+    <script src="Scripts/plugins/flot/jquery.flot.js"></script>
+    <script src="Scripts/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="Scripts/plugins/flot/jquery.flot.spline.js"></script>
+    <script src="Scripts/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="Scripts/plugins/flot/jquery.flot.pie.js"></script>
+    <!-- Peity -->
+    <script src="Scripts/plugins/peity/jquery.peity.min.js"></script>
+    <script src="Scripts/demo/peity-demo.js"></script>
+    <!-- Custom and plugin javascript -->
+    <script src="Scripts/inspinia.js"></script>
+    <script src="Scripts/plugins/pace/pace.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="Scripts/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- GITTER -->
+    <script src="Scripts/plugins/gritter/jquery.gritter.min.js"></script>
+    <!-- Sparkline -->
+    <script src="Scripts/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!-- Sparkline demo data  -->
+    <script src="Scripts/demo/sparkline-demo.js"></script>
+    <!-- ChartJS-->
+    <script src="Scripts/plugins/chartJs/Chart.min.js"></script>
+    <!-- Toastr -->
+    <script src="Scripts/plugins/toastr/toastr.min.js"></script>
+    <script src="Scripts/plugins/sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript">
+
+        function ConfirmMsg(ID) {
+            if (confirm("Are you sure you want to delete this record?")) {
+                SetID(ID);
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        function ConfirmMsgForSession(ID) {
+            if (confirm("There can be only one active current session will be mark as inActive.Are u Sure??")) {
+                SetID(ID);
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        function ConfirmMsgForCurrentSessionRemove(ID) {
+            if (confirm("Before Delete this session make sure it is not active.If it is active You can not delete it.First make another session to active then delete.")) {
+                SetID(ID);
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        var popup;
+        function SelectName() {
+            popup = window.open("<%= Page.ResolveClientUrl("~/StudentFinder.aspx?ID=")%>", "Popup", "width=800,height=500");
+            popup.focus();
+            return false;
+        }
+        function AttachClass() {
+            if ($("#side-menu").hasClass("inclose")) {
+                $("#side-menu").removeClass("inclose");
+                $("#side-menu").addClass("inopen");
+            }
+            else {
+                $("#side-menu").addClass("inclose");
+                $("#side-menu").removeClass("inopen");
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        function closeAll() {
+            $('.panel-collapse.in').collapse('hide');
+        };
+        function downloadfile(FileName) {
+            var path = window.location.origin + "/DownloadFile.aspx?FileName=" + FileName;
+            window.open(path, '_self', 'width=1, height=1');
+        }
+
+        function SetID(ID) {
+            $("#MainContent_HID").val(ID);
+        }
+        function RedirectUrl(UrlName) {
+            var path = window.location.origin + "/" + UrlName;
+            window.location = path;
+        }
+    </script>
+    <asp:ContentPlaceHolder ID="JSContent" runat="server"></asp:ContentPlaceHolder>
+</body>
+</html>

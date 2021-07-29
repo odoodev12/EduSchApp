@@ -1,0 +1,238 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SCHOOL App</title>
+
+    <style>
+        .invoice-box {
+            /*max-width: 755px;*/
+            width: 259mm;
+            height: auto;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #eee;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+            font-size: 20px !important;
+            line-height: 25px !important;
+            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            color: #555;
+        }
+
+            .invoice-box table {
+                width: auto;
+                line-height: inherit;
+                text-align: left;
+            }
+
+                .invoice-box table td {
+                    padding: 5px;
+                    vertical-align: top;
+                }
+
+                .invoice-box table tr td:nth-child(2) {
+                    text-align: right;
+                }
+
+                .invoice-box table tr.top table td {
+                    padding-bottom: 20px;
+                }
+
+                    .invoice-box table tr.top table td.title {
+                        font-size:22px;
+                        line-height: 25px;
+                        color: #333;
+                    }
+
+                .invoice-box table tr.information table td {
+                    padding-bottom: 40px;
+                }
+
+                .invoice-box table tr.heading td {
+                    background: #eee;
+                    border-bottom: 1px solid #ddd;
+                    font-weight: bold;
+					width:auto !important; 
+                }
+				 .invoice-box table tr.heading2 td {
+                    background: #eee;
+                    border-bottom: 1px solid #ddd;
+                    font-weight: bold;
+					width:auto !important; 
+						}
+                .invoice-box table tr.details td {
+                    padding-bottom: 20px;
+                }
+
+                .invoice-box table tr.item td {
+                    border-bottom: 1px solid #eee;
+                    width:33px !important;
+                }
+
+                .invoice-box table tr.item.last td {
+                    /*border-bottom: none;*/
+                }
+                /*.invoice-box table tr.item.lasts td {
+                    border-bottom: none;
+                    
+                    padding-top:500px !important;
+                }*/
+                .invoice-box table tr.total td:nth-child(2) {
+                    border-top: 1px solid #eee;
+                    font-weight: bold;
+                }
+
+        @media only screen and (max-width: 600px) {
+            .invoice-box table tr.top table td {
+                width: 100%;
+                display: block;
+                /*text-align: center;*/
+            }
+
+            .invoice-box table tr.information table td {
+                width: 100%;
+                display: block;
+            }
+
+            footer {
+                clear: both;
+                position: relative;
+                float: left !important;
+                font-size: 22px;
+                line-height: 24px;
+                font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+                color: #555;
+                margin-top: -80px !important;
+                margin-left: 0px !important;
+            }
+        }
+
+        /** RTL **/
+        .rtl {
+            direction: rtl;
+            font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        }
+
+            .rtl table {
+                text-align: right;
+            }
+
+                .rtl table tr td:nth-child(2) {
+                    text-align: left;
+                }
+
+        @page {
+            size: 21cm 29.7cm;
+            margin: 35mm 50mm 35mm 50mm;
+            /* change the margins as you want them to be. */
+        }
+        footer {
+            clear: both;
+            position: relative;
+            height: 130px;
+            width:120mm !important;
+            margin-top: -190px !important;
+            margin-left: 100px !important;
+            font-size: 22px;
+            line-height: 24px !important;
+            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-box">
+	<center><font size='6' color='blue'>School App</font></center><br /><br />
+       <table cellpadding="0" cellspacing="0" style="width: 259mm !important;">
+            <tr class="top">
+                <td colspan="2">
+                    <table >
+
+						<tr style="float:left;">
+                            <td >
+                              
+							Dear [name] ,<br/>
+							  
+                                <!-- example Class Name : {Class_name} --><br/>
+                               
+                            </td>
+							<br/>
+                            
+                             </tr>
+							 <tr> <br/><td style="text-align:left;">
+							Data Bulk Upload activity was carried out by  [Uploaded_By]<br/>
+							  
+                               
+                            </td>
+                        </tr>
+						
+							<tr><td>
+							School Name : [sc_name]
+							</td></tr>
+							<tr><td>
+							Upload Template Used : [upload_file_name]
+							</td></tr>
+						
+						<tr><td>
+							 Upload Type: [Upload_type]
+							</td></tr>
+							
+
+						<tr><td>
+							Upload Date: [upload_DateDate]
+							</td></tr>
+							
+							<tr>
+							<td>
+							<br/>
+							Please review the relevant reports or contact <b> [Uploaded_By] </b> should you require more information
+							</td></tr>
+							
+							<tr style="float:right;">
+							<td>
+							<br/>
+							Regards, <br/> [school_admin]
+							</td></tr>
+							
+							
+                    </table>
+                </td>
+            </tr>
+           <!-- <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+					
+                              <!-- example Class Name : {Class_name} -->
+								  <!-- Add <td here to print it>
+						</tr>
+                    </table>
+                </td>
+            </tr> -->
+            <tr class="heading2">
+
+                <td style="width:83% !important;">
+				
+                     <!-- Add Heading Name here -->
+                </td>
+                <!--<td style="text-align:left !important;">
+                    Description
+                </td>-->
+                <td style="width:17% !important;">
+					<!-- Add heading here -->
+                </td>
+            </tr>
+			<tr>
+			<td>
+			<!--<img src="logo-green.png" style="width:100%; max-width:400px; margin-bottom=0px;" />-->
+<img src="logo-green.png" style="width:100%; max-width:400px; margin-bottom=0px;" /	>		
+					
+			</td></tr>
+
+           
+            
+        </table>
+        
+    </div>
+</body>
+</html>

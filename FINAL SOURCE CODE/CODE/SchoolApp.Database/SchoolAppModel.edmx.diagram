@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a4c79bb55956457a8959183b161a5035" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="SchoolAppModel.ISAccountStatu" Width="1.5" PointX="0.75" PointY="27.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISAdminLogin" Width="1.5" PointX="5.75" PointY="5.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISAttendance" Width="1.5" PointX="16.5" PointY="35.125" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISAuthToken" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISClass" Width="1.5" PointX="9" PointY="17.5" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISClassType" Width="1.5" PointX="6.75" PointY="18.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISClassYear" Width="1.5" PointX="2.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISCompleteAttendanceRun" Width="1.5" PointX="12.75" PointY="40.5" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISCompletePickupRun" Width="1.5" PointX="9.75" PointY="40.5" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISCountry" Width="1.5" PointX="0.75" PointY="32.625" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISDataUploadHistory" Width="1.5" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISErrorLog" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISFAQ" Width="1.5" PointX="9.75" PointY="4.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISHoliday" Width="1.5" PointX="5.25" PointY="70.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISInvoice" Width="1.5" PointX="7.75" PointY="9.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISLogType" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISMessage" Width="1.5" PointX="9.75" PointY="9.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISOrganisationUser" Width="1.5" PointX="6" PointY="31" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISPayment" Width="1.5" PointX="4.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISPicker" Width="1.5" PointX="8.25" PointY="30.5" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISPickerAssignment" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISPickup" Width="1.5" PointX="13.5" PointY="35.375" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISPickUpMessage" Width="1.5" PointX="11.75" PointY="5.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISPickUpStatu" Width="1.5" PointX="11.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISReport" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISRole" Width="1.5" PointX="3.75" PointY="19.625" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISSchool" Width="1.5" PointX="3" PointY="27.125" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISSchoolClass" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISSchoolInvoice" Width="1.5" PointX="5.25" PointY="24.5" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISSchoolType" Width="1.5" PointX="0.75" PointY="37.625" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISStudent" Width="1.5" PointX="11.25" PointY="28.875" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISStudentHistory" Width="1.5" PointX="13.75" PointY="5.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISStudentReassignHistory" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISSupport" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISSupportStatu" Width="1.5" PointX="0.75" PointY="7.125" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISTeacher" Width="1.5" PointX="7.5" PointY="39.125" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISTeacherClassAssignment" Width="1.5" PointX="9.75" PointY="45.5" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISTeacherReassignHistory" Width="1.5" PointX="15.75" PointY="5.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISTicketMessage" Width="1.5" PointX="5.25" PointY="2.375" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISTrasectionStatu" Width="1.5" PointX="3" PointY="14.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISTrasectionType" Width="1.5" PointX="3" PointY="42.625" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISUserActivity" Width="1.5" PointX="5.25" PointY="39" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISUserRole" Width="1.5" PointX="5.25" PointY="42.625" />
+        <EntityTypeShape EntityType="SchoolAppModel.ViewNotAssignPicker" Width="1.5" PointX="15.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ViewStudentAttendence" Width="1.5" PointX="11.75" PointY="16.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ViewStudentPickUp" Width="1.5" PointX="17.75" PointY="0.75" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISSchool__Accoun__70A8B9AE" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISAttenda__Stude__5165187F" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISAttenda__Teach__52593CB8" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISCompleteAttendanceRun__ISClass" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISCompletePickupRun__ISClass" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISStudent__Class__65370702" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISTeacher__Class__0E391C95" />
+        <AssociationConnector Association="SchoolAppModel.FK_ISClass_ISClassType" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISCompleteAttendanceRun__ISTeacher" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISCompletePickupRun__ISTeacher" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISOrganis__Count__17F790F9" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISSchool__Billin__2180FB33" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISHoliday__Schoo__5CD6CB2B" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISSupport__LogTy__6477ECF3" />
+        <AssociationConnector Association="SchoolAppModel.FK_ISOrganisationUser_ISRole" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISPicker__Parent__671F4F74" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISPicker__School__1AD3FDA4" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISPicker__School__1BC821DD" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISPicker__Studen__662B2B3B" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISPickup__Picker__5BAD9CC8" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISPickup__Studen__59C55456" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISPickup__Teache__5AB9788F" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISStudent__Schoo__6442E2C9" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISTeacher__Schoo__46B27FE2" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISUserAct__Schoo__2704CA5F" />
+        <AssociationConnector Association="SchoolAppModel.FK_ISSchool_ISSchool" />
+        <AssociationConnector Association="SchoolAppModel.FK_ISSchool_ISSchoolType" />
+        <AssociationConnector Association="SchoolAppModel.FK_ISSchoolInvoice_ISSchool" />
+        <AssociationConnector Association="SchoolAppModel.FK_ISUserRole_ISSchool" />
+        <AssociationConnector Association="SchoolAppModel.FK_ISSchoolInvoice_ISTrasectionStatus" />
+        <AssociationConnector Association="SchoolAppModel.FK_ISSchoolInvoice_ISTrasectionType" />
+        <AssociationConnector Association="SchoolAppModel.FK_ISSupport_ISSupportStatus" />
+        <AssociationConnector Association="SchoolAppModel.FK_ISTicketMessage_ISSupport" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISTeacher__RoleI__6754599E" />
+        <AssociationConnector Association="SchoolAppModel.FK__ISTeacher__Teach__6A30C649" />
+        <EntityTypeShape EntityType="SchoolAppModel.EmailTemplate" Width="1.5" PointX="5.375" PointY="15.75" />
+        <AssociationConnector Association="SchoolAppModel.FK_ISSchool_ISOrganisationUser_ID" />
+        <EntityTypeShape EntityType="SchoolAppModel.BckupParent" Width="1.5" PointX="14.375" PointY="17.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISStudentConfirmLogin" Width="1.5" PointX="16.375" PointY="17.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISRequestDemo" Width="1.5" PointX="0.75" PointY="18.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.Notifaction" Width="1.5" PointX="18.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.RecieverGroup" Width="1.5" PointX="18.75" PointY="9.75" />
+        <EntityTypeShape EntityType="SchoolAppModel.ISRegistration" Width="1.5" PointX="18.375" PointY="12.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

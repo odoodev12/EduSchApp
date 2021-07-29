@@ -1,0 +1,1893 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SchoolAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SchoolAppEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="getAttandanceData" ReturnType="Collection(SchoolAppModel.getAttandanceData_Result)">
+      <Parameter Name="date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="getClassReport" ReturnType="Collection(SchoolAppModel.getClassReport_Result)">
+      <Parameter Name="ClassID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getStudentReport" ReturnType="Collection(SchoolAppModel.getStudentReport_Result)">
+      <Parameter Name="ParantEmail1" Mode="In" Type="String" />
+      <Parameter Name="ParantEmail2" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getTeacherPickUpData" ReturnType="Collection(SchoolAppModel.getTeacherPickUpData_Result)">
+      <Parameter Name="fromdate" Mode="In" Type="DateTime" />
+      <Parameter Name="todate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <EntitySet Name="ISAccountStatus" EntityType="SchoolAppModel.ISAccountStatu" />
+    <EntitySet Name="ISAdminLogins" EntityType="SchoolAppModel.ISAdminLogin" />
+    <EntitySet Name="ISAttendances" EntityType="SchoolAppModel.ISAttendance" />
+    <EntitySet Name="ISAuthTokens" EntityType="SchoolAppModel.ISAuthToken" />
+    <EntitySet Name="ISClasses" EntityType="SchoolAppModel.ISClass" />
+    <EntitySet Name="ISClassTypes" EntityType="SchoolAppModel.ISClassType" />
+    <EntitySet Name="ISClassYears" EntityType="SchoolAppModel.ISClassYear" />
+    <EntitySet Name="ISCompleteAttendanceRuns" EntityType="SchoolAppModel.ISCompleteAttendanceRun" />
+    <EntitySet Name="ISCompletePickupRuns" EntityType="SchoolAppModel.ISCompletePickupRun" />
+    <EntitySet Name="ISCountries" EntityType="SchoolAppModel.ISCountry" />
+    <EntitySet Name="ISDataUploadHistories" EntityType="SchoolAppModel.ISDataUploadHistory" />
+    <EntitySet Name="ISErrorLogs" EntityType="SchoolAppModel.ISErrorLog" />
+    <EntitySet Name="ISFAQs" EntityType="SchoolAppModel.ISFAQ" />
+    <EntitySet Name="ISHolidays" EntityType="SchoolAppModel.ISHoliday" />
+    <EntitySet Name="ISInvoices" EntityType="SchoolAppModel.ISInvoice" />
+    <EntitySet Name="ISLogTypes" EntityType="SchoolAppModel.ISLogType" />
+    <EntitySet Name="ISMessages" EntityType="SchoolAppModel.ISMessage" />
+    <EntitySet Name="ISOrganisationUsers" EntityType="SchoolAppModel.ISOrganisationUser" />
+    <EntitySet Name="ISPayments" EntityType="SchoolAppModel.ISPayment" />
+    <EntitySet Name="ISPickers" EntityType="SchoolAppModel.ISPicker" />
+    <EntitySet Name="ISPickerAssignments" EntityType="SchoolAppModel.ISPickerAssignment" />
+    <EntitySet Name="ISPickups" EntityType="SchoolAppModel.ISPickup" />
+    <EntitySet Name="ISPickUpMessages" EntityType="SchoolAppModel.ISPickUpMessage" />
+    <EntitySet Name="ISPickUpStatus" EntityType="SchoolAppModel.ISPickUpStatu" />
+    <EntitySet Name="ISReports" EntityType="SchoolAppModel.ISReport" />
+    <EntitySet Name="ISRoles" EntityType="SchoolAppModel.ISRole" />
+    <EntitySet Name="ISSchools" EntityType="SchoolAppModel.ISSchool" />
+    <EntitySet Name="ISSchoolClasses" EntityType="SchoolAppModel.ISSchoolClass" />
+    <EntitySet Name="ISSchoolInvoices" EntityType="SchoolAppModel.ISSchoolInvoice" />
+    <EntitySet Name="ISSchoolTypes" EntityType="SchoolAppModel.ISSchoolType" />
+    <EntitySet Name="ISStudents" EntityType="SchoolAppModel.ISStudent" />
+    <EntitySet Name="ISStudentHistories" EntityType="SchoolAppModel.ISStudentHistory" />
+    <EntitySet Name="ISStudentReassignHistories" EntityType="SchoolAppModel.ISStudentReassignHistory" />
+    <EntitySet Name="ISSupports" EntityType="SchoolAppModel.ISSupport" />
+    <EntitySet Name="ISSupportStatus" EntityType="SchoolAppModel.ISSupportStatu" />
+    <EntitySet Name="ISTeachers" EntityType="SchoolAppModel.ISTeacher" />
+    <EntitySet Name="ISTeacherClassAssignments" EntityType="SchoolAppModel.ISTeacherClassAssignment" />
+    <EntitySet Name="ISTeacherReassignHistories" EntityType="SchoolAppModel.ISTeacherReassignHistory" />
+    <EntitySet Name="ISTicketMessages" EntityType="SchoolAppModel.ISTicketMessage" />
+    <EntitySet Name="ISTrasectionStatus" EntityType="SchoolAppModel.ISTrasectionStatu" />
+    <EntitySet Name="ISTrasectionTypes" EntityType="SchoolAppModel.ISTrasectionType" />
+    <EntitySet Name="ISUserActivities" EntityType="SchoolAppModel.ISUserActivity" />
+    <EntitySet Name="ISUserRoles" EntityType="SchoolAppModel.ISUserRole" />
+    <EntitySet Name="ViewNotAssignPickers" EntityType="SchoolAppModel.ViewNotAssignPicker" />
+    <EntitySet Name="ViewStudentAttendences" EntityType="SchoolAppModel.ViewStudentAttendence" />
+    <EntitySet Name="ViewStudentPickUps" EntityType="SchoolAppModel.ViewStudentPickUp" />
+    <AssociationSet Name="FK__ISSchool__Accoun__70A8B9AE" Association="SchoolAppModel.FK__ISSchool__Accoun__70A8B9AE">
+      <End Role="ISAccountStatu" EntitySet="ISAccountStatus" />
+      <End Role="ISSchool" EntitySet="ISSchools" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISAttenda__Stude__5165187F" Association="SchoolAppModel.FK__ISAttenda__Stude__5165187F">
+      <End Role="ISStudent" EntitySet="ISStudents" />
+      <End Role="ISAttendance" EntitySet="ISAttendances" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISAttenda__Teach__52593CB8" Association="SchoolAppModel.FK__ISAttenda__Teach__52593CB8">
+      <End Role="ISTeacher" EntitySet="ISTeachers" />
+      <End Role="ISAttendance" EntitySet="ISAttendances" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISCompleteAttendanceRun__ISClass" Association="SchoolAppModel.FK__ISCompleteAttendanceRun__ISClass">
+      <End Role="ISClass" EntitySet="ISClasses" />
+      <End Role="ISCompleteAttendanceRun" EntitySet="ISCompleteAttendanceRuns" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISCompletePickupRun__ISClass" Association="SchoolAppModel.FK__ISCompletePickupRun__ISClass">
+      <End Role="ISClass" EntitySet="ISClasses" />
+      <End Role="ISCompletePickupRun" EntitySet="ISCompletePickupRuns" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISStudent__Class__65370702" Association="SchoolAppModel.FK__ISStudent__Class__65370702">
+      <End Role="ISClass" EntitySet="ISClasses" />
+      <End Role="ISStudent" EntitySet="ISStudents" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISTeacher__Class__0E391C95" Association="SchoolAppModel.FK__ISTeacher__Class__0E391C95">
+      <End Role="ISClass" EntitySet="ISClasses" />
+      <End Role="ISTeacherClassAssignment" EntitySet="ISTeacherClassAssignments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ISClass_ISClassType" Association="SchoolAppModel.FK_ISClass_ISClassType">
+      <End Role="ISClassType" EntitySet="ISClassTypes" />
+      <End Role="ISClass" EntitySet="ISClasses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISCompleteAttendanceRun__ISTeacher" Association="SchoolAppModel.FK__ISCompleteAttendanceRun__ISTeacher">
+      <End Role="ISTeacher" EntitySet="ISTeachers" />
+      <End Role="ISCompleteAttendanceRun" EntitySet="ISCompleteAttendanceRuns" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISCompletePickupRun__ISTeacher" Association="SchoolAppModel.FK__ISCompletePickupRun__ISTeacher">
+      <End Role="ISTeacher" EntitySet="ISTeachers" />
+      <End Role="ISCompletePickupRun" EntitySet="ISCompletePickupRuns" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISOrganis__Count__17F790F9" Association="SchoolAppModel.FK__ISOrganis__Count__17F790F9">
+      <End Role="ISCountry" EntitySet="ISCountries" />
+      <End Role="ISOrganisationUser" EntitySet="ISOrganisationUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISSchool__Billin__2180FB33" Association="SchoolAppModel.FK__ISSchool__Billin__2180FB33">
+      <End Role="ISCountry" EntitySet="ISCountries" />
+      <End Role="ISSchool" EntitySet="ISSchools" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISHoliday__Schoo__5CD6CB2B" Association="SchoolAppModel.FK__ISHoliday__Schoo__5CD6CB2B">
+      <End Role="ISSchool" EntitySet="ISSchools" />
+      <End Role="ISHoliday" EntitySet="ISHolidays" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISSupport__LogTy__6477ECF3" Association="SchoolAppModel.FK__ISSupport__LogTy__6477ECF3">
+      <End Role="ISLogType" EntitySet="ISLogTypes" />
+      <End Role="ISSupport" EntitySet="ISSupports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ISOrganisationUser_ISRole" Association="SchoolAppModel.FK_ISOrganisationUser_ISRole">
+      <End Role="ISRole" EntitySet="ISRoles" />
+      <End Role="ISOrganisationUser" EntitySet="ISOrganisationUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISPicker__Parent__671F4F74" Association="SchoolAppModel.FK__ISPicker__Parent__671F4F74">
+      <End Role="ISStudent" EntitySet="ISStudents" />
+      <End Role="ISPicker" EntitySet="ISPickers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISPicker__School__1AD3FDA4" Association="SchoolAppModel.FK__ISPicker__School__1AD3FDA4">
+      <End Role="ISSchool" EntitySet="ISSchools" />
+      <End Role="ISPicker" EntitySet="ISPickers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISPicker__School__1BC821DD" Association="SchoolAppModel.FK__ISPicker__School__1BC821DD">
+      <End Role="ISSchool" EntitySet="ISSchools" />
+      <End Role="ISPicker" EntitySet="ISPickers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISPicker__Studen__662B2B3B" Association="SchoolAppModel.FK__ISPicker__Studen__662B2B3B">
+      <End Role="ISStudent" EntitySet="ISStudents" />
+      <End Role="ISPicker" EntitySet="ISPickers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISPickup__Picker__5BAD9CC8" Association="SchoolAppModel.FK__ISPickup__Picker__5BAD9CC8">
+      <End Role="ISPicker" EntitySet="ISPickers" />
+      <End Role="ISPickup" EntitySet="ISPickups" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISPickup__Studen__59C55456" Association="SchoolAppModel.FK__ISPickup__Studen__59C55456">
+      <End Role="ISStudent" EntitySet="ISStudents" />
+      <End Role="ISPickup" EntitySet="ISPickups" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISPickup__Teache__5AB9788F" Association="SchoolAppModel.FK__ISPickup__Teache__5AB9788F">
+      <End Role="ISTeacher" EntitySet="ISTeachers" />
+      <End Role="ISPickup" EntitySet="ISPickups" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISStudent__Schoo__6442E2C9" Association="SchoolAppModel.FK__ISStudent__Schoo__6442E2C9">
+      <End Role="ISSchool" EntitySet="ISSchools" />
+      <End Role="ISStudent" EntitySet="ISStudents" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISTeacher__Schoo__46B27FE2" Association="SchoolAppModel.FK__ISTeacher__Schoo__46B27FE2">
+      <End Role="ISSchool" EntitySet="ISSchools" />
+      <End Role="ISTeacher" EntitySet="ISTeachers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISUserAct__Schoo__2704CA5F" Association="SchoolAppModel.FK__ISUserAct__Schoo__2704CA5F">
+      <End Role="ISSchool" EntitySet="ISSchools" />
+      <End Role="ISUserActivity" EntitySet="ISUserActivities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ISSchool_ISSchool" Association="SchoolAppModel.FK_ISSchool_ISSchool">
+      <End Role="ISSchool" EntitySet="ISSchools" />
+      <End Role="ISSchool1" EntitySet="ISSchools" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ISSchool_ISSchoolType" Association="SchoolAppModel.FK_ISSchool_ISSchoolType">
+      <End Role="ISSchoolType" EntitySet="ISSchoolTypes" />
+      <End Role="ISSchool" EntitySet="ISSchools" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ISSchoolInvoice_ISSchool" Association="SchoolAppModel.FK_ISSchoolInvoice_ISSchool">
+      <End Role="ISSchool" EntitySet="ISSchools" />
+      <End Role="ISSchoolInvoice" EntitySet="ISSchoolInvoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ISUserRole_ISSchool" Association="SchoolAppModel.FK_ISUserRole_ISSchool">
+      <End Role="ISSchool" EntitySet="ISSchools" />
+      <End Role="ISUserRole" EntitySet="ISUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ISSchoolInvoice_ISTrasectionStatus" Association="SchoolAppModel.FK_ISSchoolInvoice_ISTrasectionStatus">
+      <End Role="ISTrasectionStatu" EntitySet="ISTrasectionStatus" />
+      <End Role="ISSchoolInvoice" EntitySet="ISSchoolInvoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ISSchoolInvoice_ISTrasectionType" Association="SchoolAppModel.FK_ISSchoolInvoice_ISTrasectionType">
+      <End Role="ISTrasectionType" EntitySet="ISTrasectionTypes" />
+      <End Role="ISSchoolInvoice" EntitySet="ISSchoolInvoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ISSupport_ISSupportStatus" Association="SchoolAppModel.FK_ISSupport_ISSupportStatus">
+      <End Role="ISSupportStatu" EntitySet="ISSupportStatus" />
+      <End Role="ISSupport" EntitySet="ISSupports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ISTicketMessage_ISSupport" Association="SchoolAppModel.FK_ISTicketMessage_ISSupport">
+      <End Role="ISSupport" EntitySet="ISSupports" />
+      <End Role="ISTicketMessage" EntitySet="ISTicketMessages" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISTeacher__RoleI__6754599E" Association="SchoolAppModel.FK__ISTeacher__RoleI__6754599E">
+      <End Role="ISUserRole" EntitySet="ISUserRoles" />
+      <End Role="ISTeacher" EntitySet="ISTeachers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ISTeacher__Teach__6A30C649" Association="SchoolAppModel.FK__ISTeacher__Teach__6A30C649">
+      <End Role="ISTeacher" EntitySet="ISTeachers" />
+      <End Role="ISTeacherClassAssignment" EntitySet="ISTeacherClassAssignments" />
+    </AssociationSet>
+    <FunctionImport Name="getPickUpData" ReturnType="Collection(SchoolAppModel.getPickUpData_Result)">
+      <Parameter Name="date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <EntitySet Name="EmailTemplates" EntityType="SchoolAppModel.EmailTemplate" />
+    <FunctionImport Name="updateParantEmailIdInWhole">
+      <Parameter Name="oldEmailID" Mode="In" Type="String" />
+      <Parameter Name="newEmailID" Mode="In" Type="String" />
+      <Parameter Name="parentName" Mode="In" Type="String" />
+    </FunctionImport>
+    <AssociationSet Name="FK_ISSchool_ISOrganisationUser_ID" Association="SchoolAppModel.FK_ISSchool_ISOrganisationUser_ID">
+      <End Role="ISOrganisationUser" EntitySet="ISOrganisationUsers" />
+      <End Role="ISSchool" EntitySet="ISSchools" />
+    </AssociationSet>
+    <FunctionImport Name="BusinessRuleClearData" />
+    <FunctionImport Name="GetDataForChartControl" ReturnType="Collection(SchoolAppModel.GetDataForChartControl_Result)">
+      <Parameter Name="schoolId" Mode="In" Type="Int32" />
+      <Parameter Name="chartDataType" Mode="In" Type="String" />
+      <Parameter Name="year" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="BckupParents" EntityType="SchoolAppModel.BckupParent" />
+    <EntitySet Name="ISStudentConfirmLogins" EntityType="SchoolAppModel.ISStudentConfirmLogin" />
+  </EntityContainer>
+  <ComplexType Name="getAttandanceData_Result">
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="DateTime" Name="Date" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="StudentID" Nullable="true" />
+    <Property Type="Int32" Name="TeacherID" Nullable="true" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="Dates" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="Time" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="Active" Nullable="true" />
+    <Property Type="Boolean" Name="Deleted" Nullable="true" />
+    <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDateTime" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ModifyBy" Nullable="true" />
+    <Property Type="DateTime" Name="ModifyDateTime" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="DeletedBy" Nullable="true" />
+    <Property Type="DateTime" Name="DeletedDateTime" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="StudentsID" Nullable="false" />
+    <Property Type="String" Name="StudentNo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="ClassID" Nullable="true" />
+    <Property Type="Int32" Name="SchoolID" Nullable="true" />
+    <Property Type="String" Name="StudentName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Photo" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ParantName1" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ParantEmail1" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ParantName2" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ParantEmail2" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="StudentActive" Nullable="true" />
+    <Property Type="Boolean" Name="StudentDeleted" Nullable="true" />
+    <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="getClassReport_Result">
+    <Property Type="Int32" Name="StudID" Nullable="false" />
+    <Property Type="String" Name="StudentNo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="ClassID" Nullable="true" />
+    <Property Type="Int32" Name="SchoolID" Nullable="true" />
+    <Property Type="String" Name="StudentName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Photo" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ParantName1" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ParantEmail1" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ParantName2" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ParantEmail2" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Active" Nullable="true" />
+    <Property Type="Boolean" Name="Deleted" Nullable="true" />
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="Int32" Name="StudentID" Nullable="true" />
+    <Property Type="Int32" Name="TeacherID" Nullable="true" />
+    <Property Type="Int32" Name="PickerID" Nullable="true" />
+    <Property Type="DateTime" Name="PickTime" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="PickDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="PickStatus" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="getStudentReport_Result">
+    <Property Type="Int32" Name="StudID" Nullable="false" />
+    <Property Type="String" Name="StudentNo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="ClassID" Nullable="true" />
+    <Property Type="Int32" Name="SchoolID" Nullable="true" />
+    <Property Type="String" Name="StudentName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Photo" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ParantName1" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ParantEmail1" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ParantName2" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ParantEmail2" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Active" Nullable="true" />
+    <Property Type="Boolean" Name="Deleted" Nullable="true" />
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="Int32" Name="StudentID" Nullable="true" />
+    <Property Type="Int32" Name="TeacherID" Nullable="true" />
+    <Property Type="Int32" Name="PickerID" Nullable="true" />
+    <Property Type="DateTime" Name="PickTime" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="PickDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="PickStatus" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="getTeacherPickUpData_Result">
+    <Property Type="Int32" Name="StudID" Nullable="false" />
+    <Property Type="String" Name="StudentNo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="ClassID" Nullable="true" />
+    <Property Type="Int32" Name="SchoolID" Nullable="true" />
+    <Property Type="String" Name="StudentName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Photo" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ParantName1" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ParantEmail1" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ParantName2" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ParantEmail2" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="Active" Nullable="true" />
+    <Property Type="Boolean" Name="Deleted" Nullable="true" />
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="Int32" Name="StudentID" Nullable="true" />
+    <Property Type="Int32" Name="TeacherID" Nullable="true" />
+    <Property Type="Int32" Name="PickerID" Nullable="true" />
+    <Property Type="DateTime" Name="PickTime" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="PickDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="PickStatus" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="ISAccountStatu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ISSchools" Relationship="SchoolAppModel.FK__ISSchool__Accoun__70A8B9AE" FromRole="ISAccountStatu" ToRole="ISSchool" />
+  </EntityType>
+  <EntityType Name="ISAdminLogin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Pass" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="FullName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ISActivated" Type="Boolean" />
+    <Property Name="IsActivationID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MemorableQueAnswer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IsResetPassword" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="ISAttendance">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="StudentID" Type="Int32" />
+    <Property Name="TeacherID" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Time" Type="DateTime" Precision="3" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="AttendenceComplete" Type="Boolean" />
+    <NavigationProperty Name="ISStudent" Relationship="SchoolAppModel.FK__ISAttenda__Stude__5165187F" FromRole="ISAttendance" ToRole="ISStudent" />
+    <NavigationProperty Name="ISTeacher" Relationship="SchoolAppModel.FK__ISAttenda__Teach__52593CB8" FromRole="ISAttendance" ToRole="ISTeacher" />
+  </EntityType>
+  <EntityType Name="ISAuthToken">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Token" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IMEINO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDatetime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ISClass">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Year" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TypeID" Type="Int32" Nullable="false" />
+    <Property Name="AfterSchoolType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ExternalOrganisation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="PickupComplete" Type="Boolean" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="CreatedByType" Type="Int32" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ISNonListed" Type="Boolean" />
+    <NavigationProperty Name="ISCompleteAttendanceRuns" Relationship="SchoolAppModel.FK__ISCompleteAttendanceRun__ISClass" FromRole="ISClass" ToRole="ISCompleteAttendanceRun" />
+    <NavigationProperty Name="ISCompletePickupRuns" Relationship="SchoolAppModel.FK__ISCompletePickupRun__ISClass" FromRole="ISClass" ToRole="ISCompletePickupRun" />
+    <NavigationProperty Name="ISStudents" Relationship="SchoolAppModel.FK__ISStudent__Class__65370702" FromRole="ISClass" ToRole="ISStudent" />
+    <NavigationProperty Name="ISTeacherClassAssignments" Relationship="SchoolAppModel.FK__ISTeacher__Class__0E391C95" FromRole="ISClass" ToRole="ISTeacherClassAssignment" />
+    <NavigationProperty Name="ISClassType" Relationship="SchoolAppModel.FK_ISClass_ISClassType" FromRole="ISClass" ToRole="ISClassType" />
+  </EntityType>
+  <EntityType Name="ISClassType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ISClasses" Relationship="SchoolAppModel.FK_ISClass_ISClassType" FromRole="ISClassType" ToRole="ISClass" />
+  </EntityType>
+  <EntityType Name="ISClassYear">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Year" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ISCompleteAttendanceRun">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="ClassID" Type="Int32" />
+    <Property Name="TeacherID" Type="Int32" />
+    <Property Name="Time" Type="DateTime" Precision="3" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ISClass" Relationship="SchoolAppModel.FK__ISCompleteAttendanceRun__ISClass" FromRole="ISCompleteAttendanceRun" ToRole="ISClass" />
+    <NavigationProperty Name="ISTeacher" Relationship="SchoolAppModel.FK__ISCompleteAttendanceRun__ISTeacher" FromRole="ISCompleteAttendanceRun" ToRole="ISTeacher" />
+  </EntityType>
+  <EntityType Name="ISCompletePickupRun">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="ClassID" Type="Int32" />
+    <Property Name="TeacherID" Type="Int32" />
+    <Property Name="Time" Type="DateTime" Precision="3" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ISClass" Relationship="SchoolAppModel.FK__ISCompletePickupRun__ISClass" FromRole="ISCompletePickupRun" ToRole="ISClass" />
+    <NavigationProperty Name="ISTeacher" Relationship="SchoolAppModel.FK__ISCompletePickupRun__ISTeacher" FromRole="ISCompletePickupRun" ToRole="ISTeacher" />
+  </EntityType>
+  <EntityType Name="ISCountry">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ISOrganisationUsers" Relationship="SchoolAppModel.FK__ISOrganis__Count__17F790F9" FromRole="ISCountry" ToRole="ISOrganisationUser" />
+    <NavigationProperty Name="ISSchools" Relationship="SchoolAppModel.FK__ISSchool__Billin__2180FB33" FromRole="ISCountry" ToRole="ISSchool" />
+  </EntityType>
+  <EntityType Name="ISDataUploadHistory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolID" Type="Int32" />
+    <Property Name="TemplateName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedCount" Type="Int32" />
+    <Property Name="UpdatedCount" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedByType" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ISErrorLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LogText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="LineNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ColumnNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Method" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Class" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ISFAQ">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Attachment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedByName" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ISHoliday">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolID" Type="Int32" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DateFrom" Type="DateTime" Precision="3" />
+    <Property Name="DateTo" Type="DateTime" Precision="3" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ISSchool" Relationship="SchoolAppModel.FK__ISHoliday__Schoo__5CD6CB2B" FromRole="ISHoliday" ToRole="ISSchool" />
+  </EntityType>
+  <EntityType Name="ISInvoice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PropertyID" Type="Int32" />
+    <Property Name="InvoiceNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DateFrom" Type="DateTime" Precision="3" />
+    <Property Name="DateTo" Type="DateTime" Precision="3" />
+    <Property Name="TransactionDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TransactionAmount" Type="Int32" />
+    <Property Name="TaxRate" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="StatusID" Type="Int32" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ISLogType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LogTypeName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ISSupports" Relationship="SchoolAppModel.FK__ISSupport__LogTy__6477ECF3" FromRole="ISLogType" ToRole="ISSupport" />
+  </EntityType>
+  <EntityType Name="ISMessage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Attechment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiveID" Type="Int32" />
+    <Property Name="SendID" Type="Int32" />
+    <Property Name="ReceiverType" Type="Int32" />
+    <Property Name="SenderType" Type="Int32" />
+    <Property Name="SchoolID" Type="Int32" />
+    <Property Name="Time" Type="DateTime" Precision="3" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ISOrganisationUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="OrgCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Address1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Address2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Town" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="CreatedByName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ActivationBy" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ActivationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdatedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ISCountry" Relationship="SchoolAppModel.FK__ISOrganis__Count__17F790F9" FromRole="ISOrganisationUser" ToRole="ISCountry" />
+    <NavigationProperty Name="ISRole" Relationship="SchoolAppModel.FK_ISOrganisationUser_ISRole" FromRole="ISOrganisationUser" ToRole="ISRole" />
+    <NavigationProperty Name="ISSchools" Relationship="SchoolAppModel.FK_ISSchool_ISOrganisationUser_ID" FromRole="ISOrganisationUser" ToRole="ISSchool" />
+    <Property Name="ISActivated" Type="Boolean" />
+    <Property Name="IsActivationID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MemorableQueAnswer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IsResetPassword" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="ISPayment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="InvoiceID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TransactionTypeID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="StatusID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="FromDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="ISPicker">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolID" Type="Int32" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="StudentID" Type="Int32" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PickupCodeCunter" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="OneOffPickerFlag" Type="Boolean" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="ActiveStatus" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ActiveStatusLastUpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ActiveStatusLastUpdatedParent" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ActiveStatusLastUpdatedParentEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="PickerType" Type="Int32" />
+    <Property Name="CreatedByEmail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EmergencyContact" Type="Boolean" />
+    <Property Name="CreatedByName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ISStudent" Relationship="SchoolAppModel.FK__ISPicker__Parent__671F4F74" FromRole="ISPicker" ToRole="ISStudent" />
+    <NavigationProperty Name="ISSchool" Relationship="SchoolAppModel.FK__ISPicker__School__1AD3FDA4" FromRole="ISPicker" ToRole="ISSchool" />
+    <NavigationProperty Name="ISSchool1" Relationship="SchoolAppModel.FK__ISPicker__School__1BC821DD" FromRole="ISPicker" ToRole="ISSchool" />
+    <NavigationProperty Name="ISStudent1" Relationship="SchoolAppModel.FK__ISPicker__Studen__662B2B3B" FromRole="ISPicker" ToRole="ISStudent" />
+    <NavigationProperty Name="ISPickups" Relationship="SchoolAppModel.FK__ISPickup__Picker__5BAD9CC8" FromRole="ISPicker" ToRole="ISPickup" />
+    <Property Name="DeletedByName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ISPickerAssignment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PickerId" Type="Int32" />
+    <Property Name="StudentID" Type="Int32" />
+    <Property Name="PickerCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PickCodeExDate" Type="DateTime" Precision="3" />
+    <Property Name="PickCodeLastUpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="PickCodayExDate" Type="DateTime" Precision="3" />
+    <Property Name="PickTodayLastUpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="PickTodayLastUpdateParent" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RemoveChildStatus" Type="Int32" />
+    <Property Name="RemoveChildLastUpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="RemoveChildLastupdateParent" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="StudentPickAssignFlag" Type="Int32" />
+    <Property Name="StudentPickAssignLastUpdateParent" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="StudentPickAssignDate" Type="DateTime" Precision="3" />
+    <Property Name="StudentAssignBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ISPickup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentID" Type="Int32" />
+    <Property Name="ClassID" Type="Int32" />
+    <Property Name="TeacherID" Type="Int32" />
+    <Property Name="PickerID" Type="Int32" />
+    <Property Name="PickTime" Type="DateTime" Precision="3" />
+    <Property Name="PickDate" Type="DateTime" Precision="3" />
+    <Property Name="PickStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CompletePickup" Type="Boolean" />
+    <Property Name="OfficeFlag" Type="Boolean" />
+    <Property Name="AfterSchoolFlag" Type="Boolean" />
+    <NavigationProperty Name="ISPicker" Relationship="SchoolAppModel.FK__ISPickup__Picker__5BAD9CC8" FromRole="ISPickup" ToRole="ISPicker" />
+    <NavigationProperty Name="ISStudent" Relationship="SchoolAppModel.FK__ISPickup__Studen__59C55456" FromRole="ISPickup" ToRole="ISStudent" />
+    <NavigationProperty Name="ISTeacher" Relationship="SchoolAppModel.FK__ISPickup__Teache__5AB9788F" FromRole="ISPickup" ToRole="ISTeacher" />
+    <Property Name="ClubFlag" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="ISPickUpMessage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolID" Type="Int32" />
+    <Property Name="Message" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="ReceiverID" Type="Int32" />
+    <Property Name="ClassID" Type="Int32" />
+    <Property Name="SendID" Type="Int32" />
+    <Property Name="SenderName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Viewed" Type="Boolean" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ISPickUpStatu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ISReport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ReportTypeID" Type="Int32" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ISRole">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="SchoolID" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ISOrganisationUsers" Relationship="SchoolAppModel.FK_ISOrganisationUser_ISRole" FromRole="ISRole" ToRole="ISOrganisationUser" />
+  </EntityType>
+  <EntityType Name="ISSchool">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TypeID" Type="Int32" />
+    <Property Name="Address1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Address2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Town" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AdminFirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="AdminLastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="AdminEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Website" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="SupervisorFirstname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="SupervisorLastname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="SupervisorEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="OpningTime" Type="DateTime" Precision="3" />
+    <Property Name="ClosingTime" Type="DateTime" Precision="3" />
+    <Property Name="LateMinAfterClosing" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ChargeMinutesAfterClosing" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ReportableMinutesAfterClosing" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SetupTrainingStatus" Type="Boolean" />
+    <Property Name="SetupTrainingDate" Type="DateTime" Precision="3" />
+    <Property Name="ActivationDate" Type="DateTime" Precision="3" />
+    <Property Name="SchoolEndDate" Type="DateTime" Precision="3" />
+    <Property Name="isAttendanceModule" Type="Boolean" />
+    <Property Name="isNotificationPickup" Type="Boolean" />
+    <Property Name="NotificationAttendance" Type="Boolean" />
+    <Property Name="AttendanceModule" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PostCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BillingAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BillingAddress2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BillingPostCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BillingCountryID" Type="Int32" />
+    <Property Name="BillingTown" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Classfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Teacherfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Studentfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Reportable" Type="Boolean" />
+    <Property Name="PaymentSystems" Type="Boolean" />
+    <Property Name="CustSigned" Type="Boolean" />
+    <Property Name="AccountStatusID" Type="Int32" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="CreatedByName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="LastUpdatedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ActivatedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ISAccountStatu" Relationship="SchoolAppModel.FK__ISSchool__Accoun__70A8B9AE" FromRole="ISSchool" ToRole="ISAccountStatu" />
+    <NavigationProperty Name="ISCountry" Relationship="SchoolAppModel.FK__ISSchool__Billin__2180FB33" FromRole="ISSchool" ToRole="ISCountry" />
+    <NavigationProperty Name="ISHolidays" Relationship="SchoolAppModel.FK__ISHoliday__Schoo__5CD6CB2B" FromRole="ISSchool" ToRole="ISHoliday" />
+    <NavigationProperty Name="ISPickers" Relationship="SchoolAppModel.FK__ISPicker__School__1AD3FDA4" FromRole="ISSchool" ToRole="ISPicker" />
+    <NavigationProperty Name="ISPickers1" Relationship="SchoolAppModel.FK__ISPicker__School__1BC821DD" FromRole="ISSchool" ToRole="ISPicker" />
+    <NavigationProperty Name="ISStudents" Relationship="SchoolAppModel.FK__ISStudent__Schoo__6442E2C9" FromRole="ISSchool" ToRole="ISStudent" />
+    <NavigationProperty Name="ISTeachers" Relationship="SchoolAppModel.FK__ISTeacher__Schoo__46B27FE2" FromRole="ISSchool" ToRole="ISTeacher" />
+    <NavigationProperty Name="ISUserActivities" Relationship="SchoolAppModel.FK__ISUserAct__Schoo__2704CA5F" FromRole="ISSchool" ToRole="ISUserActivity" />
+    <NavigationProperty Name="ISSchool1" Relationship="SchoolAppModel.FK_ISSchool_ISSchool" FromRole="ISSchool" ToRole="ISSchool1" />
+    <NavigationProperty Name="ISSchool2" Relationship="SchoolAppModel.FK_ISSchool_ISSchool" FromRole="ISSchool1" ToRole="ISSchool" />
+    <NavigationProperty Name="ISSchoolType" Relationship="SchoolAppModel.FK_ISSchool_ISSchoolType" FromRole="ISSchool" ToRole="ISSchoolType" />
+    <NavigationProperty Name="ISSchoolInvoices" Relationship="SchoolAppModel.FK_ISSchoolInvoice_ISSchool" FromRole="ISSchool" ToRole="ISSchoolInvoice" />
+    <NavigationProperty Name="ISUserRoles" Relationship="SchoolAppModel.FK_ISUserRole_ISSchool" FromRole="ISSchool" ToRole="ISUserRole" />
+    <Property Name="AccountManagerId" Type="Int32" />
+    <NavigationProperty Name="ISOrganisationUser" Relationship="SchoolAppModel.FK_ISSchool_ISOrganisationUser_ID" FromRole="ISSchool" ToRole="ISOrganisationUser" />
+    <Property Name="MemorableQueAnswer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ISActivated" Type="Boolean" />
+    <Property Name="IsActivationID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ISSchoolClass">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolID" Type="Int32" Nullable="false" />
+    <Property Name="ClassID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ISSchoolInvoice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolID" Type="Int32" />
+    <Property Name="InvoiceNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DateFrom" Type="DateTime" Precision="3" />
+    <Property Name="DateTo" Type="DateTime" Precision="3" />
+    <Property Name="TransactionTypeID" Type="Int32" />
+    <Property Name="TransactionDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TransactionAmount" Type="Int32" />
+    <Property Name="TaxRate" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="StatusID" Type="Int32" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="StatusUpdateBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="StatusUpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedByName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ISSchool" Relationship="SchoolAppModel.FK_ISSchoolInvoice_ISSchool" FromRole="ISSchoolInvoice" ToRole="ISSchool" />
+    <NavigationProperty Name="ISTrasectionStatu" Relationship="SchoolAppModel.FK_ISSchoolInvoice_ISTrasectionStatus" FromRole="ISSchoolInvoice" ToRole="ISTrasectionStatu" />
+    <NavigationProperty Name="ISTrasectionType" Relationship="SchoolAppModel.FK_ISSchoolInvoice_ISTrasectionType" FromRole="ISSchoolInvoice" ToRole="ISTrasectionType" />
+  </EntityType>
+  <EntityType Name="ISSchoolType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ISSchools" Relationship="SchoolAppModel.FK_ISSchool_ISSchoolType" FromRole="ISSchoolType" ToRole="ISSchool" />
+  </EntityType>
+  <EntityType Name="ISStudent">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentNo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ClassID" Type="Int32" />
+    <Property Name="SchoolID" Type="Int32" />
+    <Property Name="StudentName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="ParantName1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParantEmail1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ParantPassword1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParantPhone1" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="ParantRelation1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParantPhoto1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParantName2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParantEmail2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ParantPassword2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParantPhone2" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="ParantRelation2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParantPhoto2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PickupMessageID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PickupMessageTime" Type="Time" Precision="7" />
+    <Property Name="PickupMessageDate" Type="DateTime" Precision="0" />
+    <Property Name="PickupMessageLastUpdatedParent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AttendanceEmailFlag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastAttendanceEmailDate" Type="DateTime" Precision="0" />
+    <Property Name="LastAttendanceEmailTime" Type="Time" Precision="7" />
+    <Property Name="LastUnpickAlertSentTime" Type="Time" Precision="7" />
+    <Property Name="UnpickAlertDate" Type="DateTime" Precision="0" />
+    <Property Name="LastUnpickAlertSentTeacherID" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="Out" Type="Int32" />
+    <Property Name="Outbit" Type="Boolean" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="EmailAfterConfirmAttendence" Type="Boolean" />
+    <Property Name="EmailAfterConfirmPickUp" Type="Boolean" />
+    <Property Name="ISImageEmail" Type="Boolean" />
+    <Property Name="SentMailDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ISAttendances" Relationship="SchoolAppModel.FK__ISAttenda__Stude__5165187F" FromRole="ISStudent" ToRole="ISAttendance" />
+    <NavigationProperty Name="ISClass" Relationship="SchoolAppModel.FK__ISStudent__Class__65370702" FromRole="ISStudent" ToRole="ISClass" />
+    <NavigationProperty Name="ISPickers" Relationship="SchoolAppModel.FK__ISPicker__Parent__671F4F74" FromRole="ISStudent" ToRole="ISPicker" />
+    <NavigationProperty Name="ISPickers1" Relationship="SchoolAppModel.FK__ISPicker__Studen__662B2B3B" FromRole="ISStudent" ToRole="ISPicker" />
+    <NavigationProperty Name="ISPickups" Relationship="SchoolAppModel.FK__ISPickup__Studen__59C55456" FromRole="ISStudent" ToRole="ISPickup" />
+    <NavigationProperty Name="ISSchool" Relationship="SchoolAppModel.FK__ISStudent__Schoo__6442E2C9" FromRole="ISStudent" ToRole="ISSchool" />
+    <Property Name="AutoEmailSendDateForImageUpload" Type="DateTime" Precision="0" />
+    <Property Name="DeletedByName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ISStudentHistory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentNo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ClassID" Type="Int32" />
+    <Property Name="SchoolID" Type="Int32" />
+    <Property Name="StudentName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="ParantName1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParantEmail1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ParantPassword1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParantPhone1" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="ParantRelation1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParantPhoto1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParantName2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParantEmail2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ParantPassword2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParantPhone2" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="ParantRelation2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParantPhoto2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PickupMessageID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PickupMessageTime" Type="Time" Precision="7" />
+    <Property Name="PickupMessageDate" Type="DateTime" Precision="0" />
+    <Property Name="PickupMessageLastUpdatedParent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AttendanceEmailFlag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastAttendanceEmailDate" Type="DateTime" Precision="0" />
+    <Property Name="LastAttendanceEmailTime" Type="Time" Precision="7" />
+    <Property Name="LastUnpickAlertSentTime" Type="Time" Precision="7" />
+    <Property Name="UnpickAlertDate" Type="DateTime" Precision="0" />
+    <Property Name="LastUnpickAlertSentTeacherID" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="Out" Type="Int32" />
+    <Property Name="Outbit" Type="Boolean" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="EmailAfterConfirmAttendence" Type="Boolean" />
+    <Property Name="EmailAfterConfirmPickUp" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="ISStudentReassignHistory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolID" Type="Int32" />
+    <Property Name="FromClass" Type="Int32" />
+    <Property Name="ToClass" Type="Int32" />
+    <Property Name="StduentID" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="CreatedByType" Type="Int32" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ISSupport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TicketNo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Request" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SchoolID" Type="Int32" />
+    <Property Name="StatusID" Type="Int32" />
+    <Property Name="LogTypeID" Type="Int32" />
+    <Property Name="SupportOfficerID" Type="Int32" />
+    <Property Name="Priority" Type="Int32" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedByName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="AssignBy" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="AssignDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ISLogType" Relationship="SchoolAppModel.FK__ISSupport__LogTy__6477ECF3" FromRole="ISSupport" ToRole="ISLogType" />
+    <NavigationProperty Name="ISSupportStatu" Relationship="SchoolAppModel.FK_ISSupport_ISSupportStatus" FromRole="ISSupport" ToRole="ISSupportStatu" />
+    <NavigationProperty Name="ISTicketMessages" Relationship="SchoolAppModel.FK_ISTicketMessage_ISSupport" FromRole="ISSupport" ToRole="ISTicketMessage" />
+  </EntityType>
+  <EntityType Name="ISSupportStatu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ISSupports" Relationship="SchoolAppModel.FK_ISSupport_ISSupportStatus" FromRole="ISSupportStatu" ToRole="ISSupport" />
+  </EntityType>
+  <EntityType Name="ISTeacher">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolID" Type="Int32" Nullable="false" />
+    <Property Name="ClassID" Type="Int32" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="TeacherNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="CreatedByType" Type="Int32" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="Role" Type="Int32" />
+    <NavigationProperty Name="ISAttendances" Relationship="SchoolAppModel.FK__ISAttenda__Teach__52593CB8" FromRole="ISTeacher" ToRole="ISAttendance" />
+    <NavigationProperty Name="ISCompleteAttendanceRuns" Relationship="SchoolAppModel.FK__ISCompleteAttendanceRun__ISTeacher" FromRole="ISTeacher" ToRole="ISCompleteAttendanceRun" />
+    <NavigationProperty Name="ISCompletePickupRuns" Relationship="SchoolAppModel.FK__ISCompletePickupRun__ISTeacher" FromRole="ISTeacher" ToRole="ISCompletePickupRun" />
+    <NavigationProperty Name="ISPickups" Relationship="SchoolAppModel.FK__ISPickup__Teache__5AB9788F" FromRole="ISTeacher" ToRole="ISPickup" />
+    <NavigationProperty Name="ISSchool" Relationship="SchoolAppModel.FK__ISTeacher__Schoo__46B27FE2" FromRole="ISTeacher" ToRole="ISSchool" />
+    <NavigationProperty Name="ISUserRole" Relationship="SchoolAppModel.FK__ISTeacher__RoleI__6754599E" FromRole="ISTeacher" ToRole="ISUserRole" />
+    <NavigationProperty Name="ISTeacherClassAssignments" Relationship="SchoolAppModel.FK__ISTeacher__Teach__6A30C649" FromRole="ISTeacher" ToRole="ISTeacherClassAssignment" />
+    <Property Name="ISActivated" Type="Boolean" />
+    <Property Name="IsActivationID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MemorableQueAnswer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ISTeacherClassAssignment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TeacherID" Type="Int32" />
+    <Property Name="ClassID" Type="Int32" />
+    <Property Name="Out" Type="Int32" />
+    <Property Name="Outbit" Type="Boolean" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ISClass" Relationship="SchoolAppModel.FK__ISTeacher__Class__0E391C95" FromRole="ISTeacherClassAssignment" ToRole="ISClass" />
+    <NavigationProperty Name="ISTeacher" Relationship="SchoolAppModel.FK__ISTeacher__Teach__6A30C649" FromRole="ISTeacherClassAssignment" ToRole="ISTeacher" />
+  </EntityType>
+  <EntityType Name="ISTeacherReassignHistory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolID" Type="Int32" />
+    <Property Name="FromClass" Type="Int32" />
+    <Property Name="ToClass" Type="Int32" />
+    <Property Name="TeacherID" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="CreatedByType" Type="Int32" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ISTicketMessage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SupportID" Type="Int32" />
+    <Property Name="SenderID" Type="Int32" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SelectFile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Precision="3" />
+    <Property Name="UserTypeID" Type="Int32" />
+    <NavigationProperty Name="ISSupport" Relationship="SchoolAppModel.FK_ISTicketMessage_ISSupport" FromRole="ISTicketMessage" ToRole="ISSupport" />
+  </EntityType>
+  <EntityType Name="ISTrasectionStatu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ISSchoolInvoices" Relationship="SchoolAppModel.FK_ISSchoolInvoice_ISTrasectionStatus" FromRole="ISTrasectionStatu" ToRole="ISSchoolInvoice" />
+  </EntityType>
+  <EntityType Name="ISTrasectionType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ISSchoolInvoices" Relationship="SchoolAppModel.FK_ISSchoolInvoice_ISTrasectionType" FromRole="ISTrasectionType" ToRole="ISSchoolInvoice" />
+  </EntityType>
+  <EntityType Name="ISUserActivity">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolID" Type="Int32" />
+    <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LogText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DocumentCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ISSchool" Relationship="SchoolAppModel.FK__ISUserAct__Schoo__2704CA5F" FromRole="ISUserActivity" ToRole="ISSchool" />
+  </EntityType>
+  <EntityType Name="ISUserRole">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolID" Type="Int32" Nullable="false" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RoleType" Type="Int32" />
+    <Property Name="ManageTeacherFlag" Type="Boolean" Nullable="false" />
+    <Property Name="ManageClassFlag" Type="Boolean" Nullable="false" />
+    <Property Name="ManageSupportFlag" Type="Boolean" Nullable="false" />
+    <Property Name="ManageStudentFlag" Type="Boolean" Nullable="false" />
+    <Property Name="ManageViewAccountFlag" Type="Boolean" Nullable="false" />
+    <Property Name="ManageNonTeacherFlag" Type="Boolean" />
+    <Property Name="ManageHolidayFlag" Type="Boolean" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ISSchool" Relationship="SchoolAppModel.FK_ISUserRole_ISSchool" FromRole="ISUserRole" ToRole="ISSchool" />
+    <NavigationProperty Name="ISTeachers" Relationship="SchoolAppModel.FK__ISTeacher__RoleI__6754599E" FromRole="ISUserRole" ToRole="ISTeacher" />
+  </EntityType>
+  <EntityType Name="ViewNotAssignPicker">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolID" Type="Int32" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="StudentID" Type="Int32" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PickupCodeCunter" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="OneOffPickerFlag" Type="Boolean" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="ActiveStatus" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ActiveStatusLastUpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ActiveStatusLastUpdatedParent" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ActiveStatusLastUpdatedParentEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ViewStudentAttendence">
+    <Key>
+      <PropertyRef Name="StudentsID" />
+    </Key>
+    <Property Name="ID" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="StudentID" Type="Int32" />
+    <Property Name="TeacherID" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Time" Type="DateTime" Precision="3" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <Property Name="ModifyDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="StudentsID" Type="Int32" Nullable="false" />
+    <Property Name="StudentNo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ClassID" Type="Int32" />
+    <Property Name="SchoolID" Type="Int32" />
+    <Property Name="StudentName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParantName1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParantEmail1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ParantName2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParantEmail2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StudentActive" Type="Boolean" />
+    <Property Name="StudentDeleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="ViewStudentPickUp">
+    <Key>
+      <PropertyRef Name="StudID" />
+    </Key>
+    <Property Name="StudID" Type="Int32" Nullable="false" />
+    <Property Name="StudentNo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ClassID" Type="Int32" />
+    <Property Name="SchoolID" Type="Int32" />
+    <Property Name="StudentName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParantName1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParantEmail1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ParantName2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParantEmail2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="ID" Type="Int32" />
+    <Property Name="StudentID" Type="Int32" />
+    <Property Name="TeacherID" Type="Int32" />
+    <Property Name="PickerID" Type="Int32" />
+    <Property Name="PickTime" Type="DateTime" Precision="3" />
+    <Property Name="PickDate" Type="DateTime" Precision="3" />
+    <Property Name="PickStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__ISSchool__Accoun__70A8B9AE">
+    <End Type="SchoolAppModel.ISAccountStatu" Role="ISAccountStatu" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISSchool" Role="ISSchool" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISAccountStatu">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISSchool">
+        <PropertyRef Name="AccountStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISAttenda__Stude__5165187F">
+    <End Type="SchoolAppModel.ISStudent" Role="ISStudent" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISAttendance" Role="ISAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISAttendance">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISAttenda__Teach__52593CB8">
+    <End Type="SchoolAppModel.ISTeacher" Role="ISTeacher" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISAttendance" Role="ISAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISTeacher">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISAttendance">
+        <PropertyRef Name="TeacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISCompleteAttendanceRun__ISClass">
+    <End Type="SchoolAppModel.ISClass" Role="ISClass" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISCompleteAttendanceRun" Role="ISCompleteAttendanceRun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISClass">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISCompleteAttendanceRun">
+        <PropertyRef Name="ClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISCompletePickupRun__ISClass">
+    <End Type="SchoolAppModel.ISClass" Role="ISClass" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISCompletePickupRun" Role="ISCompletePickupRun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISClass">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISCompletePickupRun">
+        <PropertyRef Name="ClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISStudent__Class__65370702">
+    <End Type="SchoolAppModel.ISClass" Role="ISClass" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISStudent" Role="ISStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISClass">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISStudent">
+        <PropertyRef Name="ClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISTeacher__Class__0E391C95">
+    <End Type="SchoolAppModel.ISClass" Role="ISClass" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISTeacherClassAssignment" Role="ISTeacherClassAssignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISClass">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISTeacherClassAssignment">
+        <PropertyRef Name="ClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ISClass_ISClassType">
+    <End Type="SchoolAppModel.ISClassType" Role="ISClassType" Multiplicity="1" />
+    <End Type="SchoolAppModel.ISClass" Role="ISClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISClassType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISClass">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISCompleteAttendanceRun__ISTeacher">
+    <End Type="SchoolAppModel.ISTeacher" Role="ISTeacher" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISCompleteAttendanceRun" Role="ISCompleteAttendanceRun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISTeacher">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISCompleteAttendanceRun">
+        <PropertyRef Name="TeacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISCompletePickupRun__ISTeacher">
+    <End Type="SchoolAppModel.ISTeacher" Role="ISTeacher" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISCompletePickupRun" Role="ISCompletePickupRun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISTeacher">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISCompletePickupRun">
+        <PropertyRef Name="TeacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISOrganis__Count__17F790F9">
+    <End Type="SchoolAppModel.ISCountry" Role="ISCountry" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISOrganisationUser" Role="ISOrganisationUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISCountry">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISOrganisationUser">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISSchool__Billin__2180FB33">
+    <End Type="SchoolAppModel.ISCountry" Role="ISCountry" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISSchool" Role="ISSchool" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISCountry">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISSchool">
+        <PropertyRef Name="BillingCountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISHoliday__Schoo__5CD6CB2B">
+    <End Type="SchoolAppModel.ISSchool" Role="ISSchool" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISHoliday" Role="ISHoliday" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISSchool">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISHoliday">
+        <PropertyRef Name="SchoolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISSupport__LogTy__6477ECF3">
+    <End Type="SchoolAppModel.ISLogType" Role="ISLogType" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISSupport" Role="ISSupport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISLogType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISSupport">
+        <PropertyRef Name="LogTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ISOrganisationUser_ISRole">
+    <End Type="SchoolAppModel.ISRole" Role="ISRole" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISOrganisationUser" Role="ISOrganisationUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISRole">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISOrganisationUser">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISPicker__Parent__671F4F74">
+    <End Type="SchoolAppModel.ISStudent" Role="ISStudent" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISPicker" Role="ISPicker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISPicker">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISPicker__School__1AD3FDA4">
+    <End Type="SchoolAppModel.ISSchool" Role="ISSchool" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISPicker" Role="ISPicker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISSchool">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISPicker">
+        <PropertyRef Name="SchoolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISPicker__School__1BC821DD">
+    <End Type="SchoolAppModel.ISSchool" Role="ISSchool" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISPicker" Role="ISPicker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISSchool">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISPicker">
+        <PropertyRef Name="SchoolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISPicker__Studen__662B2B3B">
+    <End Type="SchoolAppModel.ISStudent" Role="ISStudent" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISPicker" Role="ISPicker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISPicker">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISPickup__Picker__5BAD9CC8">
+    <End Type="SchoolAppModel.ISPicker" Role="ISPicker" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISPickup" Role="ISPickup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISPicker">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISPickup">
+        <PropertyRef Name="PickerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISPickup__Studen__59C55456">
+    <End Type="SchoolAppModel.ISStudent" Role="ISStudent" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISPickup" Role="ISPickup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISPickup">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISPickup__Teache__5AB9788F">
+    <End Type="SchoolAppModel.ISTeacher" Role="ISTeacher" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISPickup" Role="ISPickup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISTeacher">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISPickup">
+        <PropertyRef Name="TeacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISStudent__Schoo__6442E2C9">
+    <End Type="SchoolAppModel.ISSchool" Role="ISSchool" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISStudent" Role="ISStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISSchool">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISStudent">
+        <PropertyRef Name="SchoolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISTeacher__Schoo__46B27FE2">
+    <End Type="SchoolAppModel.ISSchool" Role="ISSchool" Multiplicity="1" />
+    <End Type="SchoolAppModel.ISTeacher" Role="ISTeacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISSchool">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISTeacher">
+        <PropertyRef Name="SchoolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISUserAct__Schoo__2704CA5F">
+    <End Type="SchoolAppModel.ISSchool" Role="ISSchool" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISUserActivity" Role="ISUserActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISSchool">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISUserActivity">
+        <PropertyRef Name="SchoolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ISSchool_ISSchool">
+    <End Type="SchoolAppModel.ISSchool" Role="ISSchool" Multiplicity="1" />
+    <End Type="SchoolAppModel.ISSchool" Role="ISSchool1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ISSchool">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISSchool1">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ISSchool_ISSchoolType">
+    <End Type="SchoolAppModel.ISSchoolType" Role="ISSchoolType" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISSchool" Role="ISSchool" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISSchoolType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISSchool">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ISSchoolInvoice_ISSchool">
+    <End Type="SchoolAppModel.ISSchool" Role="ISSchool" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISSchoolInvoice" Role="ISSchoolInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISSchool">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISSchoolInvoice">
+        <PropertyRef Name="SchoolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ISUserRole_ISSchool">
+    <End Type="SchoolAppModel.ISSchool" Role="ISSchool" Multiplicity="1" />
+    <End Type="SchoolAppModel.ISUserRole" Role="ISUserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISSchool">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISUserRole">
+        <PropertyRef Name="SchoolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ISSchoolInvoice_ISTrasectionStatus">
+    <End Type="SchoolAppModel.ISTrasectionStatu" Role="ISTrasectionStatu" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISSchoolInvoice" Role="ISSchoolInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISTrasectionStatu">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISSchoolInvoice">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ISSchoolInvoice_ISTrasectionType">
+    <End Type="SchoolAppModel.ISTrasectionType" Role="ISTrasectionType" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISSchoolInvoice" Role="ISSchoolInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISTrasectionType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISSchoolInvoice">
+        <PropertyRef Name="TransactionTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ISSupport_ISSupportStatus">
+    <End Type="SchoolAppModel.ISSupportStatu" Role="ISSupportStatu" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISSupport" Role="ISSupport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISSupportStatu">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISSupport">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ISTicketMessage_ISSupport">
+    <End Type="SchoolAppModel.ISSupport" Role="ISSupport" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISTicketMessage" Role="ISTicketMessage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISSupport">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISTicketMessage">
+        <PropertyRef Name="SupportID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISTeacher__RoleI__6754599E">
+    <End Type="SchoolAppModel.ISUserRole" Role="ISUserRole" Multiplicity="1" />
+    <End Type="SchoolAppModel.ISTeacher" Role="ISTeacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISUserRole">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISTeacher">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ISTeacher__Teach__6A30C649">
+    <End Type="SchoolAppModel.ISTeacher" Role="ISTeacher" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISTeacherClassAssignment" Role="ISTeacherClassAssignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISTeacher">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISTeacherClassAssignment">
+        <PropertyRef Name="TeacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="getPickUpData_Result">
+    <Property Type="Int32" Name="StudID" Nullable="false" />
+    <Property Type="String" Name="StudentNo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="ClassID" Nullable="true" />
+    <Property Type="Int32" Name="SchoolID" Nullable="true" />
+    <Property Type="String" Name="StudentName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Photo" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ParantName1" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ParantEmail1" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ParantName2" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="ParantEmail2" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ParantPhone1" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="ParantPhone2" Nullable="true" MaxLength="11" />
+    <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="Active" Nullable="true" />
+    <Property Type="Boolean" Name="Deleted" Nullable="true" />
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="Int32" Name="StudentID" Nullable="true" />
+    <Property Type="Int32" Name="TeacherID" Nullable="true" />
+    <Property Type="Int32" Name="PickerID" Nullable="true" />
+    <Property Type="DateTime" Name="PickTime" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="PickDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="PickStatus" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="AfterSchoolFlag" Nullable="true" />
+    <Property Type="Boolean" Name="OfficeFlag" Nullable="true" />
+    <Property Type="Boolean" Name="CompletePickup" Nullable="true" />
+    <Property Type="Boolean" Name="ClubFlag" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="EmailTemplate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_ISSchool_ISOrganisationUser_ID">
+    <End Type="SchoolAppModel.ISOrganisationUser" Role="ISOrganisationUser" Multiplicity="0..1" />
+    <End Type="SchoolAppModel.ISSchool" Role="ISSchool" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ISOrganisationUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ISSchool">
+        <PropertyRef Name="AccountManagerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="GetDataForChartControl_Result">
+    <Property Type="String" Name="PickStatus" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Count" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="BckupParent">
+    <Key>
+      <PropertyRef Name="AutoID" />
+    </Key>
+    <Property Name="AutoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int32" Nullable="false" />
+    <Property Name="StudentId" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Relationship" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="WhoDeleted" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeletedByName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SchoolID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ISStudentConfirmLogin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActivationID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MemorableQueAnswer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ISActivated" Type="Boolean" />
+  </EntityType>
+</Schema>

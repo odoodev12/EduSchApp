@@ -1,0 +1,10 @@
+﻿body {
+}
+a.ourtooltip {
+    color:red !important;
+}
+.sidebar-box {
+    background: #fff;
+    box-shadow: 0px 0px .5px 0px rgba(50, 50, 50, 0.95);
+    margin-bottom: 20px;
+}

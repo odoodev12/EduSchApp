@@ -1,0 +1,1322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SchoolAppModelStoreContainer" CdmEntityContainer="SchoolAppEntities">
+    <FunctionImportMapping FunctionImportName="getAttandanceData" FunctionName="SchoolAppModel.Store.getAttandanceData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolAppModel.getAttandanceData_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Dates" ColumnName="Dates" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="StudentsID" ColumnName="StudentsID" />
+          <ScalarProperty Name="StudentNo" ColumnName="StudentNo" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="ParantName1" ColumnName="ParantName1" />
+          <ScalarProperty Name="ParantEmail1" ColumnName="ParantEmail1" />
+          <ScalarProperty Name="ParantName2" ColumnName="ParantName2" />
+          <ScalarProperty Name="ParantEmail2" ColumnName="ParantEmail2" />
+          <ScalarProperty Name="StudentActive" ColumnName="StudentActive" />
+          <ScalarProperty Name="StudentDeleted" ColumnName="StudentDeleted" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getClassReport" FunctionName="SchoolAppModel.Store.getClassReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolAppModel.getClassReport_Result">
+          <ScalarProperty Name="StudID" ColumnName="StudID" />
+          <ScalarProperty Name="StudentNo" ColumnName="StudentNo" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="ParantName1" ColumnName="ParantName1" />
+          <ScalarProperty Name="ParantEmail1" ColumnName="ParantEmail1" />
+          <ScalarProperty Name="ParantName2" ColumnName="ParantName2" />
+          <ScalarProperty Name="ParantEmail2" ColumnName="ParantEmail2" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="PickerID" ColumnName="PickerID" />
+          <ScalarProperty Name="PickTime" ColumnName="PickTime" />
+          <ScalarProperty Name="PickDate" ColumnName="PickDate" />
+          <ScalarProperty Name="PickStatus" ColumnName="PickStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getStudentReport" FunctionName="SchoolAppModel.Store.getStudentReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolAppModel.getStudentReport_Result">
+          <ScalarProperty Name="StudID" ColumnName="StudID" />
+          <ScalarProperty Name="StudentNo" ColumnName="StudentNo" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="ParantName1" ColumnName="ParantName1" />
+          <ScalarProperty Name="ParantEmail1" ColumnName="ParantEmail1" />
+          <ScalarProperty Name="ParantName2" ColumnName="ParantName2" />
+          <ScalarProperty Name="ParantEmail2" ColumnName="ParantEmail2" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="PickerID" ColumnName="PickerID" />
+          <ScalarProperty Name="PickTime" ColumnName="PickTime" />
+          <ScalarProperty Name="PickDate" ColumnName="PickDate" />
+          <ScalarProperty Name="PickStatus" ColumnName="PickStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getTeacherPickUpData" FunctionName="SchoolAppModel.Store.getTeacherPickUpData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolAppModel.getTeacherPickUpData_Result">
+          <ScalarProperty Name="StudID" ColumnName="StudID" />
+          <ScalarProperty Name="StudentNo" ColumnName="StudentNo" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="ParantName1" ColumnName="ParantName1" />
+          <ScalarProperty Name="ParantEmail1" ColumnName="ParantEmail1" />
+          <ScalarProperty Name="ParantName2" ColumnName="ParantName2" />
+          <ScalarProperty Name="ParantEmail2" ColumnName="ParantEmail2" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="PickerID" ColumnName="PickerID" />
+          <ScalarProperty Name="PickTime" ColumnName="PickTime" />
+          <ScalarProperty Name="PickDate" ColumnName="PickDate" />
+          <ScalarProperty Name="PickStatus" ColumnName="PickStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ISAccountStatus">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISAccountStatu">
+        <MappingFragment StoreEntitySet="ISAccountStatus">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISAdminLogins">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISAdminLogin">
+        <MappingFragment StoreEntitySet="ISAdminLogin">
+          <ScalarProperty Name="IsResetPassword" ColumnName="IsResetPassword" />
+          <ScalarProperty Name="MemorableQueAnswer" ColumnName="MemorableQueAnswer" />
+          <ScalarProperty Name="IsActivationID" ColumnName="IsActivationID" />
+          <ScalarProperty Name="ISActivated" ColumnName="ISActivated" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISAttendances">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISAttendance">
+        <MappingFragment StoreEntitySet="ISAttendance">
+          <ScalarProperty Name="AttendenceComplete" ColumnName="AttendenceComplete" />
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISAuthTokens">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISAuthToken">
+        <MappingFragment StoreEntitySet="ISAuthToken">
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="IMEINO" ColumnName="IMEINO" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISClasses">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISClass">
+        <MappingFragment StoreEntitySet="ISClass">
+          <ScalarProperty Name="ISNonListed" ColumnName="ISNonListed" />
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedByType" ColumnName="CreatedByType" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="PickupComplete" ColumnName="PickupComplete" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ExternalOrganisation" ColumnName="ExternalOrganisation" />
+          <ScalarProperty Name="AfterSchoolType" ColumnName="AfterSchoolType" />
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISClassTypes">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISClassType">
+        <MappingFragment StoreEntitySet="ISClassType">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISClassYears">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISClassYear">
+        <MappingFragment StoreEntitySet="ISClassYear">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISCompleteAttendanceRuns">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISCompleteAttendanceRun">
+        <MappingFragment StoreEntitySet="ISCompleteAttendanceRun">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISCompletePickupRuns">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISCompletePickupRun">
+        <MappingFragment StoreEntitySet="ISCompletePickupRun">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISCountries">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISCountry">
+        <MappingFragment StoreEntitySet="ISCountries">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISDataUploadHistories">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISDataUploadHistory">
+        <MappingFragment StoreEntitySet="ISDataUploadHistory">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedByType" ColumnName="CreatedByType" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="UpdatedCount" ColumnName="UpdatedCount" />
+          <ScalarProperty Name="CreatedCount" ColumnName="CreatedCount" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISErrorLogs">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISErrorLog">
+        <MappingFragment StoreEntitySet="ISErrorLog">
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Method" ColumnName="Method" />
+          <ScalarProperty Name="ColumnNumber" ColumnName="ColumnNumber" />
+          <ScalarProperty Name="LineNumber" ColumnName="LineNumber" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LogText" ColumnName="LogText" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISFAQs">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISFAQ">
+        <MappingFragment StoreEntitySet="ISFAQ">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedByName" ColumnName="CreatedByName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISHolidays">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISHoliday">
+        <MappingFragment StoreEntitySet="ISHoliday">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="DateTo" ColumnName="DateTo" />
+          <ScalarProperty Name="DateFrom" ColumnName="DateFrom" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISInvoices">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISInvoice">
+        <MappingFragment StoreEntitySet="ISInvoice">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+          <ScalarProperty Name="TransactionAmount" ColumnName="TransactionAmount" />
+          <ScalarProperty Name="TransactionDesc" ColumnName="TransactionDesc" />
+          <ScalarProperty Name="DateTo" ColumnName="DateTo" />
+          <ScalarProperty Name="DateFrom" ColumnName="DateFrom" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISLogTypes">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISLogType">
+        <MappingFragment StoreEntitySet="ISLogType">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="LogTypeName" ColumnName="LogTypeName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISMessages">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISMessage">
+        <MappingFragment StoreEntitySet="ISMessage">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="SenderType" ColumnName="SenderType" />
+          <ScalarProperty Name="ReceiverType" ColumnName="ReceiverType" />
+          <ScalarProperty Name="SendID" ColumnName="SendID" />
+          <ScalarProperty Name="ReceiveID" ColumnName="ReceiveID" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="Attechment" ColumnName="Attechment" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISOrganisationUsers">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISOrganisationUser">
+        <MappingFragment StoreEntitySet="ISOrganisationUser">
+          <ScalarProperty Name="IsResetPassword" ColumnName="IsResetPassword" />
+          <ScalarProperty Name="MemorableQueAnswer" ColumnName="MemorableQueAnswer" />
+          <ScalarProperty Name="IsActivationID" ColumnName="IsActivationID" />
+          <ScalarProperty Name="ISActivated" ColumnName="ISActivated" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+          <ScalarProperty Name="ActivationDate" ColumnName="ActivationDate" />
+          <ScalarProperty Name="ActivationBy" ColumnName="ActivationBy" />
+          <ScalarProperty Name="CreatedByName" ColumnName="CreatedByName" />
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="Town" ColumnName="Town" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="OrgCode" ColumnName="OrgCode" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISPayments">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISPayment">
+        <MappingFragment StoreEntitySet="ISPayment">
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TransactionTypeID" ColumnName="TransactionTypeID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISPickers">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISPicker">
+        <MappingFragment StoreEntitySet="ISPicker">
+          <ScalarProperty Name="DeletedByName" ColumnName="DeletedByName" />
+          <ScalarProperty Name="CreatedByName" ColumnName="CreatedByName" />
+          <ScalarProperty Name="EmergencyContact" ColumnName="EmergencyContact" />
+          <ScalarProperty Name="CreatedByEmail" ColumnName="CreatedByEmail" />
+          <ScalarProperty Name="PickerType" ColumnName="PickerType" />
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ActiveStatusLastUpdatedParentEmail" ColumnName="ActiveStatusLastUpdatedParentEmail" />
+          <ScalarProperty Name="ActiveStatusLastUpdatedParent" ColumnName="ActiveStatusLastUpdatedParent" />
+          <ScalarProperty Name="ActiveStatusLastUpdatedDate" ColumnName="ActiveStatusLastUpdatedDate" />
+          <ScalarProperty Name="ActiveStatus" ColumnName="ActiveStatus" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="OneOffPickerFlag" ColumnName="OneOffPickerFlag" />
+          <ScalarProperty Name="PickupCodeCunter" ColumnName="PickupCodeCunter" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISPickerAssignments">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISPickerAssignment">
+        <MappingFragment StoreEntitySet="ISPickerAssignment">
+          <ScalarProperty Name="StudentAssignBy" ColumnName="StudentAssignBy" />
+          <ScalarProperty Name="StudentPickAssignDate" ColumnName="StudentPickAssignDate" />
+          <ScalarProperty Name="StudentPickAssignLastUpdateParent" ColumnName="StudentPickAssignLastUpdateParent" />
+          <ScalarProperty Name="StudentPickAssignFlag" ColumnName="StudentPickAssignFlag" />
+          <ScalarProperty Name="RemoveChildLastupdateParent" ColumnName="RemoveChildLastupdateParent" />
+          <ScalarProperty Name="RemoveChildLastUpdateDate" ColumnName="RemoveChildLastUpdateDate" />
+          <ScalarProperty Name="RemoveChildStatus" ColumnName="RemoveChildStatus" />
+          <ScalarProperty Name="PickTodayLastUpdateParent" ColumnName="PickTodayLastUpdateParent" />
+          <ScalarProperty Name="PickTodayLastUpdateDate" ColumnName="PickTodayLastUpdateDate" />
+          <ScalarProperty Name="PickCodayExDate" ColumnName="PickCodayExDate" />
+          <ScalarProperty Name="PickCodeLastUpdateDate" ColumnName="PickCodeLastUpdateDate" />
+          <ScalarProperty Name="PickCodeExDate" ColumnName="PickCodeExDate" />
+          <ScalarProperty Name="PickerCode" ColumnName="PickerCode" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="PickerId" ColumnName="PickerId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISPickups">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISPickup">
+        <MappingFragment StoreEntitySet="ISPickup">
+          <ScalarProperty Name="ClubFlag" ColumnName="ClubFlag" />
+          <ScalarProperty Name="AfterSchoolFlag" ColumnName="AfterSchoolFlag" />
+          <ScalarProperty Name="OfficeFlag" ColumnName="OfficeFlag" />
+          <ScalarProperty Name="CompletePickup" ColumnName="CompletePickup" />
+          <ScalarProperty Name="PickStatus" ColumnName="PickStatus" />
+          <ScalarProperty Name="PickDate" ColumnName="PickDate" />
+          <ScalarProperty Name="PickTime" ColumnName="PickTime" />
+          <ScalarProperty Name="PickerID" ColumnName="PickerID" />
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISPickUpMessages">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISPickUpMessage">
+        <MappingFragment StoreEntitySet="ISPickUpMessage">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Viewed" ColumnName="Viewed" />
+          <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+          <ScalarProperty Name="SendID" ColumnName="SendID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="ReceiverID" ColumnName="ReceiverID" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISPickUpStatus">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISPickUpStatu">
+        <MappingFragment StoreEntitySet="ISPickUpStatus">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISReports">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISReport">
+        <MappingFragment StoreEntitySet="ISReport">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ReportTypeID" ColumnName="ReportTypeID" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISRoles">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISRole">
+        <MappingFragment StoreEntitySet="ISRole">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISSchools">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISSchool">
+        <MappingFragment StoreEntitySet="ISSchool">
+          <ScalarProperty Name="IsBell" ColumnName="IsBell" />
+          <ScalarProperty Name="IsEmail_Required_For_Edit_Holiday" ColumnName="IsEmail_Required_For_Edit_Holiday" />
+          <ScalarProperty Name="IsEmail_Required_For_Create_Holiday" ColumnName="IsEmail_Required_For_Create_Holiday" />
+          <ScalarProperty Name="IsEmail_Required_For_Edit_Role" ColumnName="IsEmail_Required_For_Edit_Role" />
+          <ScalarProperty Name="IsEmail_Required_For_Create_Role" ColumnName="IsEmail_Required_For_Create_Role" />
+          <ScalarProperty Name="IsEmail_Required_For_Edit_Teacher" ColumnName="IsEmail_Required_For_Edit_Teacher" />
+          <ScalarProperty Name="IsEmail_Required_For_Create_Teacher" ColumnName="IsEmail_Required_For_Create_Teacher" />
+          <ScalarProperty Name="IsEmail_Required_For_Edit_Student" ColumnName="IsEmail_Required_For_Edit_Student" />
+          <ScalarProperty Name="IsEmail_Required_For_Create_Student" ColumnName="IsEmail_Required_For_Create_Student" />
+          <ScalarProperty Name="IsEmail_Required_For_Edit_Class" ColumnName="IsEmail_Required_For_Edit_Class" />
+          <ScalarProperty Name="IsEmail_Required_For_Create_Class" ColumnName="IsEmail_Required_For_Create_Class" />
+          <ScalarProperty Name="IsActivationID" ColumnName="IsActivationID" />
+          <ScalarProperty Name="ISActivated" ColumnName="ISActivated" />
+          <ScalarProperty Name="MemorableQueAnswer" ColumnName="MemorableQueAnswer" />
+          <ScalarProperty Name="AccountManagerId" ColumnName="AccountManagerId" />
+          <ScalarProperty Name="ActivatedBy" ColumnName="ActivatedBy" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+          <ScalarProperty Name="CreatedByName" ColumnName="CreatedByName" />
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="AccountStatusID" ColumnName="AccountStatusID" />
+          <ScalarProperty Name="CustSigned" ColumnName="CustSigned" />
+          <ScalarProperty Name="PaymentSystems" ColumnName="PaymentSystems" />
+          <ScalarProperty Name="Reportable" ColumnName="Reportable" />
+          <ScalarProperty Name="Studentfile" ColumnName="Studentfile" />
+          <ScalarProperty Name="Teacherfile" ColumnName="Teacherfile" />
+          <ScalarProperty Name="Classfile" ColumnName="Classfile" />
+          <ScalarProperty Name="BillingTown" ColumnName="BillingTown" />
+          <ScalarProperty Name="BillingCountryID" ColumnName="BillingCountryID" />
+          <ScalarProperty Name="BillingPostCode" ColumnName="BillingPostCode" />
+          <ScalarProperty Name="BillingAddress2" ColumnName="BillingAddress2" />
+          <ScalarProperty Name="BillingAddress" ColumnName="BillingAddress" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="AttendanceModule" ColumnName="AttendanceModule" />
+          <ScalarProperty Name="NotificationAttendance" ColumnName="NotificationAttendance" />
+          <ScalarProperty Name="isNotificationPickup" ColumnName="isNotificationPickup" />
+          <ScalarProperty Name="isAttendanceModule" ColumnName="isAttendanceModule" />
+          <ScalarProperty Name="SchoolEndDate" ColumnName="SchoolEndDate" />
+          <ScalarProperty Name="ActivationDate" ColumnName="ActivationDate" />
+          <ScalarProperty Name="SetupTrainingDate" ColumnName="SetupTrainingDate" />
+          <ScalarProperty Name="SetupTrainingStatus" ColumnName="SetupTrainingStatus" />
+          <ScalarProperty Name="ReportableMinutesAfterClosing" ColumnName="ReportableMinutesAfterClosing" />
+          <ScalarProperty Name="ChargeMinutesAfterClosing" ColumnName="ChargeMinutesAfterClosing" />
+          <ScalarProperty Name="LateMinAfterClosing" ColumnName="LateMinAfterClosing" />
+          <ScalarProperty Name="ClosingTime" ColumnName="ClosingTime" />
+          <ScalarProperty Name="OpningTime" ColumnName="OpningTime" />
+          <ScalarProperty Name="SupervisorEmail" ColumnName="SupervisorEmail" />
+          <ScalarProperty Name="SupervisorLastname" ColumnName="SupervisorLastname" />
+          <ScalarProperty Name="SupervisorFirstname" ColumnName="SupervisorFirstname" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="AdminEmail" ColumnName="AdminEmail" />
+          <ScalarProperty Name="AdminLastName" ColumnName="AdminLastName" />
+          <ScalarProperty Name="AdminFirstName" ColumnName="AdminFirstName" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="Town" ColumnName="Town" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CustomerNumber" ColumnName="CustomerNumber" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISSchoolClasses">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISSchoolClass">
+        <MappingFragment StoreEntitySet="ISSchoolClass">
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISSchoolInvoices">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISSchoolInvoice">
+        <MappingFragment StoreEntitySet="ISSchoolInvoice">
+          <ScalarProperty Name="CreatedByName" ColumnName="CreatedByName" />
+          <ScalarProperty Name="StatusUpdateDate" ColumnName="StatusUpdateDate" />
+          <ScalarProperty Name="StatusUpdateBy" ColumnName="StatusUpdateBy" />
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+          <ScalarProperty Name="TransactionAmount" ColumnName="TransactionAmount" />
+          <ScalarProperty Name="TransactionDesc" ColumnName="TransactionDesc" />
+          <ScalarProperty Name="TransactionTypeID" ColumnName="TransactionTypeID" />
+          <ScalarProperty Name="DateTo" ColumnName="DateTo" />
+          <ScalarProperty Name="DateFrom" ColumnName="DateFrom" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISSchoolTypes">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISSchoolType">
+        <MappingFragment StoreEntitySet="ISSchoolType">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISStudents">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISStudent">
+        <MappingFragment StoreEntitySet="ISStudent">
+          <ScalarProperty Name="IsBell" ColumnName="IsBell" />
+          <ScalarProperty Name="Sending_Pickup_Message" ColumnName="Sending_Pickup_Message" />
+          <ScalarProperty Name="Generating_Picker_Code" ColumnName="Generating_Picker_Code" />
+          <ScalarProperty Name="Adding_Picker_to_Child" ColumnName="Adding_Picker_to_Child" />
+          <ScalarProperty Name="Removing_Picker_from_a_Child" ColumnName="Removing_Picker_from_a_Child" />
+          <ScalarProperty Name="Removing_Picker_Today" ColumnName="Removing_Picker_Today" />
+          <ScalarProperty Name="Making_Picker_Today" ColumnName="Making_Picker_Today" />
+          <ScalarProperty Name="Editing_of_Picker" ColumnName="Editing_of_Picker" />
+          <ScalarProperty Name="Creation_of_Picker" ColumnName="Creation_of_Picker" />
+          <ScalarProperty Name="DeletedByName" ColumnName="DeletedByName" />
+          <ScalarProperty Name="AutoEmailSendDateForImageUpload" ColumnName="AutoEmailSendDateForImageUpload" />
+          <ScalarProperty Name="SentMailDate" ColumnName="SentMailDate" />
+          <ScalarProperty Name="ISImageEmail" ColumnName="ISImageEmail" />
+          <ScalarProperty Name="EmailAfterConfirmPickUp" ColumnName="EmailAfterConfirmPickUp" />
+          <ScalarProperty Name="EmailAfterConfirmAttendence" ColumnName="EmailAfterConfirmAttendence" />
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Outbit" ColumnName="Outbit" />
+          <ScalarProperty Name="Out" ColumnName="Out" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="LastUnpickAlertSentTeacherID" ColumnName="LastUnpickAlertSentTeacherID" />
+          <ScalarProperty Name="UnpickAlertDate" ColumnName="UnpickAlertDate" />
+          <ScalarProperty Name="LastUnpickAlertSentTime" ColumnName="LastUnpickAlertSentTime" />
+          <ScalarProperty Name="LastAttendanceEmailTime" ColumnName="LastAttendanceEmailTime" />
+          <ScalarProperty Name="LastAttendanceEmailDate" ColumnName="LastAttendanceEmailDate" />
+          <ScalarProperty Name="AttendanceEmailFlag" ColumnName="AttendanceEmailFlag" />
+          <ScalarProperty Name="PickupMessageLastUpdatedParent" ColumnName="PickupMessageLastUpdatedParent" />
+          <ScalarProperty Name="PickupMessageDate" ColumnName="PickupMessageDate" />
+          <ScalarProperty Name="PickupMessageTime" ColumnName="PickupMessageTime" />
+          <ScalarProperty Name="PickupMessageID" ColumnName="PickupMessageID" />
+          <ScalarProperty Name="ParantPhoto2" ColumnName="ParantPhoto2" />
+          <ScalarProperty Name="ParantRelation2" ColumnName="ParantRelation2" />
+          <ScalarProperty Name="ParantPhone2" ColumnName="ParantPhone2" />
+          <ScalarProperty Name="ParantPassword2" ColumnName="ParantPassword2" />
+          <ScalarProperty Name="ParantEmail2" ColumnName="ParantEmail2" />
+          <ScalarProperty Name="ParantName2" ColumnName="ParantName2" />
+          <ScalarProperty Name="ParantPhoto1" ColumnName="ParantPhoto1" />
+          <ScalarProperty Name="ParantRelation1" ColumnName="ParantRelation1" />
+          <ScalarProperty Name="ParantPhone1" ColumnName="ParantPhone1" />
+          <ScalarProperty Name="ParantPassword1" ColumnName="ParantPassword1" />
+          <ScalarProperty Name="ParantEmail1" ColumnName="ParantEmail1" />
+          <ScalarProperty Name="ParantName1" ColumnName="ParantName1" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="StudentNo" ColumnName="StudentNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISStudentHistories">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISStudentHistory">
+        <MappingFragment StoreEntitySet="ISStudentHistory">
+          <ScalarProperty Name="EmailAfterConfirmPickUp" ColumnName="EmailAfterConfirmPickUp" />
+          <ScalarProperty Name="EmailAfterConfirmAttendence" ColumnName="EmailAfterConfirmAttendence" />
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Outbit" ColumnName="Outbit" />
+          <ScalarProperty Name="Out" ColumnName="Out" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="LastUnpickAlertSentTeacherID" ColumnName="LastUnpickAlertSentTeacherID" />
+          <ScalarProperty Name="UnpickAlertDate" ColumnName="UnpickAlertDate" />
+          <ScalarProperty Name="LastUnpickAlertSentTime" ColumnName="LastUnpickAlertSentTime" />
+          <ScalarProperty Name="LastAttendanceEmailTime" ColumnName="LastAttendanceEmailTime" />
+          <ScalarProperty Name="LastAttendanceEmailDate" ColumnName="LastAttendanceEmailDate" />
+          <ScalarProperty Name="AttendanceEmailFlag" ColumnName="AttendanceEmailFlag" />
+          <ScalarProperty Name="PickupMessageLastUpdatedParent" ColumnName="PickupMessageLastUpdatedParent" />
+          <ScalarProperty Name="PickupMessageDate" ColumnName="PickupMessageDate" />
+          <ScalarProperty Name="PickupMessageTime" ColumnName="PickupMessageTime" />
+          <ScalarProperty Name="PickupMessageID" ColumnName="PickupMessageID" />
+          <ScalarProperty Name="ParantPhoto2" ColumnName="ParantPhoto2" />
+          <ScalarProperty Name="ParantRelation2" ColumnName="ParantRelation2" />
+          <ScalarProperty Name="ParantPhone2" ColumnName="ParantPhone2" />
+          <ScalarProperty Name="ParantPassword2" ColumnName="ParantPassword2" />
+          <ScalarProperty Name="ParantEmail2" ColumnName="ParantEmail2" />
+          <ScalarProperty Name="ParantName2" ColumnName="ParantName2" />
+          <ScalarProperty Name="ParantPhoto1" ColumnName="ParantPhoto1" />
+          <ScalarProperty Name="ParantRelation1" ColumnName="ParantRelation1" />
+          <ScalarProperty Name="ParantPhone1" ColumnName="ParantPhone1" />
+          <ScalarProperty Name="ParantPassword1" ColumnName="ParantPassword1" />
+          <ScalarProperty Name="ParantEmail1" ColumnName="ParantEmail1" />
+          <ScalarProperty Name="ParantName1" ColumnName="ParantName1" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="StudentNo" ColumnName="StudentNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISStudentReassignHistories">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISStudentReassignHistory">
+        <MappingFragment StoreEntitySet="ISStudentReassignHistory">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedByType" ColumnName="CreatedByType" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="StduentID" ColumnName="StduentID" />
+          <ScalarProperty Name="ToClass" ColumnName="ToClass" />
+          <ScalarProperty Name="FromClass" ColumnName="FromClass" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISSupports">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISSupport">
+        <MappingFragment StoreEntitySet="ISSupport">
+          <ScalarProperty Name="AssignDate" ColumnName="AssignDate" />
+          <ScalarProperty Name="AssignBy" ColumnName="AssignBy" />
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedByName" ColumnName="CreatedByName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="SupportOfficerID" ColumnName="SupportOfficerID" />
+          <ScalarProperty Name="LogTypeID" ColumnName="LogTypeID" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="Request" ColumnName="Request" />
+          <ScalarProperty Name="TicketNo" ColumnName="TicketNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISSupportStatus">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISSupportStatu">
+        <MappingFragment StoreEntitySet="ISSupportStatus">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISTeachers">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISTeacher">
+        <MappingFragment StoreEntitySet="ISTeacher">
+          <ScalarProperty Name="IsBell" ColumnName="IsBell" />
+          <ScalarProperty Name="MemorableQueAnswer" ColumnName="MemorableQueAnswer" />
+          <ScalarProperty Name="IsActivationID" ColumnName="IsActivationID" />
+          <ScalarProperty Name="ISActivated" ColumnName="ISActivated" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedByType" ColumnName="CreatedByType" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="TeacherNo" ColumnName="TeacherNo" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISTeacherClassAssignments">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISTeacherClassAssignment">
+        <MappingFragment StoreEntitySet="ISTeacherClassAssignment">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Outbit" ColumnName="Outbit" />
+          <ScalarProperty Name="Out" ColumnName="Out" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISTeacherReassignHistories">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISTeacherReassignHistory">
+        <MappingFragment StoreEntitySet="ISTeacherReassignHistory">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedByType" ColumnName="CreatedByType" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="ToClass" ColumnName="ToClass" />
+          <ScalarProperty Name="FromClass" ColumnName="FromClass" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISTicketMessages">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISTicketMessage">
+        <MappingFragment StoreEntitySet="ISTicketMessage">
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="SelectFile" ColumnName="SelectFile" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="SenderID" ColumnName="SenderID" />
+          <ScalarProperty Name="SupportID" ColumnName="SupportID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISTrasectionStatus">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISTrasectionStatu">
+        <MappingFragment StoreEntitySet="ISTrasectionStatus">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISTrasectionTypes">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISTrasectionType">
+        <MappingFragment StoreEntitySet="ISTrasectionType">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISUserActivities">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISUserActivity">
+        <MappingFragment StoreEntitySet="ISUserActivity">
+          <ScalarProperty Name="DocumentCategory" ColumnName="DocumentCategory" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="LogText" ColumnName="LogText" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISUserRoles">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISUserRole">
+        <MappingFragment StoreEntitySet="ISUserRole">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ManageHolidayFlag" ColumnName="ManageHolidayFlag" />
+          <ScalarProperty Name="ManageNonTeacherFlag" ColumnName="ManageNonTeacherFlag" />
+          <ScalarProperty Name="ManageViewAccountFlag" ColumnName="ManageViewAccountFlag" />
+          <ScalarProperty Name="ManageStudentFlag" ColumnName="ManageStudentFlag" />
+          <ScalarProperty Name="ManageSupportFlag" ColumnName="ManageSupportFlag" />
+          <ScalarProperty Name="ManageClassFlag" ColumnName="ManageClassFlag" />
+          <ScalarProperty Name="ManageTeacherFlag" ColumnName="ManageTeacherFlag" />
+          <ScalarProperty Name="RoleType" ColumnName="RoleType" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewNotAssignPickers">
+      <EntityTypeMapping TypeName="SchoolAppModel.ViewNotAssignPicker">
+        <MappingFragment StoreEntitySet="ViewNotAssignPicker">
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ActiveStatusLastUpdatedParentEmail" ColumnName="ActiveStatusLastUpdatedParentEmail" />
+          <ScalarProperty Name="ActiveStatusLastUpdatedParent" ColumnName="ActiveStatusLastUpdatedParent" />
+          <ScalarProperty Name="ActiveStatusLastUpdatedDate" ColumnName="ActiveStatusLastUpdatedDate" />
+          <ScalarProperty Name="ActiveStatus" ColumnName="ActiveStatus" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="OneOffPickerFlag" ColumnName="OneOffPickerFlag" />
+          <ScalarProperty Name="PickupCodeCunter" ColumnName="PickupCodeCunter" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewStudentAttendences">
+      <EntityTypeMapping TypeName="SchoolAppModel.ViewStudentAttendence">
+        <MappingFragment StoreEntitySet="ViewStudentAttendence">
+          <ScalarProperty Name="StudentDeleted" ColumnName="StudentDeleted" />
+          <ScalarProperty Name="StudentActive" ColumnName="StudentActive" />
+          <ScalarProperty Name="ParantEmail2" ColumnName="ParantEmail2" />
+          <ScalarProperty Name="ParantName2" ColumnName="ParantName2" />
+          <ScalarProperty Name="ParantEmail1" ColumnName="ParantEmail1" />
+          <ScalarProperty Name="ParantName1" ColumnName="ParantName1" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="StudentNo" ColumnName="StudentNo" />
+          <ScalarProperty Name="StudentsID" ColumnName="StudentsID" />
+          <ScalarProperty Name="DeletedDateTime" ColumnName="DeletedDateTime" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ModifyDateTime" ColumnName="ModifyDateTime" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewStudentPickUps">
+      <EntityTypeMapping TypeName="SchoolAppModel.ViewStudentPickUp">
+        <MappingFragment StoreEntitySet="ViewStudentPickUp">
+          <ScalarProperty Name="PickStatus" ColumnName="PickStatus" />
+          <ScalarProperty Name="PickDate" ColumnName="PickDate" />
+          <ScalarProperty Name="PickTime" ColumnName="PickTime" />
+          <ScalarProperty Name="PickerID" ColumnName="PickerID" />
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ParantEmail2" ColumnName="ParantEmail2" />
+          <ScalarProperty Name="ParantName2" ColumnName="ParantName2" />
+          <ScalarProperty Name="ParantEmail1" ColumnName="ParantEmail1" />
+          <ScalarProperty Name="ParantName1" ColumnName="ParantName1" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="StudentNo" ColumnName="StudentNo" />
+          <ScalarProperty Name="StudID" ColumnName="StudID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="getPickUpData" FunctionName="SchoolAppModel.Store.getPickUpData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolAppModel.getPickUpData_Result">
+          <ScalarProperty Name="StudID" ColumnName="StudID" />
+          <ScalarProperty Name="StudentNo" ColumnName="StudentNo" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="ParantName1" ColumnName="ParantName1" />
+          <ScalarProperty Name="ParantEmail1" ColumnName="ParantEmail1" />
+          <ScalarProperty Name="ParantName2" ColumnName="ParantName2" />
+          <ScalarProperty Name="ParantEmail2" ColumnName="ParantEmail2" />
+          <ScalarProperty Name="ParantPhone1" ColumnName="ParantPhone1" />
+          <ScalarProperty Name="ParantPhone2" ColumnName="ParantPhone2" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="PickerID" ColumnName="PickerID" />
+          <ScalarProperty Name="PickTime" ColumnName="PickTime" />
+          <ScalarProperty Name="PickDate" ColumnName="PickDate" />
+          <ScalarProperty Name="PickStatus" ColumnName="PickStatus" />
+          <ScalarProperty Name="AfterSchoolFlag" ColumnName="AfterSchoolFlag" />
+          <ScalarProperty Name="OfficeFlag" ColumnName="OfficeFlag" />
+          <ScalarProperty Name="CompletePickup" ColumnName="CompletePickup" />
+          <ScalarProperty Name="ClubFlag" ColumnName="ClubFlag" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="EmailTemplates">
+      <EntityTypeMapping TypeName="SchoolAppModel.EmailTemplate">
+        <MappingFragment StoreEntitySet="EmailTemplate">
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="updateParantEmailIdInWhole" FunctionName="SchoolAppModel.Store.updateParantEmailIdInWhole" />
+    <FunctionImportMapping FunctionImportName="BusinessRuleClearData" FunctionName="SchoolAppModel.Store.BusinessRuleClearData" />
+    <FunctionImportMapping FunctionImportName="GetDataForChartControl" FunctionName="SchoolAppModel.Store.GetDataForChartControl">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchoolAppModel.GetDataForChartControl_Result">
+          <ScalarProperty Name="PickStatus" ColumnName="PickStatus" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="BckupParents">
+      <EntityTypeMapping TypeName="SchoolAppModel.BckupParent">
+        <MappingFragment StoreEntitySet="BckupParent">
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="DeletedByName" ColumnName="DeletedByName" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+          <ScalarProperty Name="WhoDeleted" ColumnName="WhoDeleted" />
+          <ScalarProperty Name="Relationship" ColumnName="Relationship" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISStudentConfirmLogins">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISStudentConfirmLogin">
+        <MappingFragment StoreEntitySet="ISStudentConfirmLogin">
+          <ScalarProperty Name="ISActivated" ColumnName="ISActivated" />
+          <ScalarProperty Name="MemorableQueAnswer" ColumnName="MemorableQueAnswer" />
+          <ScalarProperty Name="IsActivationID" ColumnName="IsActivationID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISRequestDemoes">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISRequestDemo">
+        <MappingFragment StoreEntitySet="ISRequestDemo">
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="OfficialPhoneNumber" ColumnName="OfficialPhoneNumber" />
+          <ScalarProperty Name="OfficialEmail" ColumnName="OfficialEmail" />
+          <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notifactions">
+      <EntityTypeMapping TypeName="SchoolAppModel.Notifaction">
+        <MappingFragment StoreEntitySet="Notifaction">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedByName" ColumnName="CreatedByName" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="RecieverGroupId" ColumnName="RecieverGroupId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecieverGroups">
+      <EntityTypeMapping TypeName="SchoolAppModel.RecieverGroup">
+        <MappingFragment StoreEntitySet="RecieverGroup">
+          <ScalarProperty Name="RecieverName" ColumnName="RecieverName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISRegistrations">
+      <EntityTypeMapping TypeName="SchoolAppModel.ISRegistration">
+        <MappingFragment StoreEntitySet="ISRegistration">
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="IsNotificationAfterPickup" ColumnName="IsNotificationAfterPickup" />
+          <ScalarProperty Name="IsNotificationAfterAttendance" ColumnName="IsNotificationAfterAttendance" />
+          <ScalarProperty Name="ReportMinutesAfterClosing" ColumnName="ReportMinutesAfterClosing" />
+          <ScalarProperty Name="ChargeMinutesAfterClosing" ColumnName="ChargeMinutesAfterClosing" />
+          <ScalarProperty Name="LastMinutesAfterClosing" ColumnName="LastMinutesAfterClosing" />
+          <ScalarProperty Name="SchoolClosingTime" ColumnName="SchoolClosingTime" />
+          <ScalarProperty Name="SchoolOpeningTime" ColumnName="SchoolOpeningTime" />
+          <ScalarProperty Name="SchoolWebsite" ColumnName="SchoolWebsite" />
+          <ScalarProperty Name="SchoolAddress" ColumnName="SchoolAddress" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="SchoolNumber" ColumnName="SchoolNumber" />
+          <ScalarProperty Name="SupervisorEmail" ColumnName="SupervisorEmail" />
+          <ScalarProperty Name="SupervisorName" ColumnName="SupervisorName" />
+          <ScalarProperty Name="BillingAddress" ColumnName="BillingAddress" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

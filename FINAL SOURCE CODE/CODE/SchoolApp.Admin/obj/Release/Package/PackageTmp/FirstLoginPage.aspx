@@ -1,0 +1,198 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FirstLoginPage.aspx.cs" Inherits="SchoolApp.Admin.FirstLoginPage" %>
+
+<%@ Register Src="~/UserControl/Loader.ascx" TagPrefix="uc1" TagName="Loader" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>SCHOOL APP : LOGIN</title>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="../Content/project.css" rel="stylesheet" />
+    <link href="../Content/lableWidth.css" rel="stylesheet" />
+    <!-- Toastr style -->
+    <link href="../Content/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+
+    <!-- Gritter -->
+    <link href="../Content/js/plugins/gritter/jquery.gritter.css" rel="stylesheet" />
+
+    <link href="../Content/css/animate.css" rel="stylesheet" />
+    <link href="../Content/style.css" rel="stylesheet" />
+    <style>
+        .form-control, .single-line {
+            border: 1px solid #e5e6e7 !important;
+        }
+        .modal-dialog i{
+            font-size:45px;
+        }
+         .modal-dialog p{
+            color:#ed5565;
+        }
+
+        
+    </style>
+    <script type="text/javascript">
+        function showModal() {
+            $("#modal-form").modal('show');
+        }
+
+        //$(function () {
+        //    $("#btnSignin").click(function () {
+        //        showModal();
+        //    });
+        //});
+        function hideModal() {
+            $("#modal-form").modal('hide');
+        }
+        $(function () {
+            $("#btnclose").click(function () {
+                hideModal();
+            });
+        });
+        $(function () {
+            $("#btnclose1").click(function () {
+                hideModal();
+            });
+        });
+    </script>
+</head>
+<body class="gray-bg">
+    <form id="form1" runat="server">
+        <div class="loginColumns animated fadeInDown">
+            <div class="row">
+                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+                <asp:UpdateProgress ID="UpdateProgress" runat="server" AssociatedUpdatePanelID="MainUpdatePanel">
+                    <ProgressTemplate>
+                        <uc1:Loader runat="server" ID="Loader" />
+                    </ProgressTemplate>
+                </asp:UpdateProgress>
+                <asp:UpdatePanel ID="MainUpdatePanel" runat="server" UpdateMode="Conditional">
+                    <ContentTemplate>
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-6">
+
+
+                            <div class="ibox-content">
+                                <div class="panel-body">
+                                    <div class="text-center">
+                                        <div class="icon-object border-slate-300 text-slate-300">
+
+                                            <img width="100px" height="100px" src='<%= Page.ResolveClientUrl("~/Upload/university.png")%>' />
+
+                                        </div>
+                                        <h5 class="content-group">SCHOOL APP<br />
+
+                                            <small class="display-block">Enter your credentials to login</small></h5>
+                                    </div>
+                                    <br />
+                                    <br />
+
+                                    <br />
+                                    <div class="input-group m-b">
+                                        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                        <asp:TextBox ID="txtPassword" required="" placeholder="New Password" TextMode="Password" CssClass="form-control" runat="server"></asp:TextBox>
+                                        <asp:RegularExpressionValidator ControlToValidate="txtPassword" ValidationGroup="Submit" ID="RegularExpressionValidator2" runat="server" ErrorMessage="<a class='ourtooltip'><i class='fa fa-exclamation-circle'></i><span><b></b>Password must be 8-10 characters long with at least one numeric,</br> one alphabet and one special character.</span></a>" ValidationExpression="(?=^.{8,10}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()_+}{:;'?/>.<,])(?!.*\s).*$"></asp:RegularExpressionValidator>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator18" CssClass="alert  validation" runat="server" ValidationGroup="Submit" ControlToValidate="txtPassword" ErrorMessage="<a class='ourtooltip'><i class='fa fa-exclamation-circle'></i><span><b></b>Password Required</span></a>"></asp:RequiredFieldValidator>
+                                    </div>
+                                    <div class="input-group m-b">
+                                        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                        <asp:TextBox ID="txtConfirmPassword" required="" placeholder="Confirm New Password" TextMode="Password" CssClass="form-control" runat="server"></asp:TextBox>                                        
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass="alert  validation" runat="server" ValidationGroup="Submit" ControlToValidate="txtConfirmPassword" ErrorMessage="<a class='ourtooltip'><i class='fa fa-exclamation-circle'></i><span><b></b>Password Required</span></a>"></asp:RequiredFieldValidator>
+                                        <asp:CompareValidator ID="comparePasswords" runat="server" ValidationGroup="Submit" ControlToCompare="txtPassword" ControlToValidate="txtConfirmPassword" ErrorMessage="<a class='ourtooltip'><i class='fa fa-exclamation-circle'></i><span><b></b>Password Does not Match</span></a>" Display="Dynamic" />
+                                    </div>                                    
+                                    <div class="input-group m-b">
+                                        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                        <asp:TextBox ID="txtMemorableAnswer" required="" placeholder="Enter Memorable Word" CssClass="form-control" runat="server"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="alert  validation" runat="server" ValidationGroup="Submit" ControlToValidate="txtMemorableAnswer" ErrorMessage="<a class='ourtooltip'><i class='fa fa-exclamation-circle'></i><span><b></b>Memorable Word Required</span></a>"></asp:RequiredFieldValidator>
+                                        <asp:RegularExpressionValidator ControlToValidate="txtMemorableAnswer" ValidationGroup="Submit" ID="RegularExpressionValidator1" runat="server" ErrorMessage="<a class='ourtooltip'><i class='fa fa-exclamation-circle'></i><span><b></b>Memorable Answer must be 5-8 characters long with Alphanumeric only.</span></a>" ValidationExpression="\b[a-zA-Z0-9]{5,8}\b"></asp:RegularExpressionValidator>
+                                    </div>
+                                    <div class="input-group m-b">
+                                        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                        <asp:TextBox ID="txtConfirmMemorableAnswer" required="" placeholder="Enter Confirm Memorable Word" CssClass="form-control" runat="server"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" CssClass="alert  validation" runat="server" ValidationGroup="Submit" ControlToValidate="txtConfirmMemorableAnswer" ErrorMessage="<a class='ourtooltip'><i class='fa fa-exclamation-circle'></i><span><b></b>Confirm Memorable Word Required</span></a>"></asp:RequiredFieldValidator>
+                                        <asp:CompareValidator ID="CompareValidator1" runat="server" ValidationGroup="Submit" ControlToCompare="txtMemorableAnswer" ControlToValidate="txtConfirmMemorableAnswer" ErrorMessage="<a class='ourtooltip'><i class='fa fa-exclamation-circle'></i><span><b></b>Memorable Word Does not Match</span></a>" Display="Dynamic" />
+                                    </div>
+                                    <asp:Panel ID="pnlInvalid" class="form-group text-center " Visible="false" runat="server">
+                                        <span class="label label-danger">Oops! Invalid Credential Entered</span>
+                                    </asp:Panel>
+
+                                    <div class="form-group ">
+                                        <div class="col-sm-12 no-padding-left no-padding-right">
+                                            <asp:Button ID="btnSubmit" class="btn btn-primary block full-width" ValidationGroup="Submit" OnClick="btnSubmit_Click" runat="server"  Text="Submit" />
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+                <div class="col-md-6">
+                    <div id="modal-form" class="modal fade" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <center><i class="fa fa-user modal-icon"></i></center>
+                                    <center><h4 class="modal-title">Authenication Failed</h4></center>
+                                    <center><small class="font-bold">contact administrator to get your credential</small></center>
+                                </div>
+                                <div class="modal-body">
+                                    <p >invalid user name or password, please contact your administrator get more details.</p>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+
+                                </div>
+
+                                <%--<div class="modal-body">
+                                    <div class="row">
+                                        <div class="ibox-tools">
+                                            <button type="button" id="btnclose" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                                        </div>
+                                        <center><h2><i class="fa fa-user medium-icon" aria-hidden="true"></i></h2></center>
+                                        <center><h2>Authenication Failed</h2></center>
+                                    </div>
+                                    <div class="row">
+                                        <div class="ibox-content">
+                                            <div class="pull-right">
+                                                <button type="button" id="btnclose1" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>--%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-4">
+                    Codesture Techno Pvt. Ltd.
+                </div>
+                <div class="col-md-2 text-right">
+                    <small>© 2015-2016</small>
+                </div>
+                <div class="col-md-3">
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="Scripts/jquery-2.1.1.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="Scripts/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- Custom and plugin javascript -->
+    <script src="Scripts/inspinia.js"></script>
+    <script src="Scripts/plugins/pace/pace.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+﻿.ajax__tab_default .ajax__tab_outer {
+    display: -moz-inline-box;
+    padding-top:2px;
+    padding-bottom:3px;
+    margin-right:0px!important;
+}
+
+.ajax__tab_default .ajax__tab_header {
+    white-space: normal !important;
+}
+.ajax__tab_default .ajax__tab_inner {
+    display: -moz-inline-box;
+}
+
+.ajax__tab_default .ajax__tab_header {
+    white-space: normal !important;
+}

@@ -1,0 +1,162 @@
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\SchoolApp.Admin.dll.config
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\SchoolApp.Admin.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\SchoolApp.Admin.pdb
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\AjaxControlToolkit.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\DocumentFormat.OpenXml.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\EntityFramework.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\EntityFramework.SqlServer.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\Microsoft.Win32.Primitives.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\SchoolApp.ClassLibrary.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\SchoolApp.Database.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.AppContext.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Console.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Diagnostics.DiagnosticSource.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Globalization.Calendars.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.IO.Compression.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.IO.Compression.ZipFile.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.IO.FileSystem.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.IO.FileSystem.Primitives.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.IO.Packaging.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Net.Http.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Net.Sockets.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Security.Cryptography.Algorithms.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Security.Cryptography.Encoding.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Security.Cryptography.Primitives.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Security.Cryptography.X509Certificates.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Xml.ReaderWriter.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\SchoolApp.ClassLibrary.pdb
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\SchoolApp.Database.pdb
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\SchoolApp.Database.dll.config
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\DocumentFormat.OpenXml.xml
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\EntityFramework.xml
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\EntityFramework.SqlServer.xml
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Diagnostics.DiagnosticSource.xml
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\obj\Debug\SchoolApp.Admin.csprojResolveAssemblyReference.cache
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\obj\Debug\SchoolApp.Admin.csproj.CoreCompileInputs.cache
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\obj\Debug\SchoolApp.Admin.dll
+E:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\obj\Debug\SchoolApp.Admin.pdb
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\SchoolApp.Admin.dll.config
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\SchoolApp.Admin.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\SchoolApp.Admin.pdb
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\AjaxControlToolkit.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\DocumentFormat.OpenXml.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\EntityFramework.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\EntityFramework.SqlServer.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\Microsoft.Win32.Primitives.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\SchoolApp.ClassLibrary.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\SchoolApp.Database.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.AppContext.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Console.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Diagnostics.DiagnosticSource.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Globalization.Calendars.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.IO.Compression.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.IO.Compression.ZipFile.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.IO.FileSystem.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.IO.FileSystem.Primitives.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.IO.Packaging.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Net.Http.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Net.Sockets.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Runtime.InteropServices.RuntimeInformation.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Security.Cryptography.Algorithms.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Security.Cryptography.Encoding.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Security.Cryptography.Primitives.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Security.Cryptography.X509Certificates.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Xml.ReaderWriter.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\SchoolApp.ClassLibrary.pdb
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\SchoolApp.Database.pdb
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\SchoolApp.Database.dll.config
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\DocumentFormat.OpenXml.xml
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\EntityFramework.xml
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\EntityFramework.SqlServer.xml
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\bin\System.Diagnostics.DiagnosticSource.xml
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\obj\Debug\SchoolApp.Admin.csprojResolveAssemblyReference.cache
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\obj\Debug\SchoolApp.Admin.csproj.CoreCompileInputs.cache
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\obj\Debug\SchoolApp.Admin.dll
+F:\HARDIK DATA\PROJECTS\School APP\CODE\SchoolApp.Admin\obj\Debug\SchoolApp.Admin.pdb
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\SchoolApp.Admin.dll.config
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\SchoolApp.Admin.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\SchoolApp.Admin.pdb
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\AjaxControlToolkit.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\DocumentFormat.OpenXml.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\EntityFramework.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\EntityFramework.SqlServer.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\Microsoft.Win32.Primitives.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\SchoolApp.ClassLibrary.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\SchoolApp.Database.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.AppContext.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Console.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Diagnostics.DiagnosticSource.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Globalization.Calendars.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.IO.Compression.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.IO.Compression.ZipFile.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.IO.FileSystem.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.IO.FileSystem.Primitives.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.IO.Packaging.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Net.Http.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Net.Sockets.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Runtime.InteropServices.RuntimeInformation.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Security.Cryptography.Algorithms.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Security.Cryptography.Encoding.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Security.Cryptography.Primitives.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Security.Cryptography.X509Certificates.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Xml.ReaderWriter.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\SchoolApp.ClassLibrary.pdb
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\SchoolApp.Database.pdb
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\SchoolApp.Database.dll.config
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\DocumentFormat.OpenXml.xml
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\EntityFramework.xml
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\EntityFramework.SqlServer.xml
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Diagnostics.DiagnosticSource.xml
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\obj\Debug\SchoolApp.Admin.csprojAssemblyReference.cache
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\obj\Debug\SchoolApp.Admin.csproj.CoreCompileInputs.cache
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\obj\Debug\SchoolApp.Admin.csproj.CopyComplete
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\obj\Debug\SchoolApp.Admin.dll
+F:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\obj\Debug\SchoolApp.Admin.pdb
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\obj\Debug\SchoolApp.Admin.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\obj\Debug\SchoolApp.Admin.pdb
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\SchoolApp.Admin.dll.config
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\SchoolApp.Admin.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\SchoolApp.Admin.pdb
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\AjaxControlToolkit.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\DocumentFormat.OpenXml.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\EntityFramework.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\EntityFramework.SqlServer.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\Microsoft.Win32.Primitives.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\SchoolApp.ClassLibrary.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\SchoolApp.Database.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.AppContext.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Console.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Diagnostics.DiagnosticSource.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Globalization.Calendars.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.IO.Compression.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.IO.Compression.ZipFile.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.IO.FileSystem.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.IO.FileSystem.Primitives.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.IO.Packaging.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Net.Http.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Net.Sockets.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Runtime.InteropServices.RuntimeInformation.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Security.Cryptography.Algorithms.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Security.Cryptography.Encoding.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Security.Cryptography.Primitives.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Security.Cryptography.X509Certificates.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Xml.ReaderWriter.dll
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\SchoolApp.ClassLibrary.pdb
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\SchoolApp.Database.pdb
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\SchoolApp.Database.dll.config
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\DocumentFormat.OpenXml.xml
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\EntityFramework.xml
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\EntityFramework.SqlServer.xml
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\bin\System.Diagnostics.DiagnosticSource.xml
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\obj\Debug\SchoolApp.Admin.csprojAssemblyReference.cache
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\obj\Debug\SchoolApp.Admin.csproj.CoreCompileInputs.cache
+H:\FINAL SOURCE CODE_ola\New\FINAL SOURCE CODE_ola\FINAL SOURCE CODE\CODE\SchoolApp.Admin\obj\Debug\SchoolApp.Admin.csproj.CopyComplete

@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F967032F-6669-48FA-A179-1A99F35E438B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SchoolApp.Database</RootNamespace>
+    <AssemblyName>SchoolApp.Database</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BckupParent.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailTemplate.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getAttandanceData_Result.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getClassReport_Result.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetDataForChartControl_Result.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getPickUpData_Result.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getStudentReport_Result.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getTeacherPickUpData_Result.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISAccountStatu.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISAdminLogin.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISAttendance.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISAuthToken.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISClass.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISClassType.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISClassYear.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISCompleteAttendanceRun.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISCompletePickupRun.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISCountry.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISDataUploadHistory.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISErrorLog.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISFAQ.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISHoliday.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISInvoice.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISLogType.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISMessage.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISOrganisationUser.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISPayment.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISPicker.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISPickerAssignment.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISPickup.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISPickUpMessage.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISPickUpStatu.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISRegistration.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISReport.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISRequestDemo.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISRole.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISSchool.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISSchoolClass.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISSchoolInvoice.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISSchoolType.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISStudent.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISStudentConfirmLogin.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISStudentHistory.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISStudentReassignHistory.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISSupport.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISSupportStatu.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISTeacher.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISTeacherClassAssignment.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISTeacherReassignHistory.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISTicketMessage.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISTrasectionStatu.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISTrasectionType.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISUserActivity.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISUserRole.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Notifaction.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecieverGroup.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolAppModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolAppModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolAppModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolAppModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolAppModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewNotAssignPicker.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewStudentAttendence.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewStudentPickUp.cs">
+      <DependentUpon>SchoolAppModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="SchoolAppModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SchoolAppModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="SchoolAppModel.edmx.diagram">
+      <DependentUpon>SchoolAppModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SchoolAppModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SchoolAppModel.Context.cs</LastGenOutput>
+      <DependentUpon>SchoolAppModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="SchoolAppModel.edmx.sql" />
+    <Content Include="SchoolAppModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SchoolAppModel.edmx</DependentUpon>
+      <LastGenOutput>SchoolAppModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

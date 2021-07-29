@@ -1,0 +1,332 @@
+
+ALTER TABLE IsPickUp
+ADD ClubFlag Bit
+
+-- =============================================
+-- Author:  <Author,,Name>
+-- Create date: <Create Date,,>
+-- Description: <Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[BusinessRuleClearData]
+AS
+BEGIN
+
+
+IF EXISTS (select 1 from ISPickerAssignment
+WHERE CONVERT(date, StudentPickAssignDate)!= CONVERT(date, getdate()))
+BEGIN
+UPDATE ISPickerAssignment SET PickCodeExDate = NULL, PickerCode = NULL,StudentPickAssignDate =NULL WHERE  CONVERT(date, StudentPickAssignDate)!= CONVERT(date, getdate())
+END
+
+ALTER  PROCEDURE [dbo].[getPickUpData]
+@date datetime null
+AS
+BEGIN
+
+SET NOCOUNT ON;
+
+
+if(@date is null)
+begin
+set @date=GETDATE()
+end
+
+
+SELECT        dbo.ISStudent.ID AS StudID, dbo.ISStudent.StudentNo, dbo.ISStudent.ClassID, dbo.ISStudent.SchoolID, dbo.ISStudent.StudentName, dbo.ISStudent.Photo, dbo.ISStudent.ParantName1, dbo.ISStudent.ParantEmail1,
+dbo.ISStudent.ParantName2, dbo.ISStudent.ParantEmail2, dbo.ISStudent.ParantPhone1, dbo.ISStudent.ParantPhone2, dbo.ISStudent.StartDate, dbo.ISStudent.Active, dbo.ISStudent.Deleted, P.ID, P.StudentID, P.TeacherID, P.PickerID,
+P.PickTime, P.PickDate, P.PickStatus,p.AfterSchoolFlag,p.OfficeFlag,p.CompletePickup,p.ClubFlag
+FROM            dbo.ISStudent LEFT JOIN
+(select * from dbo.ISPickup AA where  datepart(DAY,AA.PickDate)=datepart(DAY,@date) and datepart(MONTH,AA.PickDate)=datepart(MONTH,@date) and datepart(YEAR,AA.PickDate)=datepart(YEAR,@date)) P ON dbo.ISStudent.ID = P.StudentID
+where datepart(DAY,@date) <= datepart(DAY,ISStudent.DeletedDateTime) and datepart(MONTH,@date) <= datepart(MONTH,ISStudent.DeletedDateTime) and datepart(YEAR,@date) <= datepart(YEAR,ISStudent.DeletedDateTime) or ISStudent.DeletedDateTime IS NULL
+END
+
+
+CREATE PROCEDURE [dbo].[updateParantEmailIdInWhole]
+
+@oldEmailID varchar(50),@newEmailID varchar(50),@parentName varchar(50)
+AS
+BEGIN
+
+SET NOCOUNT ON;
+
+
+UPDATE ISStudent set parantemail1 = @newEmailID where parantemail1 = @oldEmailID
+UPDATE ISStudent set parantemail2 = @newEmailID where parantemail2 = @oldEmailID
+
+UPDATE ISPicker SET CreatedByEmail = @newEmailID, CreatedByName = @parentName WHERE CreatedByEmail = @oldEmailID
+END
+
+
+END
+
+CREATE TABLE EmailTemplate([value] nvarchar(max),Id int Primary key, [description] varchar(100))
+
+INSERT INTO [dbo].[EmailTemplate] ([value], [Id], [description]) VALUES (N'
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>SCHOOL App</title>
+
+<style>
+.invoice-box {
+/*max-width: 755px;*/
+width: 259mm;
+height: auto;
+margin: auto;
+padding: 30px;
+border: 1px solid #eee;
+box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+font-size: 20px !important;
+line-height: 25px !important;
+font-family: ''Helvetica Neue'', ''Helvetica'', Helvetica, Arial, sans-serif;
+color: #555;
+}
+
+.invoice-box table {
+width: auto;
+line-height: inherit;
+text-align: left;
+}
+
+.invoice-box table td {
+padding: 5px;
+vertical-align: top;
+}
+
+.invoice-box table tr td:nth-child(2) {
+text-align: right;
+}
+
+.invoice-box table tr.top table td {
+padding-bottom: 20px;
+}
+
+.invoice-box table tr.top table td.title {
+font-size: 22px;
+line-height: 25px;
+color: #333;
+}
+
+.invoice-box table tr.information table td {
+padding-bottom: 40px;
+}
+
+.invoice-box table tr.heading td {
+background: #eee;
+border-bottom: 1px solid #ddd;
+font-weight: bold;
+width: auto !important;
+}
+
+.invoice-box table tr.heading2 td {
+background: #eee;
+border-bottom: 1px solid #ddd;
+font-weight: bold;
+width: auto !important;
+}
+
+.invoice-box table tr.details td {
+padding-bottom: 20px;
+}
+
+.invoice-box table tr.item td {
+border-bottom: 1px solid #eee;
+width: 33px !important;
+}
+
+.invoice-box table tr.item.last td {
+/*border-bottom: none;*/
+}
+/*.invoice-box table tr.item.lasts td {
+border-bottom: none;
+
+padding-top:500px !important;
+}*/
+.invoice-box table tr.total td:nth-child(2) {
+border-top: 1px solid #eee;
+font-weight: bold;
+}
+
+@media only screen and (max-width: 600px) {
+.invoice-box table tr.top table td {
+width: 100%;
+display: block;
+/*text-align: center;*/
+}
+
+.invoice-box table tr.information table td {
+width: 100%;
+display: block;
+}
+
+footer {
+clear: both;
+position: relative;
+float: left !important;
+font-size: 22px;
+line-height: 24px;
+font-family: ''Helvetica Neue'', ''Helvetica'', Helvetica, Arial, sans-serif;
+color: #555;
+margin-top: -80px !important;
+margin-left: 0px !important;
+}
+}
+
+/** RTL **/
+.rtl {
+direction: rtl;
+font-family: Tahoma, ''Helvetica Neue'', ''Helvetica'', Helvetica, Arial, sans-serif;
+}
+
+.rtl table {
+text-align: right;
+}
+
+.rtl table tr td:nth-child(2) {
+text-align: left;
+}
+
+@page {
+size: 21cm 29.7cm;
+margin: 35mm 50mm 35mm 50mm;
+/* change the margins as you want them to be. */
+}
+
+footer {
+clear: both;
+position: relative;
+height: 130px;
+width: 120mm !important;
+margin-top: -190px !important;
+margin-left: 100px !important;
+font-size: 22px;
+line-height: 24px !important;
+font-family: ''Helvetica Neue'', ''Helvetica'', Helvetica, Arial, sans-serif;
+color: #555;
+}
+</style>
+</head>
+<body>
+<div class="invoice-box">
+<center><font size=''6'' color=''blue''>School App</font></center><br /><br />
+<table cellpadding="0" cellspacing="0" style="width: 259mm !important;">
+<tr class="top">
+<td>
+{Body}
+</td>
+</tr>
+
+<tr>
+<td>
+<hr />
+<!--<img src="logo-green.png" style="width:100%; max-width:400px; margin-bottom=0px;" />-->
+<img src="../img/logo-green.png" style="width:100%; max-width:400px; margin-bottom:0px;" />
+
+</td>
+</tr>
+
+
+
+</table>
+
+</div>
+</body>
+</html>
+
+', 1, 'EmailTemplate.html')
+
+INSERT INTO isclasstype (Name,Active,Deleted,CreatedBy,CreatedDateTime) VALUES 
+('Club',1,1,1,GETDATE())
+
+TRUNCATE TABLE ISPickUpStatus
+
+GO
+
+SET IDENTITY_INSERT [dbo].[ISPickUpStatus] ON
+GO
+
+INSERT INTO [dbo].[ISPickUpStatus] ([ID], [Status], [Active], [Deleted], [CreatedBy], [CreatedDateTime], [ModifyBy], [ModifyDateTime], [DeletedBy], [DeletedDateTime]) VALUES (1, 'Picked', 1, 1, 1, NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[ISPickUpStatus] ([ID], [Status], [Active], [Deleted], [CreatedBy], [CreatedDateTime], [ModifyBy], [ModifyDateTime], [DeletedBy], [DeletedDateTime]) VALUES (2, 'Not Marked', 1, 1, 1, NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[ISPickUpStatus] ([ID], [Status], [Active], [Deleted], [CreatedBy], [CreatedDateTime], [ModifyBy], [ModifyDateTime], [DeletedBy], [DeletedDateTime]) VALUES (3, 'Mark as Absent', 1, 1, 1, NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[ISPickUpStatus] ([ID], [Status], [Active], [Deleted], [CreatedBy], [CreatedDateTime], [ModifyBy], [ModifyDateTime], [DeletedBy], [DeletedDateTime]) VALUES (4, 'Office', 1, 1, 1, NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[ISPickUpStatus] ([ID], [Status], [Active], [Deleted], [CreatedBy], [CreatedDateTime], [ModifyBy], [ModifyDateTime], [DeletedBy], [DeletedDateTime]) VALUES (5, 'Send to After School', 1, 1, 1, NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[ISPickUpStatus] ([ID], [Status], [Active], [Deleted], [CreatedBy], [CreatedDateTime], [ModifyBy], [ModifyDateTime], [DeletedBy], [DeletedDateTime]) VALUES (6, 'Picked(Late)', 1, 1, 1, NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[ISPickUpStatus] ([ID], [Status], [Active], [Deleted], [CreatedBy], [CreatedDateTime], [ModifyBy], [ModifyDateTime], [DeletedBy], [DeletedDateTime]) VALUES (7, 'Picked(Chargeable)', 1, 1, 1, NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[ISPickUpStatus] ([ID], [Status], [Active], [Deleted], [CreatedBy], [CreatedDateTime], [ModifyBy], [ModifyDateTime], [DeletedBy], [DeletedDateTime]) VALUES (8, 'Picked(Reportable)', 1, 1, 1, NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[ISPickUpStatus] ([ID], [Status], [Active], [Deleted], [CreatedBy], [CreatedDateTime], [ModifyBy], [ModifyDateTime], [DeletedBy], [DeletedDateTime]) VALUES (9, 'School Closed', 1, 1, 1, NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[ISPickUpStatus] ([ID], [Status], [Active], [Deleted], [CreatedBy], [CreatedDateTime], [ModifyBy], [ModifyDateTime], [DeletedBy], [DeletedDateTime]) VALUES (10, 'Club', 1, 1, 1, NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[ISPickUpStatus] ([ID], [Status], [Active], [Deleted], [CreatedBy], [CreatedDateTime], [ModifyBy], [ModifyDateTime], [DeletedBy], [DeletedDateTime]) VALUES (11, 'UnPicked', 1, 1, 1, NULL, NULL, NULL, NULL, NULL)
+GO
+
+SET IDENTITY_INSERT [dbo].[ISPickUpStatus] OFF
+GO
+
+ALTER TABLE Isstudent
+ADD AutoEmailSendDateForImageUpload DATE
+
+
+
+ALTER TABLE ISSchool
+ADD AccountManagerId INT
+
+
+INSERT INTO ISReport (Name,URL,ReportTypeID, Active,Deleted,CreatedBy)
+VALUES ('Student Archive Report','~/Reports/StudentArchiveReport.aspx',2,1,1,1)
+
+ALTER TABLE ISPicker
+Add DeletedByName VARCHAR(50)
+GO
+
+ALTER TABLE ISStudent
+Add DeletedByName VARCHAR(50)
+GO
+
+ALTER TABLE BckupParent
+Add DeletedByName VARCHAR(50)
+GO
+
+ALTER TABLE BckupParent
+ADD SchoolID INT
+GO
+
+ALTER TABLE ISOrganisationUser
+ADD ISActivated Bit
+GO
+
+ALTER TABLE ISOrganisationUser
+ADD IsActivationID varchar(max)
+GO
+
+ALTER TABLE ISAdminLogin
+ADD ISActivated Bit
+GO
+ALTER TABLE ISAdminLogin
+ADD IsActivationID varchar(max)
+GO
+
+CREATE TABLE MemorableQuestionList ( Id INT PRIMARY KEY, Question VARCHAR(250))
+INSERT INTO MemorableQuestionList VALUES(1, 'What is your best friend''s name');
+INSERT INTO MemorableQuestionList VALUES(2, 'What is your pet name');
+INSERT INTO MemorableQuestionList VALUES(3, 'What is your favorite author''s name');
+GO
+
+ALTER TABLE ISAdminLogin
+ADD MemorableQueId INT
+GO
+ALTER TABLE ISAdminLogin
+ADD FOREIGN KEY (MemorableQueId) REFERENCES MemorableQuestionList(Id);
+GO
+
+ALTER TABLE ISOrganisationUser
+ADD MemorableQueId INT
+GO
+ALTER TABLE ISOrganisationUser
+ADD FOREIGN KEY (MemorableQueId) REFERENCES MemorableQuestionList(Id);
+
+GO
+ALTER TABLE ISOrganisationUser
+ADD MemorableQueAnswer varchar(100)
+GO
+ALTER TABLE ISAdminLogin
+ADD MemorableQueAnswer varchar(100)

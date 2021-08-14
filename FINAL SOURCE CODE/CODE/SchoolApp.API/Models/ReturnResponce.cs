@@ -3,8 +3,10 @@ using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Web;
+using System.Web.Helpers;
 
 namespace SchoolApp.API.Models
 {
@@ -41,6 +43,7 @@ namespace SchoolApp.API.Models
 
         public ResponceStatus status { get; set; }
 
+      
         private string[] jsonIngnoreProperties { get; set; }
 
         public string error { get; set; }
@@ -57,8 +60,8 @@ namespace SchoolApp.API.Models
             {
                 if (jsonIngnoreProperties != null && jsonIngnoreProperties.Length > 0)
                 {
-                    data = JsonConvert.SerializeObject(Orgdata, new JsonSerializerSettings()
-                    { ContractResolver = new IgnorePropertiesResolver(jsonIngnoreProperties) });
+                    data = Json.Decode(JsonConvert.SerializeObject(Orgdata, new JsonSerializerSettings()
+                    { ContractResolver = new IgnorePropertiesResolver(jsonIngnoreProperties) }));
                 }
                 else
                 {
@@ -71,7 +74,6 @@ namespace SchoolApp.API.Models
             }
         }
     }
-
 
     //short helper class to ignore some properties from serialization
     public class IgnorePropertiesResolver : DefaultContractResolver

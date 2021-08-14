@@ -62,7 +62,6 @@ namespace SchoolApp.API.Models
         public new virtual ISClassType ISClassType { get; set; }
     }
 
-
     public class Teacher : ISTeacher
     {
         [JsonIgnore]
@@ -80,4 +79,5 @@ namespace SchoolApp.API.Models
         [JsonIgnore]
         public new virtual ICollection<ISTeacherClassAssignment> ISTeacherClassAssignments { get; set; }
     }
+   
 }

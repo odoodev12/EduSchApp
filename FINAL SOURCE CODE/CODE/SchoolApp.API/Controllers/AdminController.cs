@@ -11,15 +11,31 @@ using System.Web.Http;
 
 namespace SchoolApp.API.Controllers
 {
+    /// <summary>
+    /// Admin APIs
+    /// </summary>
     public class AdminController : ApiController
     {
-        public AdminService service;
+        /// <summary>
+        /// Admin Service
+        /// </summary>
+        private AdminService service;
+
+        /// <summary>
+        /// Admin API Constructor
+        /// </summary>
         public AdminController()
         {
             service = new AdminService();
         }
 
         #region Admin Login API
+        /// <summary>
+        /// Admin Login
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("Admin/AdminLogin")]
         public ReturnResponce AdminLogin(string username, string password)
@@ -41,11 +57,11 @@ namespace SchoolApp.API.Controllers
         }
 
 
-      /// <summary>
-      /// Get school list by SchoolTypeId
-      /// </summary>
-      /// <param name="SchoolTypeId"></param>
-      /// <returns></returns>
+        /// <summary>
+        /// Get school list by SchoolTypeId
+        /// </summary>
+        /// <param name="SchoolTypeId"></param>
+        /// <returns></returns>
         [Route("Admin/SchoolListByType")]
         [HttpGet]
         public ReturnResponce SchoolListByType(int SchoolTypeId)
@@ -68,14 +84,14 @@ namespace SchoolApp.API.Controllers
         /// <summary>
         /// Add new school details
         /// </summary>
-        /// <param name="school"></param>
+        /// <param name="model"></param>
         /// <param name="AdminId"></param>
         /// <returns></returns>        
         [HttpPost]
         [Route("Admin/School")]
         public ReturnResponce AddSchool(SchoolOtherEntity model, int AdminId)
         {
-            return (model.ID == 0 && AdminId >0 ) ? service.SetSchool(model, AdminId) : new ReturnResponce("Invalid request or logged in id  must be greater then 0 ");
+            return (model.ID == 0 && AdminId > 0) ? service.SetSchool(model, AdminId) : new ReturnResponce("Invalid request or logged in id  must be greater then 0 ");
         }
 
         /// <summary>
@@ -163,7 +179,7 @@ namespace SchoolApp.API.Controllers
         }
 
         /// <summary>
-        /// Get Teacher list by SchoolId & ClassId
+        /// Get Teacher list by SchoolId and ClassId
         /// </summary>
         /// <returns></returns>
         [Route("Admin/GetTeacherList")]
@@ -246,7 +262,7 @@ namespace SchoolApp.API.Controllers
         /// </summary>
         /// <returns></returns>
         [Route("Admin/GetHolidayList")]
-        [HttpGet]        
+        [HttpGet]
         public ReturnResponce GetHoliday()
         {
             return service.GetHolidayList();
@@ -275,7 +291,7 @@ namespace SchoolApp.API.Controllers
             return service.GetHolidayList(SchoolId);
         }
 
-        
+
 
         /// <summary>
         /// Add new Holiday details
@@ -287,7 +303,7 @@ namespace SchoolApp.API.Controllers
         [HttpPost]
         public ReturnResponce AddHoliday(ISHoliday holiday, int AdminId)
         {
-            return holiday.ID == 0 ? service.SetHoliday(holiday, AdminId) : new ReturnResponce("Invalid request");            
+            return holiday.ID == 0 ? service.SetHoliday(holiday, AdminId) : new ReturnResponce("Invalid request");
         }
 
 
@@ -303,6 +319,7 @@ namespace SchoolApp.API.Controllers
         {
             return holiday.ID > 0 ? service.SetHoliday(holiday, AdminId) : new ReturnResponce("Primary id must be grater then 0");
         }
+
         /// <summary>
         /// Delete mark holiday details
         /// </summary>
@@ -362,7 +379,7 @@ namespace SchoolApp.API.Controllers
         [HttpGet]
         public ReturnResponce OrganizationUsersList(int RoleId)
         {
-            return service.GetOrganizationUsersList(RoleId);            
+            return service.GetOrganizationUsersList(RoleId);
         }
 
         /// <summary>
@@ -396,7 +413,7 @@ namespace SchoolApp.API.Controllers
         /// <returns></returns>
         [Route("Admin/Support")]
         [HttpPut]
-        public ReturnResponce SetSupportTicket(ISSupport details , int LogedInUser)
+        public ReturnResponce SetSupportTicket(ISSupport details, int LogedInUser)
         {
             return (details.ID > 0 && LogedInUser > 0) ? service.SetSupport(details, LogedInUser) : new ReturnResponce("Primary id or Logged in user id must be greate then 0");
         }
@@ -436,18 +453,18 @@ namespace SchoolApp.API.Controllers
         public ReturnResponce GetSchoolInvoiceList(int SchoolId)
         {
             return service.GetInvoiceList(SchoolId);
-        }       
+        }
 
         /// <summary>
         /// Add Invoice Details
         /// </summary>
         /// <param name="iSSchoolInvoice"></param>
         /// <param name="UserLoginId"></param>
-        /// <param name="UserLogiName"></param>
+        /// <param name="UserLoginName"></param>
         /// <returns></returns>
         [Route("Admin/Invoice")]
         [HttpPost]
-        public ReturnResponce AddInvoice(ISSchoolInvoice iSSchoolInvoice , int UserLoginId , string UserLoginName)
+        public ReturnResponce AddInvoice(ISSchoolInvoice iSSchoolInvoice, int UserLoginId, string UserLoginName)
         {
             if (iSSchoolInvoice.ID == 0 && UserLoginId > 0)
             {
@@ -457,7 +474,7 @@ namespace SchoolApp.API.Controllers
             {
                 return new ReturnResponce("Invalid Request");
             }
-            
+
         }
 
         /// <summary>
@@ -465,7 +482,7 @@ namespace SchoolApp.API.Controllers
         /// </summary>
         /// <param name="iSSchoolInvoice"></param>
         /// <param name="UserLoginId"></param>
-        /// <param name="UserLogiName"></param>
+        /// <param name="UserLoginName"></param>
         /// <returns></returns>
         [Route("Admin/Invoice")]
         [HttpPut]
@@ -483,6 +500,11 @@ namespace SchoolApp.API.Controllers
         #endregion
 
         #region Notification
+
+        /// <summary>
+        /// Get All Admin NotificationList
+        /// </summary>
+        /// <returns></returns>
         [Route("Admin/NotificationList")]
         [HttpGet]
         public ReturnResponce GetNotificationList()
@@ -528,6 +550,71 @@ namespace SchoolApp.API.Controllers
         public ReturnResponce DeletedPickers(int SchoolId)
         {
             return service.GetDeletedPickers(SchoolId);
+        }
+        #endregion
+
+        #region Role
+        /// <summary>
+        /// Get Role List
+        /// </summary>
+        /// <param name="SchoolId"></param>
+        /// <returns></returns>
+        [Route("Admin/GetUsersRoles")]
+        [HttpGet]
+        public ReturnResponce GetUsersRoles(int SchoolId)
+        {
+            return service.GetUsersRoleList(SchoolId);
+        }
+
+        /// <summary>
+        /// Get Role details By id
+        /// </summary>
+        /// <param name="RoleId"></param>
+        /// <returns></returns>
+        [Route("Admin/GetUserRole")]
+        [HttpGet]
+        public ReturnResponce GetUserRole(int RoleId)
+        {
+            return service.GetUserRoleDetails(RoleId);
+        }
+
+        /// <summary>
+        /// Add User Role details
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="UserLoginId"></param>
+        /// <returns></returns>
+        [Route("Admin/UserRole")]
+        [HttpPost]
+        public ReturnResponce AddUserRole(ISUserRole model, int UserLoginId)
+        {
+            return model.ID == 0 ? service.AddUpdateUserRole(model, UserLoginId) : new ReturnResponce("Invalid request");
+        }
+
+        /// <summary>
+        /// Update UserRole details
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="UserLoginId"></param>
+        /// <returns></returns>
+        [Route("Admin/UserRole")]
+        [HttpPut]
+        public ReturnResponce UpdateUserRole(ISUserRole model, int UserLoginId)
+        {
+            return model.ID > 0 ? service.AddUpdateUserRole(model, UserLoginId) : new ReturnResponce("Primary id must be gretar then 0");
+        }
+
+        /// <summary>
+        /// Delete User Role
+        /// </summary>
+        /// <param name="RoleId"></param>
+        /// <param name="UserLoginId"></param>
+        /// <returns></returns>
+        [Route("Admin/UserRole")]
+        [HttpDelete]
+        public ReturnResponce DeleteUserRole(int RoleId, int UserLoginId)
+        {
+            return RoleId > 0 ? service.DeleteUserRole(RoleId, UserLoginId) : new ReturnResponce("Primary id must be gretar then 0");
         }
         #endregion
     }

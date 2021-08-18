@@ -785,6 +785,139 @@ namespace SchoolApp.API.Services
             }
         }
 
+
+        #endregion
+
+        #region Role
+
+        public ReturnResponce GetUsersRoleList(int SchoolId)
+        {
+            try
+            {
+                if (SchoolId > 0)
+                {
+                    var response = entity.ISUserRoles.Where(p => p.SchoolID == SchoolId && p.Deleted == true && p.Active == true).ToList();
+                    return new ReturnResponce(response, new[] { "ISSchool","ISTeacher" });
+                }
+                else
+                {
+                    return new ReturnResponce("SchoolId must be grater than 0.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ReturnResponce(ex.Message);
+                throw;
+            }
+        }
+
+        public ReturnResponce GetUserRoleDetails( int RoleId)
+        {
+            try
+            {
+                    var response = entity.ISUserRoles.Where(p =>  p.Deleted == true && p.Active == true && p.ID == RoleId).SingleOrDefault();
+                    return new ReturnResponce(response, new[] { "ISSchool", "ISTeacher" });                
+            }
+            catch (Exception ex)
+            {
+                return new ReturnResponce(ex.Message);
+                throw;
+            }
+        }
+
+        public ReturnResponce AddUpdateUserRole(ISUserRole iSUserRole , int UserLoginId)
+        {
+            try
+            {
+                ISUserRole insertUpdate = new ISUserRole();
+
+                if (iSUserRole.ID > 0)
+                {
+                    insertUpdate = entity.ISUserRoles.Where(w => w.ID == iSUserRole.ID).FirstOrDefault();
+                }
+
+                if (insertUpdate != null)
+                {
+                    if (insertUpdate.ID == 0) //// Insert
+                    {
+                        insertUpdate.CreatedDateTime = DateTime.Now;
+                        insertUpdate.CreatedBy = UserLoginId;
+                        insertUpdate.RoleName = iSUserRole.RoleName;
+                        insertUpdate.RoleType = iSUserRole.RoleType;
+                        insertUpdate.SchoolID = iSUserRole.SchoolID;
+                        insertUpdate.ManageClassFlag = iSUserRole.ManageClassFlag;
+                        insertUpdate.ManageStudentFlag = iSUserRole.ManageStudentFlag;
+                        insertUpdate.ManageHolidayFlag = iSUserRole.ManageHolidayFlag;
+                        insertUpdate.ManageViewAccountFlag = iSUserRole.ManageViewAccountFlag; 
+                        insertUpdate.ManageTeacherFlag = iSUserRole.ManageTeacherFlag;
+                        insertUpdate.ManageNonTeacherFlag = iSUserRole.ManageNonTeacherFlag;
+                        insertUpdate.ManageSupportFlag = iSUserRole.ManageSupportFlag;
+                        insertUpdate.Active = iSUserRole.Active;
+                        insertUpdate.Deleted = true;
+                        entity.ISUserRoles.Add(insertUpdate);
+                    }
+                    else if (insertUpdate.ID > 0) //// Update
+                    {
+
+                        insertUpdate.RoleName = iSUserRole.RoleName;
+                        insertUpdate.ManageClassFlag = iSUserRole.ManageClassFlag;
+                        insertUpdate.ManageStudentFlag = iSUserRole.ManageStudentFlag;
+                        insertUpdate.ManageHolidayFlag = iSUserRole.ManageHolidayFlag;
+                        insertUpdate.ManageViewAccountFlag = iSUserRole.ManageViewAccountFlag;
+                        insertUpdate.ManageTeacherFlag = iSUserRole.ManageTeacherFlag;
+                        insertUpdate.ManageNonTeacherFlag = iSUserRole.ManageNonTeacherFlag;
+                        insertUpdate.ManageSupportFlag = iSUserRole.ManageSupportFlag;
+                        insertUpdate.Active = iSUserRole.Active;
+                        insertUpdate.ModifyBy = UserLoginId;
+                        insertUpdate.ModifyDateTime = DateTime.Now;
+                    }
+                    entity.SaveChanges();
+                    return new ReturnResponce(insertUpdate, new[] { "ISSchool", "ISTeacher" });
+                }
+                else
+                {
+                    ///// Error Responce that invalid data here
+                    return new ReturnResponce("Invalid model or data, Please try with valid data.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ReturnResponce(ex.Message);
+                throw;
+            }
+        }
+        public ReturnResponce DeleteUserRole(int RoleId , int UserLoginId)
+        {
+            try
+            {
+                ISUserRole insertUpdate = new ISUserRole();
+
+                if (RoleId > 0)
+                {
+                    insertUpdate = entity.ISUserRoles.Where(w => w.ID == RoleId).FirstOrDefault();
+                }
+
+                if (insertUpdate != null)
+                {
+                        insertUpdate.Deleted = false;
+                        insertUpdate.DeletedBy = UserLoginId;
+                        insertUpdate.DeletedDateTime = DateTime.Now;
+                    
+                    entity.SaveChanges();
+                    return new ReturnResponce(insertUpdate, new[] { "ISSchool", "ISTeacher" });
+                }
+                else
+                {
+                    ///// Error Responce that invalid data here
+                    return new ReturnResponce("Invalid model or data, Please try with valid data.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ReturnResponce(ex.Message);
+                throw;
+            }
+        }
         #endregion
     }
 }

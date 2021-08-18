@@ -63,7 +63,7 @@ namespace SchoolApp.API
                         //c.BasicAuth("basic")
                         //    .Description("Basic HTTP Authentication");
                         //
-						// NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
+                        // NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
                         //c.ApiKey("apiKey")
                         //    .Description("API Key Authentication")
                         //    .Name("apiKey")
@@ -256,8 +256,10 @@ namespace SchoolApp.API
 
         private static string GetXmlCommentsPath()
         {
-            return AppDomain.CurrentDomain.BaseDirectory + @"\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml";
+            //return AppDomain.CurrentDomain.BaseDirectory + @"\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml";
             //throw new NotImplementedException(); "D:\Development 2021\Edu API\EduAPI-Personal\EduSchApi\EduSchApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml"
+
+            return string.Format(@"{0}\bin\SchoolApp.API.xml", System.AppDomain.CurrentDomain.BaseDirectory);
         }
     }
 }

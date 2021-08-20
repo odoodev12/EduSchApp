@@ -19,7 +19,7 @@ namespace SchoolApp.API.Models
         {
             get
             {
-                return new[] { "ISAttendances", "ISCompleteAttendanceRuns", "ISCompletePickupRuns", "ISPickups", "ISSchool", "ISUserRole", "ISTeacherClassAssignments" };
+                return new[] { "ISAttendances", "ISCompleteAttendanceRuns", "ISCompletePickupRuns", "ISPickups", "ISSchool", "ISUserRole", "ISTeacherClassAssignments" , "ISClass", "ISTeacher" };
             }
         }
         public static string[] StudentIgnore
@@ -59,6 +59,13 @@ namespace SchoolApp.API.Models
                 return new[] { "ISStudent", "ISSchool", "ISTrasectionType" , "ISPickup" };
             }
         }
-        
+        public static string[] ClassesIgnore
+        {
+            get
+            {
+                return new[] { "ISCompleteAttendanceRuns", "ISCompletePickupRuns", "ISStudents", "ISTeacherClassAssignments", "ISClassType" };
+            }
+        }
+
     }
 }

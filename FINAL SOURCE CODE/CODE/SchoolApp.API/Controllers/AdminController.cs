@@ -119,7 +119,31 @@ namespace SchoolApp.API.Controllers
         {
             return service.GetClassList();
         }
+        /// <summary>
+        /// Add Class
+        /// </summary>
+        /// <param name="classDetails"></param>
+        /// <param name="AdminId"></param>
+        /// <returns></returns>
+        [Route("Admin/Class")]
+        [HttpPost]
+        public ReturnResponce AddClass(ISClass classDetails , int AdminId)
+        {
+            return (classDetails.ID == 0 && AdminId > 0) ? service.AddUpdateClass(classDetails, AdminId) : new ReturnResponce("Invalid request or logged in id  must be greater then 0 ");            
+        }
 
+        /// <summary>
+        /// Update Class
+        /// </summary>
+        /// <param name="classDetails"></param>
+        /// <param name="AdminId"></param>
+        /// <returns></returns>
+        [Route("Admin/Class")]
+        [HttpPut]
+        public ReturnResponce UpdateClass(ISClass classDetails, int AdminId)
+        {
+            return (classDetails.ID > 0 && AdminId > 0) ? service.AddUpdateClass(classDetails, AdminId) : new ReturnResponce("Primary id or logged in id  must be greater then 0 ");
+        }
         /// <summary>
         /// Get class list by SchoolId
         /// </summary>
@@ -188,6 +212,40 @@ namespace SchoolApp.API.Controllers
         {
             return service.GetTeacherList(SchoolId, ClassId);
         }
+
+        /// <summary>
+        /// Add Techer 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="AdminId"></param>
+        /// <returns></returns>
+        [Route("Admin/Teacher")]
+        [HttpPost]
+        public ReturnResponce AddTeacher(ISTeacher model , int AdminId)
+        {
+            return model.ID == 0 ? service.AddUpdateTeacher(model,AdminId) :  new ReturnResponce("Invalid request");
+        }
+
+        /// <summary>
+        /// Update Teacher
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="AdminId"></param>
+        /// <returns></returns>
+        [Route("Admin/Teacher")]
+        [HttpPut]
+        public ReturnResponce UpdateTeacher(ISTeacher model, int AdminId)
+        {
+            return model.ID > 0 ? service.AddUpdateTeacher(model, AdminId) : new ReturnResponce("Primary id must be grater then 0");
+        }
+
+        [Route("Admin/ReAssignTeacher")]
+        [HttpPost]
+        public ReturnResponce ReAssignTeacher(ISTeacherReassignHistory model, int AdminId)
+        {
+            return model.ID == 0 ? service.ReAssignTeacher(model, AdminId) : new ReturnResponce("Invalid request");
+        }
+
         #endregion
 
         #region Student
@@ -616,6 +674,59 @@ namespace SchoolApp.API.Controllers
         {
             return RoleId > 0 ? service.DeleteUserRole(RoleId, UserLoginId) : new ReturnResponce("Primary id must be gretar then 0");
         }
+        #endregion
+
+        #region NonTeaching
+        /// <summary>
+        /// Get Non teaching staff list
+        /// </summary>
+        /// <returns></returns>
+        [Route("Admin/NonTeachingList")]
+        [HttpGet]
+        public ReturnResponce NonTeachingList(int Schoolid)
+        {
+            return service.GetNonTeacherList(Schoolid);
+        }      
+
+        /// <summary>
+        /// Get Non teaching summary by id
+        /// </summary>
+        /// <param name="NonTechingId"></param>
+        /// <returns></returns>
+        [Route("Admin/GetNonTeaching")]
+        [HttpGet]
+        public ReturnResponce GetNonTeaching(int NonTechingId)
+        {
+            return service.GetNonTeacher(NonTechingId);
+        }
+
+        /// <summary>
+        /// Add Non Teaching staff details
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="AdminId"></param>
+        /// <returns></returns>
+        [Route("Admin/NonTeaching")]
+        [HttpPost]
+        public ReturnResponce AddNonTeachingStaff(ISTeacher model, int AdminId)
+        {
+            return model.ID == 0 ? service.AddUpdateNonTeaching(model, AdminId) : new ReturnResponce("Invalid request");
+        }
+
+        [Route("Admin/NonTeaching")]
+        [HttpPut]
+        public ReturnResponce UpdateNonTeachingStaff(ISTeacher model, int AdminId)
+        {
+            return model.ID > 0 ? service.AddUpdateNonTeaching(model, AdminId) : new ReturnResponce("Primary id must be grater then 0");
+        }
+
+        [Route("Admin/ReAssignNonTeaching")]
+        [HttpPost]
+        public ReturnResponce ReAssignNonTeachingStaff(ISTeacherReassignHistory model, int AdminId)
+        {
+            return model.ID == 0 ? service.ReAssignTeacher(model, AdminId) : new ReturnResponce("Invalid request");
+        }
+
         #endregion
     }
 }

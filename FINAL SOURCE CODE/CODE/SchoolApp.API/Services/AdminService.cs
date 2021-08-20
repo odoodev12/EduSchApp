@@ -158,16 +158,14 @@ namespace SchoolApp.API.Services
         }
         #endregion
 
-        #region Class List 
+        #region Class  
 
         public ReturnResponce GetClassList()
         {
             try
             {
                 var responce = entity.ISClasses.Where(p => p.Deleted == true && p.Active == true).ToList();
-                return new ReturnResponce(responce, new[] { "ISCompleteAttendanceRuns", "ISCompletePickupRuns", "ISStudents", "ISTeacherClassAssignments", "ISClassType" });
-
-
+                return new ReturnResponce(responce, EntityJsonIgnore.ClassesIgnore);
             }
             catch (Exception ex)
             {
@@ -180,7 +178,7 @@ namespace SchoolApp.API.Services
             try
             {
                 var responce = entity.ISClasses.Where(p => p.Deleted == true && p.Active == true && p.SchoolID == SchoolId).ToList();
-                return new ReturnResponce(responce, new[] { "ISCompleteAttendanceRuns", "ISCompletePickupRuns", "ISStudents", "ISTeacherClassAssignments", "ISClassType" });
+                return new ReturnResponce(responce, EntityJsonIgnore.ClassesIgnore);
             }
             catch (Exception ex)
             {
@@ -194,7 +192,131 @@ namespace SchoolApp.API.Services
             try
             {
                 var responce = entity.ISClasses.Where(p => p.Deleted == true && p.Active == true && p.ID == ClassID).FirstOrDefault();
-                return new ReturnResponce(responce, new[] { "ISCompleteAttendanceRuns", "ISCompletePickupRuns", "ISStudents", "ISTeacherClassAssignments", "ISClassType" });
+                return new ReturnResponce(responce, EntityJsonIgnore.ClassesIgnore);
+            }
+            catch (Exception ex)
+            {
+                return new ReturnResponce(ex.Message);
+                throw;
+            }
+        }
+        public ReturnResponce AddUpdateClass(ISClass model, int AdminId)
+        {
+            try
+            {
+                ISClass insertUpdate = new ISClass();
+
+                if (model.ID > 0)
+                {
+                    insertUpdate = entity.ISClasses.Where(x => x.ID == model.ID && x.Active == true && x.Deleted == true).FirstOrDefault();
+                }
+
+                if (insertUpdate != null)
+                {
+                    if (insertUpdate.ID == 0) //// Insert
+                    {
+                        var className = entity.ISClasses.Where(x => x.Name == model.Name && x.SchoolID == model.SchoolID).SingleOrDefault();
+                        if (className.Name == "")
+                        {
+                            if (model.ISClassType.ID == (int)EnumsManagement.CLASSTYPE.AfterSchool)
+                            {
+                                List<ISClass> ObjClass = entity.ISClasses.Where(p => p.SchoolID == Authentication.SchoolID && p.TypeID == (int)EnumsManagement.CLASSTYPE.AfterSchool && p.Active == true).ToList();
+                                if (ObjClass.Count == 0)
+                                {
+                                    if (model.ISClassType.Name == "Internal")
+                                    {
+                                        insertUpdate.Name = model.Name + "(After School)";
+                                        insertUpdate.TypeID = model.TypeID;
+                                        insertUpdate.AfterSchoolType = model.AfterSchoolType;
+                                        insertUpdate.ExternalOrganisation = "";
+                                        insertUpdate.EndDate = new DateTime(2050, 01, 01);
+                                        insertUpdate.SchoolID = model.SchoolID;
+                                        insertUpdate.ISNonListed = false;
+                                        insertUpdate.Active = true;
+                                        insertUpdate.Deleted = true;
+                                        insertUpdate.CreatedBy = AdminId;
+                                        insertUpdate.CreatedByType = Authentication.ISTeacherLogin() == true ? (int)EnumsManagement.CREATEBYTYPE.Teacher : (int)EnumsManagement.CREATEBYTYPE.School;
+                                        insertUpdate.CreatedDateTime = DateTime.Now;
+                                        entity.ISClasses.Add(insertUpdate);
+                                        entity.SaveChanges();
+                                    }
+                                    else
+                                    {
+                                        if (entity.ISSchools.Where(p => p.Name == model.ExternalOrganisation).Count() <= 0)
+                                        {                                            
+                                            return new ReturnResponce("Input the name of the After-School in the text box below. Please select the non-listed checkbox to continue if the name is not auto-selected from the list on our database");                    
+                                        }
+                                        else
+                                        {
+                                            insertUpdate.Name = model.Name + "(After School Ex)";
+                                            insertUpdate.TypeID = model.TypeID;
+                                            insertUpdate.AfterSchoolType = model.AfterSchoolType;
+                                            insertUpdate.ExternalOrganisation = model.ExternalOrganisation;
+                                            insertUpdate.EndDate = new DateTime(2050, 01, 01);
+                                            insertUpdate.SchoolID = Authentication.SchoolID;
+                                            insertUpdate.ISNonListed = false;
+                                            insertUpdate.Active = true;
+                                            insertUpdate.Deleted = true;
+                                            insertUpdate.CreatedBy = AdminId;
+                                            insertUpdate.CreatedByType = Authentication.ISTeacherLogin() == true ? (int)EnumsManagement.CREATEBYTYPE.Teacher : (int)EnumsManagement.CREATEBYTYPE.School;
+                                            insertUpdate.CreatedDateTime = DateTime.Now;
+                                            entity.ISClasses.Add(insertUpdate);
+                                            entity.SaveChanges();                                            
+
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    return new ReturnResponce("Only one after school is allowed for a standard school invalid request");
+                                }
+                            }
+                            else
+                            {
+                                insertUpdate.Name = model.Name;
+                                if (model.ISClassType.ID == (int)EnumsManagement.CLASSTYPE.Standard)
+                                {
+                                    insertUpdate.Year = Authentication.SchoolTypeID == 2 ? model.Year : "1";
+                                }
+                                insertUpdate.TypeID = model.TypeID;
+                                insertUpdate.EndDate = new DateTime(2050, 01, 01);
+                                insertUpdate.SchoolID = Authentication.SchoolID;
+                                insertUpdate.ISNonListed = false;
+                                insertUpdate.Active = true;
+                                insertUpdate.Deleted = true;
+                                insertUpdate.CreatedBy = AdminId;
+                                insertUpdate.CreatedDateTime = DateTime.Now;
+                                entity.ISClasses.Add(insertUpdate);
+                            }
+                        }
+                        else
+                        {
+                            return new ReturnResponce("Class name allready exist");
+                        }
+                    }
+                    else if (insertUpdate.ID > 0) //// Update
+                    {
+                        var ClassTeacherId = entity.ISTeachers.Where(x => x.ID == insertUpdate.ID && x.Active == true && x.Deleted == true).SingleOrDefault();
+                       
+                        insertUpdate.Name = model.Name;
+                        insertUpdate.TypeID = model.TypeID;
+                        insertUpdate.EndDate = new DateTime(2050, 01, 01);
+                        insertUpdate.SchoolID = Authentication.SchoolID;
+                        insertUpdate.ISNonListed = false;
+                        insertUpdate.Active = true;
+                        insertUpdate.Deleted = true;
+                        insertUpdate.ModifyBy = AdminId;
+                        insertUpdate.ModifyDateTime = DateTime.Now;
+                        entity.SaveChanges();
+                    }
+
+                    return new ReturnResponce(insertUpdate, EntityJsonIgnore.ClassesIgnore);
+                }
+                else
+                {
+                    ///// Error Responce that invalid data here
+                    return new ReturnResponce("Invalid model or data, Please try with valid data.");
+                }
             }
             catch (Exception ex)
             {
@@ -204,12 +326,12 @@ namespace SchoolApp.API.Services
         }
         #endregion
 
-        #region Teacher List        
+        #region Teacher        
         public ReturnResponce GetTeacherList()
         {
             try
             {
-                var responce = entity.ISTeachers.Where(p => p.Deleted == true && p.Active == true).ToList();
+                var responce = entity.ISTeachers.Where(p => p.Deleted == true && p.Active == true && p.Role == (int)EnumsManagement.ROLETYPE.TEACHING).ToList();
                 return new ReturnResponce(responce, EntityJsonIgnore.TeacherIgnore);
             }
             catch (Exception ex)
@@ -222,7 +344,7 @@ namespace SchoolApp.API.Services
         {
             try
             {
-                var responce = entity.ISTeachers.Where(p => p.Deleted == true && p.Active == true && p.SchoolID == SchoolId).ToList();
+                var responce = entity.ISTeachers.Where(p => p.Deleted == true && p.Active == true && p.SchoolID == SchoolId && p.Role == (int)EnumsManagement.ROLETYPE.TEACHING).ToList();
                 return new ReturnResponce(responce, EntityJsonIgnore.TeacherIgnore);
             }
             catch (Exception ex)
@@ -235,7 +357,7 @@ namespace SchoolApp.API.Services
         {
             try
             {
-                var responce = entity.ISTeachers.Where(p => p.Deleted == true && p.Active == true && p.ID == TeacherId).ToList();
+                var responce = entity.ISTeachers.Where(p => p.Deleted == true && p.Active == true && p.ID == TeacherId && p.Role == (int)EnumsManagement.ROLETYPE.TEACHING).ToList();
                 return new ReturnResponce(responce, EntityJsonIgnore.TeacherIgnore);
             }
             catch (Exception ex)
@@ -243,13 +365,144 @@ namespace SchoolApp.API.Services
                 return new ReturnResponce(ex.Message);
                 throw;
             }
-        }        
+        }
         public ReturnResponce GetTeacherList(int SchoolId, int ClassId)
         {
             try
             {
-                var responce = entity.ISTeachers.Where(p => p.Deleted == true && p.Active == true && p.SchoolID == SchoolId && p.ClassID == ClassId).ToList();
+                var responce = entity.ISTeachers.Where(p => p.Deleted == true && p.Active == true && p.SchoolID == SchoolId && p.ClassID == ClassId && p.Role == (int)EnumsManagement.ROLETYPE.TEACHING).ToList();
                 return new ReturnResponce(responce, EntityJsonIgnore.TeacherIgnore);
+            }
+            catch (Exception ex)
+            {
+                return new ReturnResponce(ex.Message);
+                throw;
+            }
+        }
+
+        public ReturnResponce AddUpdateTeacher(ISTeacher model, int AdminId)
+        {
+            try
+            {
+                ISTeacher insertUpdate = new ISTeacher();
+
+                if (model.ID > 0)
+                {
+                    insertUpdate = entity.ISTeachers.Where(x => x.ID == model.ID && x.Active == true && x.Deleted == true).FirstOrDefault();
+                }
+
+                if (insertUpdate != null)
+                {
+                    if (insertUpdate.ID == 0) //// Insert
+                    {
+                        insertUpdate.SchoolID = model.SchoolID;
+                        insertUpdate.ClassID = model.ClassID;
+                        insertUpdate.Role = (int)EnumsManagement.ROLETYPE.TEACHING;
+                        insertUpdate.RoleID = model.RoleID;
+                        insertUpdate.TeacherNo = model.TeacherNo;
+                        insertUpdate.Title = model.Title;
+                        insertUpdate.Name = model.Name;
+                        insertUpdate.PhoneNo = model.PhoneNo;
+                        insertUpdate.Email = model.Email;
+                        string Passwords = CommonOperation.GenerateNewRandom();
+                        insertUpdate.Password = EncryptionHelper.Encrypt(Passwords);
+                        insertUpdate.EndDate = new DateTime(2050, 01, 01);
+                        insertUpdate.Photo = "Upload/user.jpg";
+                        insertUpdate.Active = true;
+                        insertUpdate.Deleted = true;
+                        insertUpdate.CreatedBy = AdminId;
+                        insertUpdate.CreatedDateTime = DateTime.Now;
+                        insertUpdate.CreatedByType = 1;
+                        entity.ISTeachers.Add(insertUpdate);
+                        entity.SaveChanges();
+
+                        ISTeacherClassAssignment objClassAssignment = new ISTeacherClassAssignment();
+                        objClassAssignment.ClassID = model.ClassID;
+                        objClassAssignment.TeacherID = insertUpdate.ID;
+                        objClassAssignment.Active = true;
+                        objClassAssignment.Deleted = true;
+                        objClassAssignment.CreatedBy = AdminId;
+                        objClassAssignment.CreatedDateTime = DateTime.Now;
+                        objClassAssignment.Out = 0;
+                        objClassAssignment.Outbit = false;
+                        entity.ISTeacherClassAssignments.Add(objClassAssignment);
+                        entity.SaveChanges();
+                    }
+                    else if (insertUpdate.ID > 0) //// Update
+                    {
+                        insertUpdate.SchoolID = model.SchoolID;
+                        insertUpdate.ClassID = model.ClassID;
+                        insertUpdate.Role = 1;
+                        insertUpdate.RoleID = model.RoleID;
+                        insertUpdate.TeacherNo = model.TeacherNo;
+                        insertUpdate.Title = model.Title;
+                        insertUpdate.Name = model.Name;
+                        insertUpdate.PhoneNo = model.PhoneNo;
+                        insertUpdate.Email = model.Email;
+                        insertUpdate.EndDate = new DateTime(2050, 01, 01);
+                        insertUpdate.Photo = "Upload/user.jpg";
+                        insertUpdate.Active = true;
+                        insertUpdate.Deleted = true;
+                        insertUpdate.CreatedBy = AdminId;
+                        insertUpdate.CreatedDateTime = DateTime.Now;
+                        insertUpdate.CreatedByType = 1;
+
+                        ISTeacherClassAssignment objClassAssignment = new ISTeacherClassAssignment();
+                        objClassAssignment.ClassID = model.ClassID;
+                        objClassAssignment.TeacherID = insertUpdate.ID;
+                        objClassAssignment.Active = true;
+                        objClassAssignment.Deleted = true;
+                        objClassAssignment.CreatedBy = AdminId;
+                        objClassAssignment.CreatedDateTime = DateTime.Now;
+                        objClassAssignment.Out = 0;
+                        objClassAssignment.Outbit = false;
+
+                        entity.SaveChanges();
+                    }
+
+                    return new ReturnResponce(insertUpdate, EntityJsonIgnore.TeacherIgnore);
+                }
+                else
+                {
+                    ///// Error Responce that invalid data here
+                    return new ReturnResponce("Invalid model or data, Please try with valid data.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ReturnResponce(ex.Message);
+                throw;
+            }
+        }
+
+        public ReturnResponce ReAssignTeacher(ISTeacherReassignHistory model, int AdminId)
+        {
+            try
+            {
+                ISTeacherReassignHistory ObjReassign = new ISTeacherReassignHistory();
+                if (model.FromClass != model.ToClass)
+                {                    
+                    ObjReassign.SchoolID = model.SchoolID;
+                    ObjReassign.FromClass = model.FromClass;
+                    ObjReassign.ToClass = model.ToClass;
+                    ObjReassign.Date = DateTime.Now;
+                    ObjReassign.TeacherID = model.TeacherID;
+                    ObjReassign.Active = true;
+                    ObjReassign.Deleted = true;
+                    ObjReassign.CreatedBy = AdminId;
+                    ObjReassign.CreatedByType = 1;
+                    ObjReassign.CreatedDateTime = DateTime.Now;
+                    entity.ISTeacherReassignHistories.Add(ObjReassign);
+                    entity.SaveChanges();
+                    return new ReturnResponce(ObjReassign, EntityJsonIgnore.TeacherIgnore);
+                }
+                else
+                {
+                    ///// Error Responce that invalid data here
+                    return new ReturnResponce("Old or New Class are must be diffrent invalid request");
+                }
+
+
             }
             catch (Exception ex)
             {
@@ -273,7 +526,7 @@ namespace SchoolApp.API.Services
                 throw;
             }
         }
-      
+
         public ReturnResponce GetStudentList(int SchoolId)
         {
             try
@@ -286,12 +539,12 @@ namespace SchoolApp.API.Services
                 return new ReturnResponce(ex.Message);
                 throw;
             }
-        }       
-        public ReturnResponce GetStudentList( int SchoolId, int ClassId)
+        }
+        public ReturnResponce GetStudentList(int SchoolId, int ClassId)
         {
             try
             {
-                var responce = entity.ISStudents.Where(p => p.Deleted == true && p.Active == true  && p.SchoolID == SchoolId && p.ClassID == ClassId).ToList();
+                var responce = entity.ISStudents.Where(p => p.Deleted == true && p.Active == true && p.SchoolID == SchoolId && p.ClassID == ClassId).ToList();
                 return new ReturnResponce(responce, EntityJsonIgnore.StudentIgnore);
             }
             catch (Exception ex)
@@ -392,7 +645,7 @@ namespace SchoolApp.API.Services
                 return new ReturnResponce(ex.Message);
                 throw;
             }
-        }        
+        }
         public ReturnResponce GetHolidayList(int SchoolId)
         {
             try
@@ -406,7 +659,7 @@ namespace SchoolApp.API.Services
                 throw;
             }
         }
-       
+
         public ReturnResponce SetHoliday(ISHoliday model, int AdminId)
         {
             try
@@ -456,7 +709,7 @@ namespace SchoolApp.API.Services
             try
             {
                 ISHoliday insertUpdate = entity.ISHolidays.Where(w => w.ID == HolidayId).FirstOrDefault();
-                                
+
                 if (insertUpdate != null)
                 {
                     insertUpdate.Deleted = true;
@@ -523,7 +776,7 @@ namespace SchoolApp.API.Services
                 throw;
             }
         }
-       
+
         public ReturnResponce PostReplay(ReplayMessage model)
         {
             try
@@ -654,8 +907,8 @@ namespace SchoolApp.API.Services
             {
                 return new ReturnResponce(ex.ToString());
             }
-        }       
-        public ReturnResponce AddUpdateSchoolInvoice(ISSchoolInvoice iSSchoolInvoice , int UserLoginId , string UserloginName)
+        }
+        public ReturnResponce AddUpdateSchoolInvoice(ISSchoolInvoice iSSchoolInvoice, int UserLoginId, string UserloginName)
         {
             try
             {
@@ -712,7 +965,7 @@ namespace SchoolApp.API.Services
             try
             {
                 var responce = entity.Notifactions.ToList();
-                return new ReturnResponce(responce,new [] { ""});
+                return new ReturnResponce(responce, new[] { "" });
             }
             catch (Exception ex)
             {
@@ -736,7 +989,7 @@ namespace SchoolApp.API.Services
                 else
                 {
                     return new ReturnResponce("SchoolId must be grater than 0.");
-                }               
+                }
             }
             catch (Exception ex)
             {
@@ -756,7 +1009,7 @@ namespace SchoolApp.API.Services
                 else
                 {
                     return new ReturnResponce("SchoolId must be grater than 0.");
-                }               
+                }
             }
             catch (Exception ex)
             {
@@ -797,7 +1050,7 @@ namespace SchoolApp.API.Services
                 if (SchoolId > 0)
                 {
                     var response = entity.ISUserRoles.Where(p => p.SchoolID == SchoolId && p.Deleted == true && p.Active == true).ToList();
-                    return new ReturnResponce(response, new[] { "ISSchool","ISTeacher" });
+                    return new ReturnResponce(response, new[] { "ISSchool", "ISTeacher" });
                 }
                 else
                 {
@@ -811,12 +1064,12 @@ namespace SchoolApp.API.Services
             }
         }
 
-        public ReturnResponce GetUserRoleDetails( int RoleId)
+        public ReturnResponce GetUserRoleDetails(int RoleId)
         {
             try
             {
-                    var response = entity.ISUserRoles.Where(p =>  p.Deleted == true && p.Active == true && p.ID == RoleId).SingleOrDefault();
-                    return new ReturnResponce(response, new[] { "ISSchool", "ISTeacher" });                
+                var response = entity.ISUserRoles.Where(p => p.Deleted == true && p.Active == true && p.ID == RoleId).SingleOrDefault();
+                return new ReturnResponce(response, new[] { "ISSchool", "ISTeacher" });
             }
             catch (Exception ex)
             {
@@ -825,7 +1078,7 @@ namespace SchoolApp.API.Services
             }
         }
 
-        public ReturnResponce AddUpdateUserRole(ISUserRole iSUserRole , int UserLoginId)
+        public ReturnResponce AddUpdateUserRole(ISUserRole iSUserRole, int UserLoginId)
         {
             try
             {
@@ -848,7 +1101,7 @@ namespace SchoolApp.API.Services
                         insertUpdate.ManageClassFlag = iSUserRole.ManageClassFlag;
                         insertUpdate.ManageStudentFlag = iSUserRole.ManageStudentFlag;
                         insertUpdate.ManageHolidayFlag = iSUserRole.ManageHolidayFlag;
-                        insertUpdate.ManageViewAccountFlag = iSUserRole.ManageViewAccountFlag; 
+                        insertUpdate.ManageViewAccountFlag = iSUserRole.ManageViewAccountFlag;
                         insertUpdate.ManageTeacherFlag = iSUserRole.ManageTeacherFlag;
                         insertUpdate.ManageNonTeacherFlag = iSUserRole.ManageNonTeacherFlag;
                         insertUpdate.ManageSupportFlag = iSUserRole.ManageSupportFlag;
@@ -886,7 +1139,7 @@ namespace SchoolApp.API.Services
                 throw;
             }
         }
-        public ReturnResponce DeleteUserRole(int RoleId , int UserLoginId)
+        public ReturnResponce DeleteUserRole(int RoleId, int UserLoginId)
         {
             try
             {
@@ -899,10 +1152,10 @@ namespace SchoolApp.API.Services
 
                 if (insertUpdate != null)
                 {
-                        insertUpdate.Deleted = false;
-                        insertUpdate.DeletedBy = UserLoginId;
-                        insertUpdate.DeletedDateTime = DateTime.Now;
-                    
+                    insertUpdate.Deleted = false;
+                    insertUpdate.DeletedBy = UserLoginId;
+                    insertUpdate.DeletedDateTime = DateTime.Now;
+
                     entity.SaveChanges();
                     return new ReturnResponce(insertUpdate, new[] { "ISSchool", "ISTeacher" });
                 }
@@ -918,6 +1171,143 @@ namespace SchoolApp.API.Services
                 throw;
             }
         }
+        #endregion
+
+        #region NonTeaching
+
+        public ReturnResponce GetNonTeacherList(int SchoolId)
+        {
+            try
+            {
+                var responce = entity.ISTeachers.Where(p => p.Deleted == true && p.Active == true && p.SchoolID == SchoolId && p.Role == (int)EnumsManagement.ROLETYPE.NONTEACHING).ToList();
+                return new ReturnResponce(responce, EntityJsonIgnore.TeacherIgnore);
+            }
+            catch (Exception ex)
+            {
+                return new ReturnResponce(ex.Message);
+                throw;
+            }
+        }
+        public ReturnResponce GetNonTeacher(int TeacherId)
+        {
+            try
+            {
+                var responce = entity.ISTeachers.Where(p => p.Deleted == true && p.Active == true && p.ID == TeacherId && p.Role == (int)EnumsManagement.ROLETYPE.NONTEACHING).ToList();
+                return new ReturnResponce(responce, EntityJsonIgnore.TeacherIgnore);
+            }
+            catch (Exception ex)
+            {
+                return new ReturnResponce(ex.Message);
+                throw;
+            }
+        }
+        public ReturnResponce GetNonTeacherList(int SchoolId, int ClassId)
+        {
+            try
+            {
+                var responce = entity.ISTeachers.Where(p => p.Deleted == true && p.Active == true && p.SchoolID == SchoolId && p.ClassID == ClassId && p.Role == (int)EnumsManagement.ROLETYPE.NONTEACHING).ToList();
+                return new ReturnResponce(responce, EntityJsonIgnore.TeacherIgnore);
+            }
+            catch (Exception ex)
+            {
+                return new ReturnResponce(ex.Message);
+                throw;
+            }
+        }
+        public ReturnResponce AddUpdateNonTeaching(ISTeacher model, int AdminId)
+        {
+            try
+            {
+                ISTeacher insertUpdate = new ISTeacher();
+
+                if (model.ID > 0)
+                {
+                    insertUpdate = entity.ISTeachers.Where(x => x.ID == model.ID && x.Active == true && x.Deleted == true).FirstOrDefault();
+                }
+
+                if (insertUpdate != null)
+                {
+                    if (insertUpdate.ID == 0) //// Insert
+                    {
+                        insertUpdate.SchoolID = model.SchoolID;
+                        insertUpdate.ClassID = model.ClassID;
+                        insertUpdate.Role = (int)EnumsManagement.ROLETYPE.NONTEACHING;
+                        insertUpdate.RoleID = model.RoleID;
+                        insertUpdate.TeacherNo = model.TeacherNo;
+                        insertUpdate.Title = model.Title;
+                        insertUpdate.Name = model.Name;
+                        insertUpdate.PhoneNo = model.PhoneNo;
+                        insertUpdate.Email = model.Email;
+                        string Passwords = CommonOperation.GenerateNewRandom();
+                        insertUpdate.Password = EncryptionHelper.Encrypt(Passwords);
+                        insertUpdate.EndDate = new DateTime(2050, 01, 01);
+                        insertUpdate.Photo = "Upload/user.jpg";
+                        insertUpdate.Active = true;
+                        insertUpdate.Deleted = true;
+                        insertUpdate.CreatedBy = AdminId;
+                        insertUpdate.CreatedDateTime = DateTime.Now;
+                        insertUpdate.CreatedByType = 1;
+                        entity.ISTeachers.Add(insertUpdate);
+                        entity.SaveChanges();
+
+                        ISTeacherClassAssignment objClassAssignment = new ISTeacherClassAssignment();
+                        objClassAssignment.ClassID = model.ClassID;
+                        objClassAssignment.TeacherID = insertUpdate.ID;
+                        objClassAssignment.Active = true;
+                        objClassAssignment.Deleted = true;
+                        objClassAssignment.CreatedBy = AdminId;
+                        objClassAssignment.CreatedDateTime = DateTime.Now;
+                        objClassAssignment.Out = 0;
+                        objClassAssignment.Outbit = false;
+                        entity.ISTeacherClassAssignments.Add(objClassAssignment);
+                        entity.SaveChanges();
+                    }
+                    else if (insertUpdate.ID > 0) //// Update
+                    {
+                        insertUpdate.SchoolID = model.SchoolID;
+                        insertUpdate.ClassID = model.ClassID;
+                        insertUpdate.Role = 1;
+                        insertUpdate.RoleID = model.RoleID;
+                        insertUpdate.TeacherNo = model.TeacherNo;
+                        insertUpdate.Title = model.Title;
+                        insertUpdate.Name = model.Name;
+                        insertUpdate.PhoneNo = model.PhoneNo;
+                        insertUpdate.Email = model.Email;
+                        insertUpdate.EndDate = new DateTime(2050, 01, 01);
+                        insertUpdate.Photo = "Upload/user.jpg";
+                        insertUpdate.Active = true;
+                        insertUpdate.Deleted = true;
+                        insertUpdate.CreatedBy = AdminId;
+                        insertUpdate.CreatedDateTime = DateTime.Now;
+                        insertUpdate.CreatedByType = 1;
+
+                        ISTeacherClassAssignment objClassAssignment = new ISTeacherClassAssignment();
+                        objClassAssignment.ClassID = model.ClassID;
+                        objClassAssignment.TeacherID = insertUpdate.ID;
+                        objClassAssignment.Active = true;
+                        objClassAssignment.Deleted = true;
+                        objClassAssignment.CreatedBy = AdminId;
+                        objClassAssignment.CreatedDateTime = DateTime.Now;
+                        objClassAssignment.Out = 0;
+                        objClassAssignment.Outbit = false;
+
+                        entity.SaveChanges();
+                    }
+
+                    return new ReturnResponce(insertUpdate, EntityJsonIgnore.TeacherIgnore);
+                }
+                else
+                {
+                    ///// Error Responce that invalid data here
+                    return new ReturnResponce("Invalid model or data, Please try with valid data.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ReturnResponce(ex.Message);
+                throw;
+            }
+        }        
         #endregion
     }
 }

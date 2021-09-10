@@ -66,6 +66,20 @@ namespace SchoolApp.API.Models
                 return new[] { "ISCompleteAttendanceRuns", "ISCompletePickupRuns", "ISStudents", "ISTeacherClassAssignments", "ISClassType" };
             }
         }
+        public static string[] PickupIgnore
+        {
+            get
+            {
+                return new[] { "ISPicker", "ISStudent", "ISTeacher" };
+            }
+        }
+        public static string[] ISCompletePickupRunIgnore
+        {
+            get
+            {
+                return new[] { "ISClass", "ISTeacher" };
+            }
+        }
 
     }
 }

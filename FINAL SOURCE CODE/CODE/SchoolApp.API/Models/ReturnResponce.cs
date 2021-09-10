@@ -23,7 +23,7 @@ namespace SchoolApp.API.Models
         {
             status = ResponceStatus.success;
             Orgdata = _data;
-            message = "success";
+            Message = "success";
 
             if (_jsonproperties != null)
             {
@@ -33,11 +33,11 @@ namespace SchoolApp.API.Models
             getData();
         }
 
-        //For success responce
+        //For Error responce
         public ReturnResponce(string _error)
         {
             status = ResponceStatus.error;
-            message = "error";
+            Message = "error";
             error = _error;
         }
 
@@ -48,7 +48,7 @@ namespace SchoolApp.API.Models
 
         public string error { get; set; }
 
-        public string message { get; set; }
+        public string Message { get; set; }
 
         private dynamic Orgdata { get; set; }
 

@@ -1307,7 +1307,7 @@ namespace SchoolApp.API.Services
                 return new ReturnResponce(ex.Message);
                 throw;
             }
-        }        
+        }
         #endregion
     }
 }

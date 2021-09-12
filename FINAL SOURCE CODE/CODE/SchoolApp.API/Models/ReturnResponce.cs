@@ -14,8 +14,8 @@ namespace SchoolApp.API.Models
     {
         error = 404,
         success = 200
-
     }
+
     public class ReturnResponce
     {
         //For success responce
@@ -44,13 +44,13 @@ namespace SchoolApp.API.Models
         public ResponceStatus status { get; set; }
 
       
-        private string[] jsonIngnoreProperties { get; set; }
+        protected string[] jsonIngnoreProperties { get; set; }
 
         public string error { get; set; }
 
         public string Message { get; set; }
 
-        private dynamic Orgdata { get; set; }
+        protected dynamic Orgdata { get; set; }
 
         public dynamic data { get; set; }
 
@@ -94,4 +94,71 @@ namespace SchoolApp.API.Models
             return property;
         }
     }
+
+
+    public class ReturnResponceWithTokem
+    {
+        //For success responce
+        public ReturnResponceWithTokem(dynamic _data, string _Token, string[] _jsonproperties = null)
+        {
+            status = ResponceStatus.success;
+            Orgdata = _data;
+            Message = "success";
+            AccessToken = _Token;
+
+            if (_jsonproperties != null)
+            {
+                jsonIngnoreProperties = _jsonproperties;
+            }
+
+            getData();
+        }
+
+        //For Error responce
+        public ReturnResponceWithTokem(string _error)
+        {
+            status = ResponceStatus.error;
+            Message = "error";
+            error = _error;
+            AccessToken = "unauthorized";
+        }
+
+        public ResponceStatus status { get; set; }
+
+
+        protected string[] jsonIngnoreProperties { get; set; }
+
+        public string error { get; set; }
+
+        public string Message { get; set; }
+
+        protected dynamic Orgdata { get; set; }
+
+        public dynamic data { get; set; }
+
+        public void getData()
+        {
+            if (Orgdata != null)
+            {
+                if (jsonIngnoreProperties != null && jsonIngnoreProperties.Length > 0)
+                {
+                    data = Json.Decode(JsonConvert.SerializeObject(Orgdata, new JsonSerializerSettings()
+                    { ContractResolver = new IgnorePropertiesResolver(jsonIngnoreProperties) }));
+                }
+                else
+                {
+                    data = Orgdata;
+                }
+            }
+            else
+            {
+                data = null;
+            }
+        }
+
+        public string AccessToken { get; set; }
+    }
+
+  
+
 }

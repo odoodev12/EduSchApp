@@ -26,7 +26,7 @@ namespace SchoolApp.API.Controllers
             service = new CommonServices();
         }
 
-        #region Admin Login API
+        #region Login API
 
         /// <summary>
         /// Admin Login
@@ -81,37 +81,33 @@ namespace SchoolApp.API.Controllers
             return service.ParentLogin(username, password);
         }
 
-
-
-
-
         #endregion
 
-        [HttpGet]
-        [Route("Common/GetToken")]
-        public string GetToken()
-        {
-            string key = "wwwapithestmanager123";
-            var issuer = "http://www.api.thestmanager.com";
+        //[HttpGet]
+        //[Route("Common/GetToken")]
+        //private string GetToken()
+        //{
+        //    string key = "wwwapithestmanager123";
+        //    var issuer = "http://www.api.thestmanager.com";
 
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+        //    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
+        //    var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
 
-            var permClaims = new List<Claim>();
-            permClaims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
-            permClaims.Add(new Claim("valid", "1"));
-            permClaims.Add(new Claim("userid", "1"));
-            permClaims.Add(new Claim("name", "SchoolAPI"));
+        //    var permClaims = new List<Claim>();
+        //    permClaims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
+        //    permClaims.Add(new Claim("valid", "1"));
+        //    permClaims.Add(new Claim("userid", "1"));
+        //    permClaims.Add(new Claim("name", "SchoolAPI"));
 
-            //Create Security Token object by giving required parameters    
-            var token = new JwtSecurityToken(issuer, //Issure    
-                            issuer,  //Audience    
-                            permClaims,
-                            expires: DateTime.Now.AddDays(1),
-                            signingCredentials: credentials);
-            var jwt_token = new JwtSecurityTokenHandler().WriteToken(token);
-            return jwt_token;
-        }
+        //    //Create Security Token object by giving required parameters    
+        //    var token = new JwtSecurityToken(issuer, //Issure    
+        //                    issuer,  //Audience    
+        //                    permClaims,
+        //                    expires: DateTime.Now.AddDays(1),
+        //                    signingCredentials: credentials);
+        //    var jwt_token = new JwtSecurityTokenHandler().WriteToken(token);
+        //    return jwt_token;
+        //}
     }
 }

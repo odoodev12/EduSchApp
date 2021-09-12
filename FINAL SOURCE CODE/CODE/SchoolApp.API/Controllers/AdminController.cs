@@ -21,7 +21,7 @@ namespace SchoolApp.API.Controllers
     /// <summary>
     /// Admin APIs
     /// </summary>
-    [Authorize]    
+    //[Authorize]    
     public class AdminController : ApiController
     {
         /// <summary>
@@ -37,7 +37,7 @@ namespace SchoolApp.API.Controllers
             service = new AdminService();
         }
 
-        
+
         #region School
         /// <summary>
         /// All SchoolType list
@@ -103,55 +103,112 @@ namespace SchoolApp.API.Controllers
         #endregion
 
         #region  Class
+
         /// <summary>
-        /// All Admin Class list
+        /// To All ClassType list
         /// </summary>
         /// <returns></returns>
-        [Route("Admin/ClassList")]
+        [Route("Admin/ClassTypeList")]
         [HttpGet]
-        public ReturnResponce ClassList()
+        public ReturnResponce ClassTypeList()
         {
-            return service.GetClassList();
-        }
-        /// <summary>
-        /// Add Class
-        /// </summary>
-        /// <param name="classDetails"></param>
-        /// <param name="AdminId"></param>
-        /// <returns></returns>
-        [Route("Admin/Class")]
-        [HttpPost]
-        public ReturnResponce AddClass(ISClass classDetails, int AdminId)
-        {
-            return (classDetails.ID == 0 && AdminId > 0) ? service.AddUpdateClass(classDetails, AdminId) : new ReturnResponce("Invalid request or logged in id  must be greater then 0 ");
+            return service.GetClassTypeList();
         }
 
         /// <summary>
-        /// Update Class
+        ///To All ClassType list by School Type
         /// </summary>
-        /// <param name="classDetails"></param>
-        /// <param name="AdminId"></param>
+        /// <param name="SchoolTypeId"></param>
         /// <returns></returns>
-        [Route("Admin/Class")]
-        [HttpPut]
-        public ReturnResponce UpdateClass(ISClass classDetails, int AdminId)
+        [Route("Admin/ClassTypeListSchoolType")]
+        [HttpGet]
+        public ReturnResponce ClassTypeListBySchoolType(int SchoolTypeId)
         {
-            return (classDetails.ID > 0 && AdminId > 0) ? service.AddUpdateClass(classDetails, AdminId) : new ReturnResponce("Primary id or logged in id  must be greater then 0 ");
+            return service.GetClassTypeListBySchoolType(SchoolTypeId);
         }
+
         /// <summary>
-        /// Get class list by SchoolId
+        /// To Get class list by SchoolId
         /// </summary>
+        /// <param name="SchoolId"></param>
+        /// <param name="year"></param>
+        /// <param name="TypeId"></param>
         /// <returns></returns>
         [Route("Admin/ClassListBySchoolId")]
         [HttpGet]
-        public ReturnResponce ClassListBySchoolId(int SchoolId)
+        public ReturnResponce ClassListBySchoolId(int SchoolId, string year = null, int TypeId = 0)
         {
-            return service.GetClassList(SchoolId);
+            return service.GetClassList(SchoolId, year, TypeId);
         }
 
         /// <summary>
-        /// Get Class details by Id
+        /// To Get Class List By Filter Options
         /// </summary>
+        /// <param name="SchoolID"></param>
+        /// <param name="Year"></param>
+        /// <param name="typeID"></param>
+        /// <param name="Status"></param>
+        /// <returns></returns>
+        [Route("Admin/ClassListByFilter")]
+        [HttpGet]
+        public ReturnResponce ClassListByFilter(int SchoolID, string Year, int typeID, string Status)
+        {
+            return service.GetClassListByFilter(SchoolID, Year, typeID, Status);
+        }
+
+
+
+        /// <summary>
+        /// To Add Class
+        /// </summary>
+        /// <param name="SchoolID"></param>
+        /// <param name="ClassName"></param>
+        /// <param name="Year"></param>
+        /// <param name="ClassTypeID"></param>
+        /// <param name="AfterSchoolType"></param>
+        /// <param name="ExtOrganisation"></param>
+        /// <param name="Active"></param>
+        /// <param name="EndDate"></param>
+        /// <param name="ISNonListed"></param>
+        /// <param name="CreateType"></param>
+        /// <param name="LoginUserId"></param>
+        /// <returns></returns>
+        [Route("Admin/Class")]
+        [HttpPost]
+        public ReturnResponce AddClass(int SchoolID, string ClassName, string Year, int ClassTypeID, string AfterSchoolType, string ExtOrganisation, bool Active, string EndDate, bool ISNonListed, int CreateType, int LoginUserId)
+        {
+            return (LoginUserId > 0 && CreateType > 0) ? service.AddClass(SchoolID, ClassName, Year, ClassTypeID, AfterSchoolType, ExtOrganisation, Active, EndDate, ISNonListed, CreateType, LoginUserId) : new ReturnResponce("Invalid request or logged in id  must be greater then 0 ");
+        }
+
+        /// <summary>
+        /// To Update Class
+        /// </summary>
+        /// <param name="ClassID"></param>
+        /// <param name="SchoolID"></param>
+        /// <param name="Name"></param>
+        /// <param name="Year"></param>
+        /// <param name="TypeID"></param>
+        /// <param name="AfterSchoolType"></param>
+        /// <param name="ExternalOrganisation"></param>
+        /// <param name="Active"></param>
+        /// <param name="EndDate"></param>
+        /// <param name="ISNonListed"></param>
+        /// <param name="CreateType"></param>
+        /// <param name="LoginUserId"></param>
+        /// <returns></returns>
+        [Route("Admin/Class")]
+        [HttpPut]
+        public ReturnResponce UpdateClass(int ClassID, int SchoolID, string Name, string Year, int TypeID, string AfterSchoolType, string ExternalOrganisation, bool Active, string EndDate, bool ISNonListed, int CreateType, int LoginUserId)
+        {
+
+            return (ClassID > 0 && CreateType > 0 && LoginUserId > 0) ? service.UpdateClass(ClassID, SchoolID, Name, Year, TypeID, AfterSchoolType, ExternalOrganisation, Active, EndDate, ISNonListed, CreateType, LoginUserId) : new ReturnResponce("Primary id or logged in id  must be greater then 0 ");
+        }
+
+
+        /// <summary>
+        /// To Get Class details by Id
+        /// </summary>
+        /// <param name="ClassId"></param>
         /// <returns></returns>
         [Route("Admin/GetClass")]
         [HttpGet]
@@ -163,31 +220,42 @@ namespace SchoolApp.API.Controllers
         #endregion
 
         #region Teacher 
-        /// <summary>
-        /// All Teacher list
-        /// </summary>
-        /// <returns></returns>
-        [Route("Admin/TeacherList")]
-        [HttpGet]
-        public ReturnResponce TeacherList()
-        {
-            return service.GetTeacherList();
-        }
 
         /// <summary>
-        /// Get Teachers list by SchoolId
+        /// To Get Teachers list by SchoolId
         /// </summary>
+        /// <param name="SchoolId"></param>
         /// <returns></returns>
         [Route("Admin/TeacherListBySchoolId")]
         [HttpGet]
         public ReturnResponce TeacherListBySchoolId(int SchoolId)
         {
-            return service.GetTeacherList(SchoolId);
+            return service.GetTeacherList(SchoolId, "", 0, "", "", "", 0, "0");
         }
 
         /// <summary>
-        /// Get Teacher details by TeacherId
+        /// To Get Teachers List With Optional Filters
         /// </summary>
+        /// <param name="SchoolId"></param>
+        /// <param name="Year"></param>
+        /// <param name="ClassID"></param>
+        /// <param name="TeacherName"></param>
+        /// <param name="OrderBy"></param>
+        /// <param name="SortBy"></param>
+        /// <param name="classTypeID"></param>
+        /// <param name="Status"></param>
+        /// <returns></returns>
+        [Route("Admin/TeacherListWithFilters")]
+        [HttpGet]
+        public ReturnResponce TeacherListWithFilters(int SchoolId, string Year = "", int ClassID = 0, string TeacherName = "", string OrderBy = "", string SortBy = "", int classTypeID = 0, string Status = "")
+        {
+            return service.GetTeacherList(SchoolId, Year, ClassID, TeacherName, OrderBy, SortBy, classTypeID, Status);
+        }
+
+        /// <summary>
+        /// To Get Teacher details by TeacherId
+        /// </summary>
+        /// <param name="TeacherId"></param>
         /// <returns></returns>
         [Route("Admin/GetTeacher")]
         [HttpGet]
@@ -197,18 +265,20 @@ namespace SchoolApp.API.Controllers
         }
 
         /// <summary>
-        /// Get Teacher list by SchoolId and ClassId
+        /// To Get Teacher list by SchoolId and ClassId
         /// </summary>
+        /// <param name="SchoolId"></param>
+        /// <param name="ClassId"></param>
         /// <returns></returns>
-        [Route("Admin/GetTeacherList")]
+        [Route("Admin/GetTeachersWithClassId")]
         [HttpGet]
         public ReturnResponce GetTeacherBySchoolOrClassId(int SchoolId, int ClassId)
         {
-            return service.GetTeacherList(SchoolId, ClassId);
+            return service.GetTeacherList(SchoolId, "", ClassId, "", "", "", 0, "0");
         }
 
         /// <summary>
-        /// Add Teacher details 
+        /// To Add Teacher details 
         /// </summary>
         /// <param name="model"></param>
         /// <param name="AdminId"></param>
@@ -221,7 +291,7 @@ namespace SchoolApp.API.Controllers
         }
 
         /// <summary>
-        /// Update Teacher details 
+        /// To Update Teacher details 
         /// </summary>
         /// <param name="model"></param>
         /// <param name="AdminId"></param>
@@ -233,18 +303,22 @@ namespace SchoolApp.API.Controllers
             return model.ID > 0 ? service.AddUpdateTeacher(model, AdminId) : new ReturnResponce("Primary id must be grater then 0");
         }
 
-        /// <summary>
-        /// ReAssign Teacher
-        /// </summary>
-        /// <param name="model"></param>
-        /// <param name="AdminId"></param>
-        /// <returns></returns>
-        [Route("Admin/ReAssignTeacher")]
-        [HttpPost]
-        public ReturnResponce ReAssignTeacher(ISTeacherReassignHistory model, int AdminId)
-        {
-            return model.ID == 0 ? service.ReAssignTeacher(model, AdminId) : new ReturnResponce("Invalid request");
-        }
+        ///// <summary>
+        ///// To ReAssign Teacher Class
+        ///// </summary>
+        ///// <param name="SchoolID"></param>
+        ///// <param name="TeacherID"></param>
+        ///// <param name="OldClassID"></param>
+        ///// <param name="NewClassID"></param>
+        ///// <param name="UserType"></param>
+        ///// <param name="SenderID"></param>
+        ///// <returns></returns>
+        //[Route("Admin/TeacherReassignment")]
+        //[HttpPost]
+        //public ReturnResponce TeacherReassignment(int SchoolID, int TeacherID, int OldClassID, int NewClassID, int UserType, int SenderID)
+        //{
+        //    return (SchoolID > 0 && TeacherID > 0 && OldClassID > 0 && NewClassID > 0 && UserType > 0 && SenderID > 0) ? service.ReAssignTeacher(SchoolID, TeacherID, OldClassID, NewClassID, UserType, SenderID) : new ReturnResponce("Invalid request");
+        //}
 
         #endregion
 
@@ -726,18 +800,22 @@ namespace SchoolApp.API.Controllers
             return model.ID > 0 ? service.AddUpdateNonTeaching(model, AdminId) : new ReturnResponce("Primary id must be grater then 0");
         }
 
-        /// <summary>
-        /// ReAssign Non Teaching Staff
-        /// </summary>
-        /// <param name="model"></param>
-        /// <param name="AdminId"></param>
-        /// <returns></returns>
-        [Route("Admin/ReAssignNonTeaching")]
-        [HttpPost]
-        public ReturnResponce ReAssignNonTeachingStaff(ISTeacherReassignHistory model, int AdminId)
-        {
-            return model.ID == 0 ? service.ReAssignTeacher(model, AdminId) : new ReturnResponce("Invalid request");
-        }
+        ///// <summary>
+        ///// To ReAssign Non Teaching Staff
+        ///// </summary>
+        ///// <param name="SchoolID"></param>
+        ///// <param name="TeacherID"></param>
+        ///// <param name="OldClassID"></param>
+        ///// <param name="NewClassID"></param>
+        ///// <param name="UserType"></param>
+        ///// <param name="SenderID"></param>
+        ///// <returns></returns>
+        //[Route("Admin/ReAssignNonTeaching")]
+        //[HttpPost]
+        //public ReturnResponce ReAssignNonTeachingStaff(int SchoolID, int TeacherID, int OldClassID, int NewClassID, int UserType, int SenderID)
+        //{
+        //    return (SchoolID > 0 && TeacherID > 0 && OldClassID > 0 && NewClassID > 0 && UserType > 0 && SenderID > 0) ? service.ReAssignTeacher(SchoolID, TeacherID, OldClassID, NewClassID, UserType, SenderID) : new ReturnResponce("Invalid request");
+        //}
 
         #endregion
     }

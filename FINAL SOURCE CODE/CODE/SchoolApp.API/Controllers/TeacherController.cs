@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace SchoolApp.API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class TeacherController : ApiController
     {
         private TeacherService service;

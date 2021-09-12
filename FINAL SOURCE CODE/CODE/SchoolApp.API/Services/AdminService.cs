@@ -5,6 +5,7 @@ using SchoolApp.ClassLibrary;
 using SchoolApp.Database;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -65,7 +66,84 @@ namespace SchoolApp.API.Services
         {
             try
             {
-                var responce = entity.ISSchools.Where(p => p.Deleted == true && p.Active == true && p.ID == SchoolId).FirstOrDefault();
+                var responce = (from s in entity.ISSchools.Where(p => p.Deleted == true && p.Active == true && p.ID == SchoolId)
+                                select new
+                                {
+                                    s.ID,
+                                    s.CustomerNumber,
+                                    s.Name,
+                                    s.Number,
+                                    s.TypeID,
+                                    s.Address1,
+                                    s.Address2,
+                                    s.Town,
+                                    s.CountryID,
+                                    s.Logo,
+                                    s.AdminFirstName,
+                                    s.AdminLastName,
+                                    s.AdminEmail,
+                                    s.Password,
+                                    s.PhoneNumber,
+                                    s.Website,
+                                    s.SupervisorFirstname,
+                                    s.SupervisorLastname,
+                                    s.SupervisorEmail,
+                                    s.OpningTime,
+                                    s.ClosingTime,
+                                    s.LateMinAfterClosing,
+                                    s.ChargeMinutesAfterClosing,
+                                    s.ReportableMinutesAfterClosing,
+                                    s.SetupTrainingStatus,
+                                    s.SetupTrainingDate,
+                                    s.ActivationDate,
+                                    s.SchoolEndDate,
+                                    s.isAttendanceModule,
+                                    s.isNotificationPickup,
+                                    s.NotificationAttendance,
+                                    s.AttendanceModule,
+                                    s.PostCode,
+                                    s.BillingAddress,
+                                    s.BillingAddress2,
+                                    s.BillingPostCode,
+                                    s.BillingCountryID,
+                                    s.BillingTown,
+                                    s.Classfile,
+                                    s.Teacherfile,
+                                    s.Studentfile,
+                                    s.Reportable,
+                                    s.PaymentSystems,
+                                    s.CustSigned,
+                                    s.AccountStatusID,
+                                    s.Active,
+                                    s.Deleted,
+                                    s.CreatedBy,
+                                    s.CreatedDateTime,
+                                    s.ModifyBy,
+                                    s.ModifyDateTime,
+                                    s.DeletedBy,
+                                    s.DeletedDateTime,
+                                    s.CreatedByName,
+                                    s.LastUpdatedBy,
+                                    s.ActivatedBy,
+                                    s.AccountManagerId,
+                                    s.MemorableQueAnswer,
+                                    s.ISActivated,
+                                    s.IsActivationID,
+                                    s.IsEmail_Required_For_Create_Class,
+                                    s.IsEmail_Required_For_Edit_Class,
+                                    s.IsEmail_Required_For_Create_Student,
+                                    s.IsEmail_Required_For_Edit_Student,
+                                    s.IsEmail_Required_For_Create_Teacher,
+                                    s.IsEmail_Required_For_Edit_Teacher,
+                                    s.IsEmail_Required_For_Create_Role,
+                                    s.IsEmail_Required_For_Edit_Role,
+                                    s.IsEmail_Required_For_Create_Holiday,
+                                    s.IsEmail_Required_For_Edit_Holiday,
+                                    s.IsBell,
+                                    TypeName = s.ISSchoolType.Name,
+                                    CountryName = s.ISCountry != null ? s.ISCountry.Name : "",
+                                    AccountStatusName = s.ISAccountStatu != null ? s.ISAccountStatu.Name : "",
+                                }).FirstOrDefault();
                 return new ReturnResponce(responce, EntityJsonIgnore.SchoolIgnore);
             }
             catch (Exception ex)
@@ -80,7 +158,84 @@ namespace SchoolApp.API.Services
         {
             try
             {
-                var responce = entity.ISSchools.Where(p => p.Deleted == true && p.Active == true && p.TypeID == SchoolTypeId).FirstOrDefault();
+                var responce = (from s in entity.ISSchools.Where(p => p.Deleted == true && p.Active == true && p.TypeID == SchoolTypeId)
+                                select new
+                                {
+                                    s.ID,
+                                    s.CustomerNumber,
+                                    s.Name,
+                                    s.Number,
+                                    s.TypeID,
+                                    s.Address1,
+                                    s.Address2,
+                                    s.Town,
+                                    s.CountryID,
+                                    s.Logo,
+                                    s.AdminFirstName,
+                                    s.AdminLastName,
+                                    s.AdminEmail,
+                                    s.Password,
+                                    s.PhoneNumber,
+                                    s.Website,
+                                    s.SupervisorFirstname,
+                                    s.SupervisorLastname,
+                                    s.SupervisorEmail,
+                                    s.OpningTime,
+                                    s.ClosingTime,
+                                    s.LateMinAfterClosing,
+                                    s.ChargeMinutesAfterClosing,
+                                    s.ReportableMinutesAfterClosing,
+                                    s.SetupTrainingStatus,
+                                    s.SetupTrainingDate,
+                                    s.ActivationDate,
+                                    s.SchoolEndDate,
+                                    s.isAttendanceModule,
+                                    s.isNotificationPickup,
+                                    s.NotificationAttendance,
+                                    s.AttendanceModule,
+                                    s.PostCode,
+                                    s.BillingAddress,
+                                    s.BillingAddress2,
+                                    s.BillingPostCode,
+                                    s.BillingCountryID,
+                                    s.BillingTown,
+                                    s.Classfile,
+                                    s.Teacherfile,
+                                    s.Studentfile,
+                                    s.Reportable,
+                                    s.PaymentSystems,
+                                    s.CustSigned,
+                                    s.AccountStatusID,
+                                    s.Active,
+                                    s.Deleted,
+                                    s.CreatedBy,
+                                    s.CreatedDateTime,
+                                    s.ModifyBy,
+                                    s.ModifyDateTime,
+                                    s.DeletedBy,
+                                    s.DeletedDateTime,
+                                    s.CreatedByName,
+                                    s.LastUpdatedBy,
+                                    s.ActivatedBy,
+                                    s.AccountManagerId,
+                                    s.MemorableQueAnswer,
+                                    s.ISActivated,
+                                    s.IsActivationID,
+                                    s.IsEmail_Required_For_Create_Class,
+                                    s.IsEmail_Required_For_Edit_Class,
+                                    s.IsEmail_Required_For_Create_Student,
+                                    s.IsEmail_Required_For_Edit_Student,
+                                    s.IsEmail_Required_For_Create_Teacher,
+                                    s.IsEmail_Required_For_Edit_Teacher,
+                                    s.IsEmail_Required_For_Create_Role,
+                                    s.IsEmail_Required_For_Edit_Role,
+                                    s.IsEmail_Required_For_Create_Holiday,
+                                    s.IsEmail_Required_For_Edit_Holiday,
+                                    s.IsBell,
+                                    TypeName = s.ISSchoolType.Name,
+                                    CountryName = s.ISCountry != null ? s.ISCountry.Name : "",
+                                    AccountStatusName = s.ISAccountStatu != null ? s.ISAccountStatu.Name : "",
+                                }).FirstOrDefault();
                 return new ReturnResponce(responce, EntityJsonIgnore.SchoolIgnore);
             }
             catch (Exception ex)
@@ -160,11 +315,45 @@ namespace SchoolApp.API.Services
 
         #region Class  
 
-        public ReturnResponce GetClassList()
+        public ReturnResponce GetClassTypeList()
         {
             try
             {
-                var responce = entity.ISClasses.Where(p => p.Deleted == true && p.Active == true).ToList();
+                ClassManagement objClassManagement = new ClassManagement();
+                List<MISClassType> objLists = objClassManagement.ClassTypeList();
+
+                return new ReturnResponce(objLists, new string[] { });
+            }
+            catch (Exception ex)
+            {
+                return new ReturnResponce(ex.Message);
+                throw;
+            }
+        }
+        public ReturnResponce GetClassTypeListBySchoolType(int SchoolTypeId)
+        {
+            try
+            {
+                ClassManagement objClassManagement = new ClassManagement();
+                List<MISClassType> objLists = objClassManagement.ClassTypeListSchoolWise(SchoolTypeId);
+
+                return new ReturnResponce(objLists, new string[] { });
+            }
+            catch (Exception ex)
+            {
+                return new ReturnResponce(ex.Message);
+                throw;
+            }
+        }
+
+
+        public ReturnResponce GetClassList(int SchoolId, string year = null, int TypeId = 0)
+        {
+            try
+            {
+                ClassManagement objClassManagement = new ClassManagement();
+                List<MISClass> responce = objClassManagement.ClassList(SchoolId, year, TypeId);
+
                 return new ReturnResponce(responce, EntityJsonIgnore.ClassesIgnore);
             }
             catch (Exception ex)
@@ -173,11 +362,15 @@ namespace SchoolApp.API.Services
                 throw;
             }
         }
-        public ReturnResponce GetClassList(int SchoolId)
+
+
+        public ReturnResponce GetClassListByFilter(int SchoolID, string Year, int typeID, string Status)
         {
             try
             {
-                var responce = entity.ISClasses.Where(p => p.Deleted == true && p.Active == true && p.SchoolID == SchoolId).ToList();
+                ClassManagement objClassManagement = new ClassManagement();
+                List<MISClass> responce = objClassManagement.ClassListByFilter(SchoolID, Year, typeID, Status);
+
                 return new ReturnResponce(responce, EntityJsonIgnore.ClassesIgnore);
             }
             catch (Exception ex)
@@ -186,13 +379,17 @@ namespace SchoolApp.API.Services
                 throw;
             }
         }
+
+
 
         public ReturnResponce GetClass(int ClassID)
         {
             try
             {
-                var responce = entity.ISClasses.Where(p => p.Deleted == true && p.Active == true && p.ID == ClassID).FirstOrDefault();
-                return new ReturnResponce(responce, EntityJsonIgnore.ClassesIgnore);
+                ClassManagement objClassManagement = new ClassManagement();
+                MISClass response = objClassManagement.GetClass(ClassID);
+
+                return new ReturnResponce(response, EntityJsonIgnore.ClassesIgnore);
             }
             catch (Exception ex)
             {
@@ -200,151 +397,211 @@ namespace SchoolApp.API.Services
                 throw;
             }
         }
-        public ReturnResponce AddUpdateClass(ISClass model, int AdminId)
+
+        public ReturnResponce AddClass(int SchoolID, string ClassName, string Year, int ClassTypeID, string AfterSchoolType, string ExtOrganisation, bool Active, string EndDate, bool ISNonListed, int CreateType, int LoginUserId)
         {
             try
             {
-                ISClass insertUpdate = new ISClass();
 
-                if (model.ID > 0)
+                List<ISClass> ObjClasses = entity.ISClasses.Where(p => p.Name == ClassName && p.SchoolID == SchoolID && p.Deleted == true).ToList();
+                if (ObjClasses.Count > 0)
                 {
-                    insertUpdate = entity.ISClasses.Where(x => x.ID == model.ID && x.Active == true && x.Deleted == true).FirstOrDefault();
+                    return new ReturnResponce("ClassName already Exist");
                 }
-
-                if (insertUpdate != null)
+                else
                 {
-                    if (insertUpdate.ID == 0) //// Insert
+                    ISClass obj = new ISClass();
+                    if (ClassTypeID == (int)EnumsManagement.CLASSTYPE.AfterSchool)
                     {
-                        var className = entity.ISClasses.Where(x => x.Name == model.Name && x.SchoolID == model.SchoolID).SingleOrDefault();
-                        if (className.Name == "")
+                        List<ISClass> ObjClass = entity.ISClasses.Where(p => p.SchoolID == SchoolID && p.TypeID == (int)EnumsManagement.CLASSTYPE.AfterSchool).ToList();
+                        if (ObjClass.Count <= 0)
                         {
-                            if (model.ISClassType.ID == (int)EnumsManagement.CLASSTYPE.AfterSchool)
+                            if (AfterSchoolType == "Internal")
                             {
-                                List<ISClass> ObjClass = entity.ISClasses.Where(p => p.SchoolID == Authentication.SchoolID && p.TypeID == (int)EnumsManagement.CLASSTYPE.AfterSchool && p.Active == true).ToList();
-                                if (ObjClass.Count == 0)
+                                obj.Name = ClassName + "(After School)";
+                            }
+                            else
+                            {
+                                obj.Name = ClassName + "(After School Ex)";
+                            }
+                            obj.TypeID = ClassTypeID;
+                            obj.AfterSchoolType = AfterSchoolType;
+                            obj.ExternalOrganisation = ExtOrganisation;
+                            obj.EndDate = new DateTime(2050, 01, 01);
+                            obj.SchoolID = SchoolID;
+                            obj.Active = true;
+                            obj.Deleted = true;
+                            obj.CreatedBy = LoginUserId;
+                            obj.CreatedDateTime = DateTime.Now;
+                            obj.CreatedByType = CreateType;
+                            entity.ISClasses.Add(obj);
+                            entity.SaveChanges();
+                            ISSchool ObjSchools = entity.ISSchools.SingleOrDefault(p => p.ID == SchoolID && p.Deleted == true);
+                            LogManagement.AddLogs("Class Created Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
+                            return new ReturnResponce(obj, EntityJsonIgnore.ClassesIgnore);
+
+                        }
+                        else
+                        {
+                            return new ReturnResponce("Only One After School is Allowed for a Standard School");
+                        }
+                    }
+                    else
+                    {
+                        obj.Name = ClassName;
+                        if (ClassTypeID == (int)EnumsManagement.CLASSTYPE.Standard)
+                        {
+                            obj.Year = Year;
+                        }
+                        obj.TypeID = ClassTypeID;
+                        if (EndDate != "")
+                        {
+                            string dates = EndDate;
+                            string Format = "";
+                            if (dates.Contains("/"))
+                            {
+                                string[] arrDate = dates.Split('/');
+                                Format = arrDate[1].ToString() + "/" + arrDate[0].ToString() + "/" + arrDate[2].ToString();
+                            }
+                            else
+                            {
+                                Format = dates;
+                            }
+                            DateTime dt2 = Convert.ToDateTime(Format);
+                            obj.EndDate = dt2.Date;
+                        }
+                        obj.SchoolID = SchoolID;
+                        obj.Active = true;
+                        obj.Deleted = true;
+                        obj.CreatedBy = LoginUserId;
+                        obj.CreatedDateTime = DateTime.Now;
+                        obj.CreatedByType = CreateType;
+                        entity.ISClasses.Add(obj);
+                        entity.SaveChanges();
+                        ISSchool ObjSchools = entity.ISSchools.SingleOrDefault(p => p.ID == SchoolID && p.Deleted == true);
+                        LogManagement.AddLogs("Class Created Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
+
+                        return new ReturnResponce(obj, EntityJsonIgnore.ClassesIgnore);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogManagement.AddLog(ex);
+                return new ReturnResponce(ex.Message);
+            }
+        }
+
+        public ReturnResponce UpdateClass(int ID, int SchoolID, string ClassName, string Year, int ClassTypeID, string AfterSchoolType, string ExtOrganisation, bool Active, string EndDate, bool ISNonListed, int CreateType, int LoginUserId)
+        {
+            try
+            {
+                ClassManagement objClassManagement = new ClassManagement();
+                if (ID != 0)
+                {
+
+                    List<ISClass> ObjClasses = entity.ISClasses.Where(p => p.ID != ID && p.Name == ClassName && p.SchoolID == SchoolID && p.Deleted == true).ToList();
+                    if (ObjClasses.Count > 0)
+                    {
+                        return new ReturnResponce("ClassName already Exist");
+                    }
+                    else
+                    {
+                        ISClass obj = entity.ISClasses.SingleOrDefault(p => p.ID == ID && p.SchoolID == SchoolID && p.Deleted == true);
+                        if (obj != null)
+                        {
+                            if (ClassTypeID == (int)EnumsManagement.CLASSTYPE.AfterSchool)
+                            {
+                                List<ISClass> ObjClass = entity.ISClasses.Where(p => p.ID != ID && p.SchoolID == Authentication.SchoolID && p.TypeID == (int)EnumsManagement.CLASSTYPE.AfterSchool && p.Active == true).ToList();
+                                if (ObjClass.Count <= 0)
                                 {
-                                    if (model.ISClassType.Name == "Internal")
+                                    if (entity.ISStudents.Where(p => p.ClassID == ID && p.Active == true && p.Deleted == true).Count() > 0)
                                     {
-                                        insertUpdate.Name = model.Name + "(After School)";
-                                        insertUpdate.TypeID = model.TypeID;
-                                        insertUpdate.AfterSchoolType = model.AfterSchoolType;
-                                        insertUpdate.ExternalOrganisation = "";
-                                        insertUpdate.EndDate = new DateTime(2050, 01, 01);
-                                        insertUpdate.SchoolID = model.SchoolID;
-                                        insertUpdate.ISNonListed = false;
-                                        insertUpdate.Active = true;
-                                        insertUpdate.Deleted = true;
-                                        insertUpdate.CreatedBy = AdminId;
-                                        insertUpdate.CreatedByType = Authentication.ISTeacherLogin() == true ? (int)EnumsManagement.CREATEBYTYPE.Teacher : (int)EnumsManagement.CREATEBYTYPE.School;
-                                        insertUpdate.CreatedDateTime = DateTime.Now;
-                                        entity.ISClasses.Add(insertUpdate);
-                                        entity.SaveChanges();
-                                    }
-                                    else
-                                    {
-                                        if (entity.ISSchools.Where(p => p.Name == model.ExternalOrganisation).Count() <= 0)
-                                        {                                            
-                                            return new ReturnResponce("Input the name of the After-School in the text box below. Please select the non-listed checkbox to continue if the name is not auto-selected from the list on our database");                    
+                                        if (Active == false)
+                                        {
+                                            return new ReturnResponce("Class can not be made InActive");
                                         }
                                         else
                                         {
-                                            insertUpdate.Name = model.Name + "(After School Ex)";
-                                            insertUpdate.TypeID = model.TypeID;
-                                            insertUpdate.AfterSchoolType = model.AfterSchoolType;
-                                            insertUpdate.ExternalOrganisation = model.ExternalOrganisation;
-                                            insertUpdate.EndDate = new DateTime(2050, 01, 01);
-                                            insertUpdate.SchoolID = Authentication.SchoolID;
-                                            insertUpdate.ISNonListed = false;
-                                            insertUpdate.Active = true;
-                                            insertUpdate.Deleted = true;
-                                            insertUpdate.CreatedBy = AdminId;
-                                            insertUpdate.CreatedByType = Authentication.ISTeacherLogin() == true ? (int)EnumsManagement.CREATEBYTYPE.Teacher : (int)EnumsManagement.CREATEBYTYPE.School;
-                                            insertUpdate.CreatedDateTime = DateTime.Now;
-                                            entity.ISClasses.Add(insertUpdate);
-                                            entity.SaveChanges();                                            
+                                            var response = objClassManagement.CreateorUpdateClass(ID, SchoolID, ClassName, Year, ClassTypeID, AfterSchoolType, ExtOrganisation, Active);
+                                            ISSchool ObjSchools = entity.ISSchools.SingleOrDefault(p => p.ID == SchoolID && p.Deleted == true);
+                                            LogManagement.AddLogs("Class Updated Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
 
+                                            return new ReturnResponce(response, EntityJsonIgnore.ClassesIgnore);
                                         }
+                                    }
+                                    else
+                                    {
+                                        var response = objClassManagement.CreateorUpdateClass(ID, SchoolID, ClassName, Year, ClassTypeID, AfterSchoolType, ExtOrganisation, Active);
+                                        ISSchool ObjSchools = entity.ISSchools.SingleOrDefault(p => p.ID == SchoolID && p.Deleted == true);
+                                        LogManagement.AddLogs("Class Updated Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
+                                        return new ReturnResponce(response, EntityJsonIgnore.ClassesIgnore);
                                     }
                                 }
                                 else
                                 {
-                                    return new ReturnResponce("Only one after school is allowed for a standard school invalid request");
+                                    return new ReturnResponce("Only One After School is Allowed for a Standard School");
                                 }
                             }
                             else
                             {
-                                insertUpdate.Name = model.Name;
-                                if (model.ISClassType.ID == (int)EnumsManagement.CLASSTYPE.Standard)
+                                if (entity.ISStudents.Where(p => p.ClassID == ID && p.Active == true && p.Deleted == true).Count() > 0)
                                 {
-                                    insertUpdate.Year = Authentication.SchoolTypeID == 2 ? model.Year : "1";
+                                    if (Active == false)
+                                    {
+                                        return new ReturnResponce("Class can not be made InActive");
+                                    }
+                                    else
+                                    {
+                                        var response = objClassManagement.CreateorUpdateClass(ID, SchoolID, ClassName, Year, ClassTypeID, AfterSchoolType, ExtOrganisation, Active);
+                                        ISSchool ObjSchools = entity.ISSchools.SingleOrDefault(p => p.ID == SchoolID && p.Deleted == true);
+                                        LogManagement.AddLogs("Class Updated Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
+                                        return new ReturnResponce(response, EntityJsonIgnore.ClassesIgnore);
+                                    }
                                 }
-                                insertUpdate.TypeID = model.TypeID;
-                                insertUpdate.EndDate = new DateTime(2050, 01, 01);
-                                insertUpdate.SchoolID = Authentication.SchoolID;
-                                insertUpdate.ISNonListed = false;
-                                insertUpdate.Active = true;
-                                insertUpdate.Deleted = true;
-                                insertUpdate.CreatedBy = AdminId;
-                                insertUpdate.CreatedDateTime = DateTime.Now;
-                                entity.ISClasses.Add(insertUpdate);
+                                else
+                                {
+                                    var response = objClassManagement.CreateorUpdateClass(ID, SchoolID, ClassName, Year, ClassTypeID, AfterSchoolType, ExtOrganisation, Active);
+                                    ISSchool ObjSchools = entity.ISSchools.SingleOrDefault(p => p.ID == SchoolID && p.Deleted == true);
+                                    LogManagement.AddLogs("Class Updated Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
+                                    return new ReturnResponce(response, EntityJsonIgnore.ClassesIgnore);
+                                }
                             }
                         }
                         else
                         {
-                            return new ReturnResponce("Class name allready exist");
+                            return new ReturnResponce("Class not Found");
+
                         }
                     }
-                    else if (insertUpdate.ID > 0) //// Update
-                    {
-                        var ClassTeacherId = entity.ISTeachers.Where(x => x.ID == insertUpdate.ID && x.Active == true && x.Deleted == true).SingleOrDefault();
-                       
-                        insertUpdate.Name = model.Name;
-                        insertUpdate.TypeID = model.TypeID;
-                        insertUpdate.EndDate = new DateTime(2050, 01, 01);
-                        insertUpdate.SchoolID = Authentication.SchoolID;
-                        insertUpdate.ISNonListed = false;
-                        insertUpdate.Active = true;
-                        insertUpdate.Deleted = true;
-                        insertUpdate.ModifyBy = AdminId;
-                        insertUpdate.ModifyDateTime = DateTime.Now;
-                        entity.SaveChanges();
-                    }
-
-                    return new ReturnResponce(insertUpdate, EntityJsonIgnore.ClassesIgnore);
                 }
                 else
                 {
-                    ///// Error Responce that invalid data here
-                    return new ReturnResponce("Invalid model or data, Please try with valid data.");
+                    return new ReturnResponce("Class not Updated");
                 }
             }
             catch (Exception ex)
             {
+                ErrorLogManagement.AddLog(ex);
                 return new ReturnResponce(ex.Message);
-                throw;
             }
         }
+
+
+
+
         #endregion
 
         #region Teacher        
-        public ReturnResponce GetTeacherList()
+
+        public ReturnResponce GetTeacherList(int SchoolId, string Year = "", int ClassID = 0, string TeacherName = "", string OrderBy = "", string SortBy = "", int classTypeID = 0, string Status = "")
         {
             try
             {
-                var responce = entity.ISTeachers.Where(p => p.Deleted == true && p.Active == true && p.Role == (int)EnumsManagement.ROLETYPE.TEACHING).ToList();
-                return new ReturnResponce(responce, EntityJsonIgnore.TeacherIgnore);
-            }
-            catch (Exception ex)
-            {
-                return new ReturnResponce(ex.Message);
-                throw;
-            }
-        }
-        public ReturnResponce GetTeacherList(int SchoolId)
-        {
-            try
-            {
-                var responce = entity.ISTeachers.Where(p => p.Deleted == true && p.Active == true && p.SchoolID == SchoolId && p.Role == (int)EnumsManagement.ROLETYPE.TEACHING).ToList();
+                TeacherManagement objTeacherManagement = new TeacherManagement();
+                List<MISTeacher> responce = objTeacherManagement.TeacherList(SchoolId, Year, ClassID, TeacherName, OrderBy, SortBy, classTypeID, Status);
+
+
                 return new ReturnResponce(responce, EntityJsonIgnore.TeacherIgnore);
             }
             catch (Exception ex)
@@ -357,7 +614,9 @@ namespace SchoolApp.API.Services
         {
             try
             {
-                var responce = entity.ISTeachers.Where(p => p.Deleted == true && p.Active == true && p.ID == TeacherId && p.Role == (int)EnumsManagement.ROLETYPE.TEACHING).ToList();
+                TeacherManagement objTeacherManagement = new TeacherManagement();
+                MISTeacher responce = objTeacherManagement.GetTeacher(TeacherId);
+
                 return new ReturnResponce(responce, EntityJsonIgnore.TeacherIgnore);
             }
             catch (Exception ex)
@@ -366,19 +625,7 @@ namespace SchoolApp.API.Services
                 throw;
             }
         }
-        public ReturnResponce GetTeacherList(int SchoolId, int ClassId)
-        {
-            try
-            {
-                var responce = entity.ISTeachers.Where(p => p.Deleted == true && p.Active == true && p.SchoolID == SchoolId && p.ClassID == ClassId && p.Role == (int)EnumsManagement.ROLETYPE.TEACHING).ToList();
-                return new ReturnResponce(responce, EntityJsonIgnore.TeacherIgnore);
-            }
-            catch (Exception ex)
-            {
-                return new ReturnResponce(ex.Message);
-                throw;
-            }
-        }
+
 
         public ReturnResponce AddUpdateTeacher(ISTeacher model, int AdminId)
         {
@@ -475,41 +722,251 @@ namespace SchoolApp.API.Services
             }
         }
 
-        public ReturnResponce ReAssignTeacher(ISTeacherReassignHistory model, int AdminId)
-        {
-            try
-            {
-                ISTeacherReassignHistory ObjReassign = new ISTeacherReassignHistory();
-                if (model.FromClass != model.ToClass)
-                {                    
-                    ObjReassign.SchoolID = model.SchoolID;
-                    ObjReassign.FromClass = model.FromClass;
-                    ObjReassign.ToClass = model.ToClass;
-                    ObjReassign.Date = DateTime.Now;
-                    ObjReassign.TeacherID = model.TeacherID;
-                    ObjReassign.Active = true;
-                    ObjReassign.Deleted = true;
-                    ObjReassign.CreatedBy = AdminId;
-                    ObjReassign.CreatedByType = 1;
-                    ObjReassign.CreatedDateTime = DateTime.Now;
-                    entity.ISTeacherReassignHistories.Add(ObjReassign);
-                    entity.SaveChanges();
-                    return new ReturnResponce(ObjReassign, EntityJsonIgnore.TeacherIgnore);
-                }
-                else
-                {
-                    ///// Error Responce that invalid data here
-                    return new ReturnResponce("Old or New Class are must be diffrent invalid request");
-                }
+        //public ReturnResponce ReAssignTeacher(int SchoolID, int TeacherID, int UserType, int LogInUserId, int[] ClassIds)
+        //{
+
+        //    ISTeacher ObjTeachers = entity.ISTeachers.SingleOrDefault(p => p.ID == TeacherID && p.Deleted == true);
+        //    List<ISTeacherClassAssignment> objClass = entity.ISTeacherClassAssignments.Where(p => p.TeacherID == TeacherID && p.Active == true).ToList();
+        //    string OldClasses = string.Empty;
+        //    string NewClasses = string.Empty;
+
+        //    if (objClass.Count > 0)
+        //    {
+        //        for (int i = 0; i < ClassIds.Length; i++)
+        //        {
+        //            if (objClass.Count >= 1)
+        //            {
+        //                int OldClassID  = 
+        //                TeacherManagement objTeacherManagement = new TeacherManagement();
+        //                objTeacherManagement.TeacherReassignment(SchoolID, TeacherID, OldClassID, NewClassID, UserType, LogInUserId);
+
+        //                OldClasses += objClass[0].ISClass.Name + ", ";
+        //                NewClasses += ddl1stClass.SelectedItem.Text + ", ";
+        //                objTeacherManagement.TeacherReassignment(SchoolID, TeacherID, objClass[0].ClassID, Convert.ToInt32(ddl1stClass.SelectedValue), Authentication.ISTeacherLogin() == true ? (int)EnumsManagement.CREATEBYTYPE.Teacher : (int)EnumsManagement.CREATEBYTYPE.School, Authentication.LogginSchool != null ? Authentication.SchoolID : Authentication.LogginTeacher.ID);
+        //            }
+        //        }
+
+        //        if (ddl1stClass.SelectedValue != "0")
+        //        {
+                   
+        //        }
+        //        if (ddl2ndClass.SelectedValue != "0")
+        //        {
+        //            if (objClass.Count > 1)
+        //            {
+        //                OldClasses += objClass[1].ISClass.Name + ", ";
+        //                NewClasses += ddl2ndClass.SelectedItem.Text + ", ";
+        //                objTeacherManagement.TeacherReassignment(Authentication.SchoolID, ID, objClass[1].ClassID, Convert.ToInt32(ddl2ndClass.SelectedValue), Authentication.ISTeacherLogin() == true ? (int)EnumsManagement.CREATEBYTYPE.Teacher : (int)EnumsManagement.CREATEBYTYPE.School, Authentication.LogginSchool != null ? Authentication.SchoolID : Authentication.LogginTeacher.ID);
+        //            }
+        //        }
+        //        if (ddl3rdClass.SelectedValue != "0")
+        //        {
+        //            if (objClass.Count > 2)
+        //            {
+        //                OldClasses += objClass[2].ISClass.Name + ", ";
+        //                NewClasses += ddl3rdClass.SelectedItem.Text + ", ";
+        //                objTeacherManagement.TeacherReassignment(Authentication.SchoolID, ID, objClass[2].ClassID, Convert.ToInt32(ddl3rdClass.SelectedValue), Authentication.ISTeacherLogin() == true ? (int)EnumsManagement.CREATEBYTYPE.Teacher : (int)EnumsManagement.CREATEBYTYPE.School, Authentication.LogginSchool != null ? Authentication.SchoolID : Authentication.LogginTeacher.ID);
+        //            }
+        //        }
+        //        if (ddl4thClass.SelectedValue != "0")
+        //        {
+        //            if (objClass.Count > 3)
+        //            {
+        //                OldClasses += objClass[3].ISClass.Name + ", ";
+        //                NewClasses += ddl4thClass.SelectedItem.Text + ", ";
+        //                objTeacherManagement.TeacherReassignment(Authentication.SchoolID, ID, objClass[3].ClassID, Convert.ToInt32(ddl4thClass.SelectedValue), Authentication.ISTeacherLogin() == true ? (int)EnumsManagement.CREATEBYTYPE.Teacher : (int)EnumsManagement.CREATEBYTYPE.School, Authentication.LogginSchool != null ? Authentication.SchoolID : Authentication.LogginTeacher.ID);
+        //            }
+        //        }
+        //        if (ddl5thClass.SelectedValue != "0")
+        //        {
+        //            if (objClass.Count > 4)
+        //            {
+        //                OldClasses += objClass[4].ISClass.Name + ", ";
+        //                NewClasses += ddl5thClass.SelectedItem.Text + ", ";
+        //                objTeacherManagement.TeacherReassignment(Authentication.SchoolID, ID, objClass[4].ClassID, Convert.ToInt32(ddl5thClass.SelectedValue), Authentication.ISTeacherLogin() == true ? (int)EnumsManagement.CREATEBYTYPE.Teacher : (int)EnumsManagement.CREATEBYTYPE.School, Authentication.LogginSchool != null ? Authentication.SchoolID : Authentication.LogginTeacher.ID);
+        //            }
+        //        }
+        //        OldClasses = OldClasses.Substring(0, OldClasses.Length - 2);
+        //        NewClasses = NewClasses.Substring(0, NewClasses.Length - 2);
+        //        DB.ISTeacherClassAssignments.RemoveRange(objClass);
+        //        DB.SaveChanges();
+        //    }
+
+        //    if (ObjTeachers.Active == true)
+        //    {
+        //        ISTeacherClassAssignment objClass1 = new ISTeacherClassAssignment();
+        //        objClass1.ClassID = Convert.ToInt32(ddl1stClass.SelectedValue);
+        //        objClass1.TeacherID = ID;
+        //        objClass1.Active = true;
+        //        objClass1.Deleted = true;
+        //        objClass1.CreatedBy = Authentication.LogginSchool != null ? Authentication.SchoolID : Authentication.LogginTeacher.ID;
+        //        objClass1.CreatedDateTime = DateTime.Now;
+        //        objClass1.Out = 0;
+        //        objClass1.Outbit = false;
+        //        DB.ISTeacherClassAssignments.Add(objClass1);
+        //        DB.SaveChanges();
+        //        if (ddl2ndClass.SelectedValue != "0")
+        //        {
+        //            ISTeacherClassAssignment objClass2 = new ISTeacherClassAssignment();
+        //            objClass2.ClassID = Convert.ToInt32(ddl2ndClass.SelectedValue);
+        //            objClass2.TeacherID = ID;
+        //            objClass2.Active = true;
+        //            objClass2.Deleted = true;
+        //            objClass2.CreatedBy = Authentication.LogginSchool != null ? Authentication.SchoolID : Authentication.LogginTeacher.ID;
+        //            objClass2.CreatedDateTime = DateTime.Now;
+        //            objClass2.Out = 0;
+        //            objClass2.Outbit = false;
+        //            DB.ISTeacherClassAssignments.Add(objClass2);
+        //            DB.SaveChanges();
+        //            //edited By maharshi @Gatistavam
+        //            // Class_item_2_ass = DB.ISTeacherClassAssignments.Where(p => p.ClassID == objClass2.ClassID).OrderBy(p => p.ID).ToList();
+
+        //        }
+        //        if (ddl3rdClass.SelectedValue != "0")
+        //        {
+        //            ISTeacherClassAssignment objClass3 = new ISTeacherClassAssignment();
+        //            objClass3.ClassID = Convert.ToInt32(ddl3rdClass.SelectedValue);
+        //            objClass3.TeacherID = ID;
+        //            objClass3.Active = true;
+        //            objClass3.Deleted = true;
+        //            objClass3.CreatedBy = Authentication.LogginSchool != null ? Authentication.SchoolID : Authentication.LogginTeacher.ID;
+        //            objClass3.CreatedDateTime = DateTime.Now;
+        //            objClass3.Out = 0;
+        //            objClass3.Outbit = false;
+        //            DB.ISTeacherClassAssignments.Add(objClass3);
+        //            DB.SaveChanges();
+        //            //edited By maharshi @Gatistavam
+        //            // Class_item_3_ass = DB.ISTeacherClassAssignments.Where(p => p.ClassID == objClass3.ClassID).OrderBy(p => p.ID).ToList();
+
+        //        }
+        //        if (ddl4thClass.SelectedValue != "0")
+        //        {
+        //            ISTeacherClassAssignment objClass4 = new ISTeacherClassAssignment();
+        //            objClass4.ClassID = Convert.ToInt32(ddl4thClass.SelectedValue);
+        //            objClass4.TeacherID = ID;
+        //            objClass4.Active = true;
+        //            objClass4.Deleted = true;
+        //            objClass4.CreatedBy = Authentication.LogginSchool != null ? Authentication.SchoolID : Authentication.LogginTeacher.ID;
+        //            objClass4.CreatedDateTime = DateTime.Now;
+        //            objClass4.Out = 0;
+        //            objClass4.Outbit = false;
+        //            DB.ISTeacherClassAssignments.Add(objClass4);
+        //            DB.SaveChanges();
+        //            //edited By maharshi @Gatistavam
+        //            //Class_item_4_ass = DB.ISTeacherClassAssignments.Where(p => p.ClassID == objClass4.ClassID).OrderBy(p => p.ID).ToList();
+
+        //        }
+        //        if (ddl5thClass.SelectedValue != "0")
+        //        {
+        //            ISTeacherClassAssignment objClass5 = new ISTeacherClassAssignment();
+        //            objClass5.ClassID = Convert.ToInt32(ddl5thClass.SelectedValue);
+        //            objClass5.TeacherID = ID;
+        //            objClass5.Active = true;
+        //            objClass5.Deleted = true;
+        //            objClass5.CreatedBy = Authentication.LogginSchool != null ? Authentication.SchoolID : Authentication.LogginTeacher.ID;
+        //            objClass5.CreatedDateTime = DateTime.Now;
+        //            objClass5.Out = 0;
+        //            objClass5.Outbit = false;
+        //            DB.ISTeacherClassAssignments.Add(objClass5);
+        //            DB.SaveChanges();
+        //            //edited By maharshi @Gatistavam
+        //            //Class_item_5_ass = DB.ISTeacherClassAssignments.Where(p => p.ClassID == objClass5.ClassID).OrderBy(p => p.ID).ToList();
+
+        //        }
+        //    }
+        //    else
+        //    {
+
+        //        ISTeacherClassAssignment objClass1 = new ISTeacherClassAssignment();
+        //        objClass1.ClassID = Convert.ToInt32(ddl1stClass.SelectedValue);
+        //        objClass1.TeacherID = ID;
+        //        objClass1.Active = false;
+        //        objClass1.Deleted = false;
+        //        objClass1.CreatedBy = Authentication.LogginSchool != null ? Authentication.SchoolID : Authentication.LogginTeacher.ID;
+        //        objClass1.CreatedDateTime = DateTime.Now;
+        //        objClass1.Out = 0;
+        //        objClass1.Outbit = false;
+        //        DB.ISTeacherClassAssignments.Add(objClass1);
+        //        DB.SaveChanges();
+        //        if (ddl2ndClass.SelectedValue != "0")
+        //        {
+        //            ISTeacherClassAssignment objClass2 = new ISTeacherClassAssignment();
+        //            objClass2.ClassID = Convert.ToInt32(ddl2ndClass.SelectedValue);
+        //            objClass2.TeacherID = ID;
+        //            objClass2.Active = false;
+        //            objClass2.Deleted = false;
+        //            objClass2.CreatedBy = Authentication.LogginSchool != null ? Authentication.SchoolID : Authentication.LogginTeacher.ID;
+        //            objClass2.CreatedDateTime = DateTime.Now;
+        //            objClass2.Out = 0;
+        //            objClass2.Outbit = false;
+        //            DB.ISTeacherClassAssignments.Add(objClass2);
+        //            DB.SaveChanges();
+        //        }
+        //        if (ddl3rdClass.SelectedValue != "0")
+        //        {
+        //            ISTeacherClassAssignment objClass3 = new ISTeacherClassAssignment();
+        //            objClass3.ClassID = Convert.ToInt32(ddl3rdClass.SelectedValue);
+        //            objClass3.TeacherID = ID;
+        //            objClass3.Active = false;
+        //            objClass3.Deleted = false;
+        //            objClass3.CreatedBy = Authentication.LogginSchool != null ? Authentication.SchoolID : Authentication.LogginTeacher.ID;
+        //            objClass3.CreatedDateTime = DateTime.Now;
+        //            objClass3.Out = 0;
+        //            objClass3.Outbit = false;
+        //            DB.ISTeacherClassAssignments.Add(objClass3);
+        //            DB.SaveChanges();
+        //        }
+        //        if (ddl4thClass.SelectedValue != "0")
+        //        {
+        //            ISTeacherClassAssignment objClass4 = new ISTeacherClassAssignment();
+        //            objClass4.ClassID = Convert.ToInt32(ddl4thClass.SelectedValue);
+        //            objClass4.TeacherID = ID;
+        //            objClass4.Active = false;
+        //            objClass4.Deleted = false;
+        //            objClass4.CreatedBy = Authentication.LogginSchool != null ? Authentication.SchoolID : Authentication.LogginTeacher.ID;
+        //            objClass4.CreatedDateTime = DateTime.Now;
+        //            objClass4.Out = 0;
+        //            objClass4.Outbit = false;
+        //            DB.ISTeacherClassAssignments.Add(objClass4);
+        //            DB.SaveChanges();
+        //        }
+        //        if (ddl5thClass.SelectedValue != "0")
+        //        {
+        //            ISTeacherClassAssignment objClass5 = new ISTeacherClassAssignment();
+        //            objClass5.ClassID = Convert.ToInt32(ddl5thClass.SelectedValue);
+        //            objClass5.TeacherID = ID;
+        //            objClass5.Active = false;
+        //            objClass5.Deleted = false;
+        //            objClass5.CreatedBy = Authentication.LogginSchool != null ? Authentication.SchoolID : Authentication.LogginTeacher.ID;
+        //            objClass5.CreatedDateTime = DateTime.Now;
+        //            objClass5.Out = 0;
+        //            objClass5.Outbit = false;
+        //            DB.ISTeacherClassAssignments.Add(objClass5);
+        //            DB.SaveChanges();
+        //        }
+        //    }
+        //    ISTeacher ObjTeacher = DB.ISTeachers.SingleOrDefault(p => p.ID == ID);
+        //    LogManagement.AddLog("Teacher Class Re-Assign Successfully " + "ID : " + ObjTeacher.Name + " Document Category : Teacher", "Teacher");
+        //    AlertMessageManagement.ServerMessage(Page, "Teacher Class Re-Assign Successfully", (int)AlertMessageManagement.MESSAGETYPE.Success);
+        //    ReassignEmailManage(ObjTeacher, OldClasses, NewClasses);
+        //    Clear();
+        //    bindData("", 0, "", "", "", Convert.ToInt32(ddlClassType.SelectedValue), drpStatus.SelectedValue);
+
+        //    try
+        //    {
+        //        TeacherManagement objTeacherManagement = new TeacherManagement();
+        //        objTeacherManagement.TeacherReassignment(SchoolID, TeacherID, OldClassID, NewClassID, UserType, SenderID);
+        //        return new ReturnResponce(null, new string[] { });
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return new ReturnResponce(ex.Message);
+        //    }
+        //}
 
 
-            }
-            catch (Exception ex)
-            {
-                return new ReturnResponce(ex.Message);
-                throw;
-            }
-        }
+
         #endregion
 
         #region Studnet
@@ -959,6 +1416,7 @@ namespace SchoolApp.API.Services
             }
         }
         #endregion
+
         #region Notification
         public ReturnResponce GetNotification()
         {
@@ -1308,6 +1766,57 @@ namespace SchoolApp.API.Services
                 throw;
             }
         }
+
+
+        public ReturnResponce ReAssignNonTeacher(int TeacherID, int CreatedBy, int[] ClassIds)
+        {
+            try
+            {
+                List<ISTeacherClassAssignment> objClass = entity.ISTeacherClassAssignments.Where(p => p.TeacherID == TeacherID && p.Active == true).ToList();
+                string OldClasses = string.Empty;
+                string NewClasses = string.Empty;
+                if (objClass.Count > 0)
+                {
+                    OldClasses = String.Join(", ", objClass.Select(s => s.ISClass.Name).ToList());
+                }
+                entity.ISTeacherClassAssignments.RemoveRange(objClass);
+                entity.SaveChanges();
+
+
+
+                ISTeacherClassAssignment objClass1 = new ISTeacherClassAssignment();
+                if (ClassIds.Length > 0)
+                {
+                    NewClasses = String.Join(", ", ClassIds);
+                    for (int i = 0; i < ClassIds.Length; i++)
+                    {
+                        objClass1 = new ISTeacherClassAssignment();
+                        objClass1.ClassID = ClassIds[i];
+                        objClass1.TeacherID = TeacherID;
+                        objClass1.Active = true;
+                        objClass1.Deleted = true;
+                        objClass1.CreatedBy = CreatedBy;
+                        objClass1.CreatedDateTime = DateTime.Now;
+                        objClass1.Out = 0;
+                        objClass1.Outbit = false;
+                        entity.ISTeacherClassAssignments.Add(objClass1);
+                        entity.SaveChanges();
+                    }
+                }
+
+                ISTeacher ObjTeacher = entity.ISTeachers.SingleOrDefault(p => p.ID == TeacherID);
+                //ReassignEmailManage(ObjTeacher, OldClasses, NewClasses);            
+                LogManagement.AddLog("NonTeacher ReAssign Successfully " + "Name : " + ObjTeacher.Name + " Document Category : NonTeacher", "NonTeacher");
+
+                return new ReturnResponce(null, new string[] { });
+            }
+            catch (Exception ex)
+            {
+                return new ReturnResponce(ex.Message);
+            }
+        }
+
+       
         #endregion
     }
 }

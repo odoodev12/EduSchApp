@@ -216,6 +216,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ParentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Global.asax.cs">
@@ -227,11 +228,13 @@
     <Compile Include="Models\ViewModels\LoginType.cs" />
     <Compile Include="Models\ModifiedEntities.cs" />
     <Compile Include="Models\ViewModels\PickupReportRequest.cs" />
+    <Compile Include="Models\ViewModels\ReAssignTeacherPostModel.cs" />
     <Compile Include="Models\ViewModels\ReplayMessage.cs" />
     <Compile Include="Models\ReturnResponce.cs" />
     <Compile Include="Models\ViewModels\StudentAttendenceData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdminService.cs" />
+    <Compile Include="Services\LoginServices.cs" />
     <Compile Include="Services\CommonServices.cs" />
     <Compile Include="Services\ParentService.cs" />
     <Compile Include="Services\TeacherService.cs" />
@@ -291,6 +294,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Common\" />
+    <Folder Include="Views\Login\" />
     <Folder Include="Views\Parent\" />
     <Folder Include="Views\Teacher\" />
   </ItemGroup>

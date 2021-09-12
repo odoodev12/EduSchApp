@@ -85,6 +85,7 @@ namespace SchoolApp.API.Models
         public new virtual ICollection<ISTeacherClassAssignment> ISTeacherClassAssignments { get; set; }
         [JsonIgnore]
         public new virtual ISClassType ISClassType { get; set; }
+
     }
 
     public class Teacher : ISTeacher
@@ -212,7 +213,6 @@ namespace SchoolApp.API.Models
         [JsonIgnore]
         public new virtual ISSchoolType ISSchoolType { get; set; }
         [JsonIgnore]
-
         public new virtual ICollection<ISSchoolInvoice> ISSchoolInvoices { get; set; }
 
         [JsonIgnore]
@@ -222,5 +222,30 @@ namespace SchoolApp.API.Models
         
 
     }
+
+
+    public class Students : ISStudent
+    {
+
+        [JsonIgnore]
+        public new virtual ICollection<ISAttendance> ISAttendances { get; set; }
+        [JsonIgnore]
+        public new virtual ISClass ISClass { get; set; }
+        [JsonIgnore]
+        public new virtual ICollection<ISPicker> ISPickers { get; set; }
+        [JsonIgnore]
+        public new virtual ICollection<ISPicker> ISPickers1 { get; set; }
+        [JsonIgnore]
+        public new virtual ICollection<ISPickup> ISPickups { get; set; }
+        [JsonIgnore]
+        public new virtual ISSchool ISSchool { get; set; }
+    }
+
+
+
+    
+
+
+
 
 }

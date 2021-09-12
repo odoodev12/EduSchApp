@@ -60,24 +60,24 @@ namespace SchoolApp.API
                         // you'll need to implement a custom IDocumentFilter and/or IOperationFilter to set these properties
                         // according to your specific authorization implementation
                         //
-                        //c.BasicAuth("basic")
-                        //    .Description("Basic HTTP Authentication");
+                        c.BasicAuth("basic")
+                            .Description("Basic HTTP Authentication");
                         //
                         // NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
-                        //c.ApiKey("apiKey")
-                        //    .Description("API Key Authentication")
-                        //    .Name("apiKey")
-                        //    .In("header");
-                        //
-                        //c.OAuth2("oauth2")
-                        //    .Description("OAuth2 Implicit Grant")
-                        //    .Flow("implicit")
-                        //    .AuthorizationUrl("http://petstore.swagger.wordnik.com/api/oauth/dialog")
-                        //    //.TokenUrl("https://tempuri.org/token")
-                        //    .Scopes(scopes =>
+                        //c.apikey("apikey")
+                        //    .description("api key authentication")
+                        //    .name("apikey")
+                        //    .in("header");
+
+                        //c.oauth2("oauth2")
+                        //    .description("oauth2 implicit grant")
+                        //    .flow("implicit")
+                        //    .authorizationurl("http://petstore.swagger.wordnik.com/api/oauth/dialog")
+                        //    //.tokenurl("https://tempuri.org/token")
+                        //    .scopes(scopes =>
                         //    {
-                        //        scopes.Add("read", "Read access to protected resources");
-                        //        scopes.Add("write", "Write access to protected resources");
+                        //        scopes.add("read", "read access to protected resources");
+                        //        scopes.add("write", "write access to protected resources");
                         //    });
 
                         // Set this flag to omit descriptions for any actions decorated with the Obsolete attribute

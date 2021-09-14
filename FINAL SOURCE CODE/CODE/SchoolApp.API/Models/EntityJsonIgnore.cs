@@ -15,7 +15,24 @@ namespace SchoolApp.API.Models
             }
         }
 
-        public static string[] TeacherIgnore
+        public static string[] ClassTypeIgnore
+        {
+            get
+            {
+                return new[] { "ISClasses"};
+            }
+        }
+
+
+        public static string[] MISTeacherIgnore
+        {
+            get
+            {
+                return new[] { "ObjList" };
+            }
+        }
+
+    public static string[] TeacherIgnore
         {
             get
             {

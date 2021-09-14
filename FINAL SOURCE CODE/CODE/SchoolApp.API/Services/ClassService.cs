@@ -30,7 +30,7 @@ namespace SchoolApp.API.Services
                 ClassManagement objClassManagement = new ClassManagement();
                 List<MISClassType> objLists = objClassManagement.ClassTypeList();
 
-                return new ReturnResponce(objLists, new string[] { });
+                return new ReturnResponce(objLists, EntityJsonIgnore.ClassTypeIgnore);
             }
             catch (Exception ex)
             {
@@ -45,7 +45,7 @@ namespace SchoolApp.API.Services
                 ClassManagement objClassManagement = new ClassManagement();
                 List<MISClassType> objLists = objClassManagement.ClassTypeListSchoolWise(SchoolTypeId);
 
-                return new ReturnResponce(objLists, new string[] { });
+                return new ReturnResponce(objLists, EntityJsonIgnore.ClassTypeIgnore);
             }
             catch (Exception ex)
             {
@@ -144,6 +144,7 @@ namespace SchoolApp.API.Services
                             obj.CreatedByType = CreateType;
                             entity.ISClasses.Add(obj);
                             entity.SaveChanges();
+
                             ISSchool ObjSchools = entity.ISSchools.SingleOrDefault(p => p.ID == SchoolID && p.Deleted == true);
                             LogManagement.AddLogs("Class Created Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
                             return new ReturnResponce(obj, EntityJsonIgnore.ClassesIgnore);

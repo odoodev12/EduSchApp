@@ -33,6 +33,20 @@ namespace SchoolApp.API.Models
             getData();
         }
 
+        public ReturnResponce(dynamic _data, string SuccessMessage,  string[] _jsonproperties = null)
+        {
+            status = ResponceStatus.success;
+            Orgdata = _data;
+            Message = "success : " + SuccessMessage;
+
+            if (_jsonproperties != null)
+            {
+                jsonIngnoreProperties = _jsonproperties;
+            }
+
+            getData();
+        }
+
         //For Error responce
         public ReturnResponce(string _error)
         {

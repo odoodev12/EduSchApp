@@ -22,7 +22,6 @@ namespace SchoolApp.API.Services
         }
 
         #region Class  
-
         public ReturnResponce GetClassTypeList()
         {
             try
@@ -53,8 +52,6 @@ namespace SchoolApp.API.Services
                 throw;
             }
         }
-
-
         public ReturnResponce GetClassList(int SchoolId, string year = null, int ClassTypeId = 0)
         {
             try
@@ -70,14 +67,43 @@ namespace SchoolApp.API.Services
                 throw;
             }
         }
-
-
-        public ReturnResponce GetClassListByFilter(int SchoolID, string Year, int ClassTypeId, string Status)
+        public ReturnResponce GetClassListByFilter(int SchoolID, string Year, int ClassTypeId, string Status, bool IsAscending, string SortBy = "Date")
         {
             try
             {
                 ClassManagement objClassManagement = new ClassManagement();
                 List<MISClass> responce = objClassManagement.ClassListByFilter(SchoolID, Year, ClassTypeId, Status);
+
+                if (SortBy == "Date")
+                {
+
+                    if (IsAscending)
+                        responce = responce.OrderBy(o => o.CreatedDateTime).ToList();
+                    else
+                        responce = responce.OrderByDescending(o => o.CreatedDateTime).ToList();
+
+                }
+                else if (SortBy == "IdNo")
+                {
+                    if (IsAscending)
+                        responce = responce.OrderBy(o => o.ID).ToList();
+                    else
+                        responce = responce.OrderByDescending(o => o.ID).ToList();
+                }
+                else if (SortBy == "TeacherName")
+                {
+                    if (IsAscending)
+                        responce = responce.OrderBy(o => o.TeacherName).ToList();
+                    else
+                        responce = responce.OrderByDescending(o => o.TeacherName).ToList();
+                }
+                else if (SortBy == "RoleName")
+                {
+                    if (IsAscending)
+                        responce = responce.OrderBy(o => o.Name).ToList();
+                    else
+                        responce = responce.OrderBy(o => o.Name).ToList();
+                }
 
                 return new ReturnResponce(responce, EntityJsonIgnore.ClassesIgnore);
             }
@@ -87,9 +113,6 @@ namespace SchoolApp.API.Services
                 throw;
             }
         }
-
-
-
         public ReturnResponce GetClass(int ClassID)
         {
             try
@@ -105,7 +128,6 @@ namespace SchoolApp.API.Services
                 throw;
             }
         }
-
         public ReturnResponce AddClass(int SchoolID, string ClassName, string Year, int ClassTypeID, string AfterSchoolType, string ExtOrganisation, bool Active, string EndDate, bool ISNonListed, int CreateType, int LoginUserId)
         {
             try
@@ -200,7 +222,6 @@ namespace SchoolApp.API.Services
                 return new ReturnResponce(ex.Message);
             }
         }
-
         public ReturnResponce UpdateClass(int ID, int SchoolID, string ClassName, string Year, int ClassTypeID, string AfterSchoolType, string ExtOrganisation, bool Active, string EndDate, bool ISNonListed, int CreateType, int LoginUserId)
         {
             try
@@ -294,9 +315,6 @@ namespace SchoolApp.API.Services
                 return new ReturnResponce(ex.Message);
             }
         }
-
-
-
 
         #endregion
 

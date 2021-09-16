@@ -60,16 +60,18 @@ namespace SchoolApp.API.Controllers
         }
 
         /// <summary>
-        /// To Get Class List By Filter Options (SchoolID , Year, ClasstypeID, Status(Active or InActive))
+        /// To Get Class List By Filter Options (SchoolID , Year, ClasstypeID, Status(Active or InActive), SortBy, IsAscending( True then Asc otherwise Desc) )
         /// </summary>
         /// <param name="SchoolID"></param>
         /// <param name="Year"></param>
         /// <param name="ClassTypeId"></param>
+        /// <param name="SortBy"></param>
+        /// <param name="IsAscending"></param>
         /// <param name="IsActive"></param>
         /// <returns></returns>
         [Route("Classes/ByFilter")]
         [HttpGet]
-        public ReturnResponce ClassListByFilter(int SchoolID, string Year = "", int ClassTypeId = 0, bool? IsActive = null)
+        public ReturnResponce ClassListByFilter(int SchoolID, string Year = "", int ClassTypeId = 0, string SortBy = "Date", bool IsAscending = false, bool? IsActive = null)
         {
             string Status = "";
             if (IsActive != null)
@@ -79,9 +81,10 @@ namespace SchoolApp.API.Controllers
                 else if (IsActive == true)
                     Status = "2";
             }
-           
 
-            return service.GetClassListByFilter(SchoolID, Year, ClassTypeId, Status);
+
+
+            return service.GetClassListByFilter(SchoolID, Year, ClassTypeId, Status, IsAscending, SortBy);
         }
 
 

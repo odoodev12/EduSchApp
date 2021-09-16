@@ -215,7 +215,6 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ClassController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ParentController.cs" />
@@ -239,7 +238,6 @@
     <Compile Include="Services\ClassService.cs" />
     <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\LoginServices.cs" />
-    <Compile Include="Services\CommonServices.cs" />
     <Compile Include="Services\ParentService.cs" />
     <Compile Include="Services\OldTeacherService.cs" />
     <Compile Include="Services\TeacherService.cs" />

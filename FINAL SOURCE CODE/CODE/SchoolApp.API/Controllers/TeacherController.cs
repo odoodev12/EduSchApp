@@ -4,13 +4,15 @@ using SchoolApp.API.Services;
 using SchoolApp.Database;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 
 namespace SchoolApp.API.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class TeacherController : ApiController
     {
         private TeacherService service;
@@ -33,6 +35,19 @@ namespace SchoolApp.API.Controllers
         {
             return service.GetTeacher(TeacherId);
         }
+
+        /// <summary>
+        /// To Get Teachers Name list by SchoolID and TeacherName
+        /// </summary>
+        /// <param name="SchoolID"></param>
+        /// <param name="TeacherName"></param>
+        /// <returns></returns>
+        [Route("Teacher/GetTeacherNameList")]
+        [HttpGet]
+        public ReturnResponce GetTeacherNameList(int SchoolID, string TeacherName)
+        {
+            return service.GetTeacherNameList(SchoolID, TeacherName);
+        }        
 
         /// <summary>
         /// To Reset Password for TeacherLogin
@@ -69,13 +84,13 @@ namespace SchoolApp.API.Controllers
         /// <param name="OrderBy"></param>
         /// <param name="SortBy"></param>
         /// <param name="classTypeID"></param>
-        /// <param name="Status"></param>
+        /// <param name="TeacherStatus"></param>
         /// <returns></returns>
         [Route("Teacher/ListByFilters")]
         [HttpGet]
-        public ReturnResponce TeacherListBySchoolId(int SchoolID, int ClassID = 0, string Year = "", string TeacherName = "", string OrderBy = "Asc", string SortBy = "", int classTypeID = 0, string Status = "0")
+        public ReturnResponce TeacherListBySchoolId(int SchoolID, int ClassID = 0, string Year = "", string TeacherName = "", string OrderBy = "Asc", string SortBy = "", int classTypeID = 0, string TeacherStatus = "0")
         {
-            return service.GetTeacherList(SchoolID, ClassID, Year, TeacherName, OrderBy, SortBy, classTypeID, Status);
+            return service.GetTeacherList(SchoolID, ClassID, Year, TeacherName, OrderBy, SortBy, classTypeID, TeacherStatus);
         }
 
 
@@ -103,18 +118,85 @@ namespace SchoolApp.API.Controllers
             return model.TeacherId > 0 && model.ValidModel() ? service.UpdateTeacher(model) : new ReturnResponce("Primary id must be grater then 0");
         }
 
+
         /// <summary>
-        /// ReAssign Teacher
+        /// To Add class Assign
+        /// CREATEBYTYPE 1 for SchoolLogin and 2 for TeacherLogin
         /// </summary>
-        /// <param name="model"></param>
-        /// <param name="AdminId"></param>
+        /// <param name="SchoolID"></param>
+        /// <param name="TeacherId"></param>
+        /// <param name="ClassIds"></param>
+        /// <param name="CREATEBYTYPE"></param>
+        /// <param name="LoginUserId"></param>
         /// <returns></returns>
-        [Route("Teacher/ReAssignTeacher")]
+        [Route("Teacher/AddClassAssign")]
         [HttpPost]
-        public ReturnResponce ReAssignTeacher(ISTeacherReassignHistory model, int AdminId)
+        public ReturnResponce AddClassAssign(int SchoolID, int TeacherId, int[] ClassIds, int CREATEBYTYPE, int LoginUserId)
         {
-            return model.ID == 0 ? service.ReAssignTeacher(model, AdminId) : new ReturnResponce("Invalid request");
+            return SchoolID > 0 && TeacherId > 0 && LoginUserId  > 0? service.AddClassAssign(SchoolID,  TeacherId,  ClassIds,  CREATEBYTYPE,  LoginUserId) : new ReturnResponce("invalid param or value, Please provide valid details !");
         }
+
+        /// <summary>
+        /// To upload teacher profile image
+        /// For more details please check below link for example 
+        /// https://www.aspsnippets.com/Articles/Web-API-Save-Upload-image-to-Server-in-ASPNet-MVC.aspx
+        /// </summary>
+        /// <param name="TeacherId"></param>
+        /// <returns></returns>
+        [Route("Teacher/UploadProfileImage")]
+        [HttpPost]
+        public ReturnResponce UploadProfileImage(int TeacherId)
+        {
+            try
+            {
+                if (HttpContext.Current.Request.Files.Count > 0 && TeacherId > 0)
+                {
+                    SchoolAppEntities entity = new SchoolAppEntities();
+                    ISTeacher objTeacher = entity.ISTeachers.SingleOrDefault(p => p.ID == TeacherId && p.Active == true && p.Deleted == true);
+
+                    if (objTeacher != null)
+                    {
+                        //Create the Directory.
+                        string path = HttpContext.Current.Server.MapPath("~/Uploads/");
+                        if (!Directory.Exists(path))
+                        {
+                            Directory.CreateDirectory(path);
+                        }
+
+                        //Fetch the File.
+                        HttpPostedFile postedFile = HttpContext.Current.Request.Files[0];
+
+                        //Fetch the File Name.
+                        string fileName = Path.GetFileName(postedFile.FileName);
+
+                        string FullImagePath = path + fileName;
+                        //Save the File.
+                        postedFile.SaveAs(FullImagePath);
+
+
+                        objTeacher.Photo = "Upload/" + fileName;
+                        entity.SaveChanges();
+                        return new ReturnResponce(objTeacher, "Photo Uploaded Successfully", EntityJsonIgnore.TeacherIgnore);
+                    }
+                    else
+                    {
+                        return new ReturnResponce("Teacher not found!");
+                    }
+                }
+                else 
+                {
+                    if (TeacherId > 0)
+                        return new ReturnResponce("Profile image not attached, Please select image!");
+                    else
+                        return new ReturnResponce("Invalid TeacherID !");
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ReturnResponce(ex.Message);
+            }
+        }
+
 
         #endregion
 

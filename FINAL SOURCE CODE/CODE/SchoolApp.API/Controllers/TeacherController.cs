@@ -198,6 +198,44 @@ namespace SchoolApp.API.Controllers
         }
 
 
+        /// <summary>
+        /// To Get Assign Class List
+        /// </summary>
+        /// <param name="TeacherId"></param>
+        /// <returns></returns>
+        [Route("Teacher/GetTeacherClassList")]
+        [HttpGet]
+        public ReturnResponce GetTeacherClassList(int TeacherId)
+        {
+            try
+            {
+                SchoolAppEntities DB = new SchoolAppEntities();
+                string Class = "";
+                string ClassName = "";
+               
+                    var obj = DB.ISTeacherClassAssignments.Where(p => p.TeacherID == TeacherId && p.ISClass.Active == true && p.Active == true).ToList();
+                    if (obj.Count > 0)
+                    {
+                        foreach (var items in obj)
+                        {
+                            Class += items.ISClass.Name + ", ";
+                        }
+                        ClassName = Class.Remove(Class.Length - 2);
+                    }
+                
+                return new ReturnResponce(ClassName,null);
+
+
+            }
+            catch (Exception ex)
+            {
+                return new ReturnResponce(ex.Message);
+            }
+        }
+
+
+
+
         #endregion
 
 

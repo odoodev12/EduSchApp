@@ -98,6 +98,7 @@ namespace SchoolApp.API.Controllers
 
         //}
         #endregion
+
         #region Pickup Report
         /// <summary>
         /// Get Pickup Report
@@ -123,6 +124,49 @@ namespace SchoolApp.API.Controllers
         {
             return service.GetNotification();
         }
+        #endregion
+
+
+        #region Message
+
+        /// <summary>
+        /// To Send Pickup Message to Teachers(If PickupMessageType is "other" then OtherPickupMessage is required )
+        /// </summary>
+        /// <param name="studentname"></param>
+        /// <param name="SchoolID"></param>
+        /// <param name="PickupMessageType"></param>
+        /// <param name="LoginParentId"></param>
+        /// <param name="OtherPickupMessage"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("Parent/SendPickupMessage")]
+        public ReturnResponce SendPickupMessage(string studentname, int SchoolID, string PickupMessageType,  int LoginParentId, string OtherPickupMessage="")
+        {
+            return studentname != null && SchoolID !=0 ? service.SendPickupMessage(studentname, SchoolID, PickupMessageType, OtherPickupMessage, LoginParentId) : new ReturnResponce("Primary id is must be gretar then  0");
+        }
+        /// <summary>
+        /// Send Massage to School Or Teacher
+        /// Note :- (ReceiverGroup(1=School, 2=Teacher))
+        /// </summary>
+        /// <param name="LoginParentId"></param>
+        /// <param name="StudentID"></param>
+        /// <param name="ReceiverGroup"></param>
+        /// <param name="SchoolId"></param>
+        /// <param name="MailSubject"></param>
+        /// <param name="Message"></param>
+        /// <param name="fpUploadAttachment"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("Parent/SendMessage")]
+        public ReturnResponce SendMessage(int LoginParentId, int StudentID, string ReceiverGroup, int SchoolId, string MailSubject, string Message, HttpPostedFile fpUploadAttachment )
+        {
+            return StudentID != 0 && SchoolId != 0 && !string.IsNullOrWhiteSpace(ReceiverGroup) && LoginParentId !=0  &&  !string.IsNullOrWhiteSpace(MailSubject) && !string.IsNullOrWhiteSpace(Message) ? service.SendMessage(LoginParentId, StudentID, ReceiverGroup, SchoolId, MailSubject, Message, fpUploadAttachment) : new ReturnResponce("All Parameter required except Attechment");
+        }
+
+
+
+
+
         #endregion
 
     }

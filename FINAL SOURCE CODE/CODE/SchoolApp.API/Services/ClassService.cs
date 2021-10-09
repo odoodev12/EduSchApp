@@ -67,12 +67,19 @@ namespace SchoolApp.API.Services
                 throw;
             }
         }
-        public ReturnResponce GetClassListByFilter(int SchoolID, string Year, int ClassTypeId, string Status, bool IsAscending, string SortBy = "Date")
+        public ReturnResponce GetClassListByFilter(int SchoolID, string Year, int ClassTypeId,string ClassName, string Status, bool IsAscending, string SortBy = "Date")
         {
             try
             {
                 ClassManagement objClassManagement = new ClassManagement();
                 List<MISClass> responce = objClassManagement.ClassListByFilter(SchoolID, Year, ClassTypeId, Status);
+
+
+                if (ClassName != "")
+                {
+                    responce = responce.Where(w => w.Name.ToLower().Contains(ClassName.Trim().ToLower())).ToList();
+                }
+
 
                 if (SortBy == "Date")
                 {

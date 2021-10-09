@@ -8,6 +8,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
+
 namespace SchoolApp.API.Services
 {
     public class ParentService
@@ -112,7 +113,7 @@ namespace SchoolApp.API.Services
                     }
                     else
                     {
-                         objPicker = entity.ISPickers.SingleOrDefault(p => p.ID == iSPicker.ID && p.Deleted == true);
+                        objPicker = entity.ISPickers.SingleOrDefault(p => p.ID == iSPicker.ID && p.Deleted == true);
                         objPicker.PickerType = iSPicker.PickerType;
                         objPicker.SchoolID = iSPicker.SchoolID;
                         objPicker.ParentID = iSPicker.ParentID;
@@ -136,10 +137,10 @@ namespace SchoolApp.API.Services
                         objPicker.Active = true;
                         objPicker.Deleted = true;
                         objPicker.ModifyBy = iSPicker.ModifyBy;
-                        objPicker.ModifyDateTime = DateTime.Now;                    
-                        entity.SaveChanges();                        
+                        objPicker.ModifyDateTime = DateTime.Now;
+                        entity.SaveChanges();
                     }
-                   
+
                     return new ReturnResponce(objPicker, EntityJsonIgnore.PickerIgnore);
                 }
             }
@@ -149,11 +150,11 @@ namespace SchoolApp.API.Services
             }
         }
 
-        public ReturnResponce DeletePicker(int PickerId , int LoginId , string LoginName)
+        public ReturnResponce DeletePicker(int PickerId, int LoginId, string LoginName)
         {
             try
             {
-               var  objPicker = entity.ISPickers.SingleOrDefault(p => p.ID == PickerId && p.Deleted == true);
+                var objPicker = entity.ISPickers.SingleOrDefault(p => p.ID == PickerId && p.Deleted == true);
 
                 objPicker.Deleted = false;
                 objPicker.Deleted = true;
@@ -161,14 +162,14 @@ namespace SchoolApp.API.Services
                 objPicker.CreatedDateTime = DateTime.Now;
                 objPicker.DeletedByName = LoginName;
                 entity.SaveChanges();
-                return new ReturnResponce(objPicker , EntityJsonIgnore.PickerIgnore);
+                return new ReturnResponce(objPicker, EntityJsonIgnore.PickerIgnore);
             }
             catch (Exception ex)
             {
                 return new ReturnResponce(ex.Message);
             }
         }
-        public ReturnResponce UpdateAssign(int PickerAssignId , int LoginId , string LoginName,ISPickerAssignment iSPickerAssignment)
+        public ReturnResponce UpdateAssign(int PickerAssignId, int LoginId, string LoginName, ISPickerAssignment iSPickerAssignment)
         {
             try
             {
@@ -179,7 +180,7 @@ namespace SchoolApp.API.Services
                 obj.RemoveChildStatus = 0;
                 obj.RemoveChildLastUpdateDate = DateTime.Now;
                 obj.PickCodayExDate = DateTime.Now;
-                obj.StudentAssignBy = LoginName;               
+                obj.StudentAssignBy = LoginName;
                 entity.SaveChanges();
                 return new ReturnResponce(obj, EntityJsonIgnore.PickerIgnore);
             }
@@ -193,13 +194,13 @@ namespace SchoolApp.API.Services
         #endregion
 
         #region  Daily Pickup Status
-        public ReturnResponce GetPckupDailyStatus(DailyPickupReportRequest dailyPickupReportRequest , int LoginId)
+        public ReturnResponce GetPckupDailyStatus(DailyPickupReportRequest dailyPickupReportRequest, int LoginId)
         {
             try
             {
                 int ID = LoginId;
-                int StudentIDs = Convert.ToInt32(dailyPickupReportRequest.StudentID);                
-                var response = DailyPickUpStatus(LoginId , dailyPickupReportRequest.Date, StudentIDs, ID, dailyPickupReportRequest.PickerID, dailyPickupReportRequest.PickupStatus, dailyPickupReportRequest.Orderby, dailyPickupReportRequest.SortByStudentID);
+                int StudentIDs = Convert.ToInt32(dailyPickupReportRequest.StudentID);
+                var response = DailyPickUpStatus(LoginId, dailyPickupReportRequest.Date, StudentIDs, ID, dailyPickupReportRequest.PickerID, dailyPickupReportRequest.PickupStatus, dailyPickupReportRequest.Orderby, dailyPickupReportRequest.SortByStudentID);
 
                 return new ReturnResponce(response, new[] { "" });
             }
@@ -208,7 +209,7 @@ namespace SchoolApp.API.Services
                 return new ReturnResponce(ex.Message);
             }
         }
-        public List<MViewStudentPickUp> DailyPickUpStatus(int LoginId,string date, int StudentID, int StudID, string PickerID, string Status, string OrderBy, string SortBy)
+        public List<MViewStudentPickUp> DailyPickUpStatus(int LoginId, string date, int StudentID, int StudID, string PickerID, string Status, string OrderBy, string SortBy)
         {
             DateTime dt = DateTime.Now;
             if (date != null && date != "")
@@ -260,7 +261,7 @@ namespace SchoolApp.API.Services
                 if (StudID != 0)
                 {
                     ISStudent objStudent = entity.ISStudents.SingleOrDefault(p => p.ID == ID);
-                    
+
                     //objList = objList.Where(p => p.ParantEmail1 == (entity.) || p.ParantEmail2 == Authentication.LoginParentEmail).GroupBy(r => r.StudentID).Select(r => r.First()).ToList();
                 }
             }
@@ -339,20 +340,20 @@ namespace SchoolApp.API.Services
             try
             {
                 int ID = Authentication.LogginParent.ID;
-                    List<MISStudent> response = (from item in entity.ISStudents.Where(p => (p.ParantEmail1.ToLower() == Authentication.LoginParentEmail.ToLower() || p.ParantEmail2.ToLower() == Authentication.LoginParentEmail.ToLower())
-                                              && p.StartDate == null && p.Active == true && p.Deleted == true).ToList()
-                                              select new MISStudent
-                                              {
-                                                  ID = item.ID,
-                                                  StudentName = item.StudentName,
-                                                  StudentPic = item.Photo,
-                                                  SchoolID = item.SchoolID,
-                                                  SchoolName = item.ISSchool.Name,
-                                                  TypeID = item.ISSchool.TypeID.Value,
-                                                  Deleted = item.Deleted,
-                                                  Active = item.Active
-                                              }).OrderByDescending(r => r.TypeID).ToList();
-                    return new ReturnResponce(response, new[] { "" });
+                List<MISStudent> response = (from item in entity.ISStudents.Where(p => (p.ParantEmail1.ToLower() == Authentication.LoginParentEmail.ToLower() || p.ParantEmail2.ToLower() == Authentication.LoginParentEmail.ToLower())
+                                          && p.StartDate == null && p.Active == true && p.Deleted == true).ToList()
+                                             select new MISStudent
+                                             {
+                                                 ID = item.ID,
+                                                 StudentName = item.StudentName,
+                                                 StudentPic = item.Photo,
+                                                 SchoolID = item.SchoolID,
+                                                 SchoolName = item.ISSchool.Name,
+                                                 TypeID = item.ISSchool.TypeID.Value,
+                                                 Deleted = item.Deleted,
+                                                 Active = item.Active
+                                             }).OrderByDescending(r => r.TypeID).ToList();
+                return new ReturnResponce(response, new[] { "" });
             }
             catch (Exception ex)
             {
@@ -377,5 +378,154 @@ namespace SchoolApp.API.Services
             }
         }
         #endregion
+
+        #region Message
+
+        public ReturnResponce SendPickupMessage(string studentname, int ID, string PickupMessageType, string OtherPickupMessage, int LoginParentId)
+        {
+            SchoolAppEntities DB = new SchoolAppEntities();
+            if (!string.IsNullOrWhiteSpace(studentname))
+            {
+                OtherPickupMessage = OtherPickupMessage ?? "";
+                ISStudent CID = DB.ISStudents.OrderByDescending(p => p.ID).FirstOrDefault(p => p.SchoolID == ID && p.StudentName == studentname && p.Active == true);
+                var tlist = DB.ISTeacherClassAssignments.Where(p => p.ISTeacher.Role == (int)EnumsManagement.ROLETYPE.TEACHING && p.ClassID == CID.ClassID && p.Active == true).ToList();
+                if (string.IsNullOrWhiteSpace(PickupMessageType))
+                {
+                    return new ReturnResponce("Please select one Message Option to Complete this Action");
+                }
+                else if (PickupMessageType.Trim().ToLower() == "other" && string.IsNullOrWhiteSpace(OtherPickupMessage))
+                {
+                    return new ReturnResponce("Please enter other pickup message.");
+                }
+                else
+                {
+
+                    List<ISPickUpMessage> Messages = new List<ISPickUpMessage>();
+                    foreach (var TID in tlist)
+                    {
+                        string Desc = PickupMessageType + OtherPickupMessage;
+                        ISStudent ObjStudent = DB.ISStudents.SingleOrDefault(p => p.SchoolID == ID && p.StudentName == studentname && p.Active == true);
+                        string Email = DB.ISTeachers.SingleOrDefault(p => p.ID == TID.TeacherID).Email;
+                        EmailManagement objEmailManagement = new EmailManagement();
+                        try
+                        {
+                            string Message = string.Format("<center><font size='5' color='blue'>School APP</font></center><br /><br />Dear {0},<br><br> Subject &nbsp;: {1}<br><br>Description &nbsp;: {2}.<br /><br/>Thanks, <br/> StudentName : {3}<br>Parent Name : {4}<br>Class : {5}<br>", TID.ISTeacher.Name, "PickUp Message", Desc, ObjStudent.StudentName, ObjStudent.ParantName1, ObjStudent.ISClass.Name);
+                            objEmailManagement.SendEmail(Email, "Pickup Message", Message);
+                        }
+                        catch (Exception ex)
+                        {
+                            ErrorLogManagement.AddLog(ex);
+                        }
+                        ISPickUpMessage ObjMessage = new ISPickUpMessage();
+                        ObjMessage.SchoolID = ID;
+                        ObjMessage.Message = Desc;
+                        ObjMessage.ReceiverID = TID.TeacherID;
+                        ObjMessage.ClassID = ObjStudent.ClassID;
+                        ObjMessage.SendID = ObjStudent.ID;
+                        ObjMessage.SenderName = ObjStudent.ParantName1;
+                        ObjMessage.Viewed = false;
+                        ObjMessage.Active = true;
+                        ObjMessage.Deleted = true;
+                        ObjMessage.CreatedBy = LoginParentId;
+                        ObjMessage.CreatedDateTime = DateTime.Now;
+                        DB.ISPickUpMessages.Add(ObjMessage);
+                        DB.SaveChanges();
+                        Messages.Add(ObjMessage);
+
+                    }
+
+                    return new ReturnResponce(Messages, "Message send Successfully");
+                }
+            }
+            else
+            {
+                return new ReturnResponce("Student Name Can't be null");
+            }
+        }
+
+
+        public ReturnResponce SendMessage(int LoginParentId,int StudentID, string ReceiverGroup,int SchoolId,string MailSubject,string txtDescription, HttpPostedFile fpUploadAttachment)
+        {
+            SchoolAppEntities DB = new SchoolAppEntities();
+            EmailManagement objEmailManagement = new EmailManagement();
+            try
+            {
+                bool MailStatus = false;
+
+                var obj = LoginParentId;
+                string FileName = "";
+                string StudentName = DB.ISStudents.SingleOrDefault(p => p.ID == StudentID).StudentName;
+                string ClassName = DB.ISStudents.SingleOrDefault(p => p.ID == StudentID).ISClass.Name;
+                string ParentName = DB.ISStudents.SingleOrDefault(p => p.ID == StudentID).ParantName1;
+                if (fpUploadAttachment != null )
+                {
+                    string filename = System.IO.Path.GetFileName(fpUploadAttachment.FileName);
+                    fpUploadAttachment.SaveAs(HttpContext.Current.Server.MapPath("../Upload/" + filename));
+                    FileName = HttpContext.Current.Server.MapPath("../Upload/" + System.IO.Path.GetFileName(fpUploadAttachment.FileName));
+                }
+
+                if (ReceiverGroup == "1")
+                {
+
+                    List<ISSchool> ObjSchool = DB.ISSchools.Where(p => p.ID == SchoolId && p.Deleted == true).ToList();
+
+                   string AdminMailId = string.Join(";", ObjSchool.Select(r => r.AdminEmail).ToList());
+
+                   
+                    string Message = string.Format("<center><font size='5' color='blue'>School APP</font></center><br /><br />Dear {0},<br><br> {1}.<br /><br/>Thanks, <br/> StudentName : {2}<br>Parent Name : {3}<br>Class : {4}<br>", "Admin", txtDescription, StudentName, ParentName, ClassName);
+                    if (FileName != "")
+                    {
+                        MailStatus= objEmailManagement.SendEmails(AdminMailId, MailSubject, Message, FileName);
+                    }
+                    else
+                    {
+                        MailStatus= objEmailManagement.SendEmail(AdminMailId, MailSubject, Message);
+                    }
+
+                }
+                else if (ReceiverGroup == "2")
+                {
+                    TeacherManagement objTeacherManagement = new TeacherManagement();
+                    ISStudent ObjSt = DB.ISStudents.OrderByDescending(p => p.ID).FirstOrDefault(p => p.SchoolID == SchoolId && p.ID == StudentID && p.Active == true);
+
+                    var teacherList = objTeacherManagement.TeacherList(ObjSt.SchoolID.Value, "", ObjSt.ClassID.Value, "", "", "", 0, "1");
+                   string TeachersMailId = string.Join(";", teacherList.Select(r => r.Email).ToList());
+
+                  
+                    string Message = string.Format("<center><font size='5' color='blue'>School APP</font></center><br /><br />Dear {0},<br><br>{1}.<br /><br/>Thanks, <br/> StudentName : {2}<br>Parent Name : {3}<br>Class : {4}<br>", "Sir", txtDescription, StudentName, ParentName, ClassName);
+                    if (FileName != "")
+                    {
+                        MailStatus = objEmailManagement.SendEmails(TeachersMailId, MailSubject, Message, FileName);
+                    }
+                    else
+                    {
+                        MailStatus = objEmailManagement.SendEmail(TeachersMailId, MailSubject, Message);
+                    }
+                }
+                else
+                {
+                    return new ReturnResponce("Please Enter valid ReceiverGroup. (1=School, 2=Teacher)");
+                }
+
+                return new ReturnResponce(MailStatus, "Mail Send SucessFully");
+
+              
+            }
+            catch (Exception ex)
+            {
+                ErrorLogManagement.AddLog(ex);
+                return new ReturnResponce(ex.Message);
+            }
+
+        }
+
+
+        #endregion
+
+
     }
+
+
+
+
 }

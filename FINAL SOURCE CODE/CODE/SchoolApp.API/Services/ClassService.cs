@@ -81,7 +81,7 @@ namespace SchoolApp.API.Services
                 }
 
 
-                if (SortBy == "Date")
+                if (SortBy.ToLower() == "Date".ToLower())
                 {
 
                     if (IsAscending)
@@ -90,21 +90,35 @@ namespace SchoolApp.API.Services
                         responce = responce.OrderByDescending(o => o.CreatedDateTime).ToList();
 
                 }
-                else if (SortBy == "IdNo")
+                else if (SortBy.ToLower() == "IdNo".ToLower())
                 {
                     if (IsAscending)
                         responce = responce.OrderBy(o => o.ID).ToList();
                     else
                         responce = responce.OrderByDescending(o => o.ID).ToList();
                 }
-                else if (SortBy == "TeacherName")
+                else if (SortBy.ToLower() == "TeacherName".ToLower())
                 {
                     if (IsAscending)
                         responce = responce.OrderBy(o => o.TeacherName).ToList();
                     else
                         responce = responce.OrderByDescending(o => o.TeacherName).ToList();
                 }
-                else if (SortBy == "RoleName")
+                else if (SortBy.ToLower() == "RoleName".ToLower())
+                {
+                    if (IsAscending)
+                        responce = responce.OrderBy(o => o.Name).ToList();
+                    else
+                        responce = responce.OrderBy(o => o.Name).ToList();
+                }
+                else if (SortBy.ToLower() == "ClassType".ToLower())
+                {
+                    if (IsAscending)
+                        responce = responce.OrderBy(o => o.ClassType).ToList();
+                    else
+                        responce = responce.OrderBy(o => o.ClassType).ToList();
+                }
+                else if (SortBy.ToLower() == "ClassName".ToLower())
                 {
                     if (IsAscending)
                         responce = responce.OrderBy(o => o.Name).ToList();

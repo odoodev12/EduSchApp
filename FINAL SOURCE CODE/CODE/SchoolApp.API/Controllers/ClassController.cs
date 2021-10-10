@@ -79,6 +79,7 @@ namespace SchoolApp.API.Controllers
         /// To Get Class List By Filter Options (SchoolID , Year, ClasstypeID, Status(Active or InActive),Class Name, SortBy, IsAscending( True then Asc otherwise Desc) )
         /// </summary>
         /// <param name="SchoolID"></param>
+        /// <param name="TeacherID"></param>
         /// <param name="Year"></param>
         /// <param name="ClassTypeId"></param>
         /// <param name="SortBy"></param>
@@ -86,27 +87,26 @@ namespace SchoolApp.API.Controllers
         /// <param name="IsAscending"></param>
         /// <param name="IsActive"></param>
         /// <returns></returns>
-        [AllowAnonymous]
         [Route("Classes/ByFilter")]
         [HttpGet]
-        public ReturnResponce ClassListByFilter(int SchoolID, int TeacherID, string Year = "", int ClassTypeId = 0, string SortBy = "Date", string ClassName = "", bool IsAscending = false, bool? IsActive = null)
+        public ReturnResponce ClassListByFilter(int SchoolID, int? TeacherID=null, string Year = null, int? ClassTypeId = null, string SortBy = null, string ClassName = null, bool? IsAscending= null, bool? IsActive = null)
         {
-            string Status = "";
+            string Status = "0"; /// All Active and Inactive included
             if (IsActive != null)
             {
                 if (IsActive == true)
                     Status = "1";
-                else if (IsActive == true)
+                else if (IsActive == false)
                     Status = "2";
             }
 
-            if (TeacherID > 0)
+            if (TeacherID != null && TeacherID > 0)
             {
-                return service.GetClassListByFilter(SchoolID, TeacherID, Year, ClassTypeId, ClassName, Status, IsAscending, SortBy);
+                return service.GetClassListByFilter(SchoolID, TeacherID??0, Year??"", ClassTypeId??0, ClassName??"", Status, IsAscending?? false, SortBy?? "Date");
             }
             else
             {
-                return service.GetClassListByFilter(SchoolID, Year, ClassTypeId, ClassName, Status, IsAscending, SortBy);
+                return service.GetClassListByFilter(SchoolID, Year??"", ClassTypeId??0, ClassName??"", Status, IsAscending?? false, SortBy?? "Date");
             }
         }
 

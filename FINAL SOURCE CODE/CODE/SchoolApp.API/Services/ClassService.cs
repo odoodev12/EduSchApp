@@ -130,7 +130,7 @@ namespace SchoolApp.API.Services
 
 
                 var classList = entity.ISTeacherClassAssignments.Where(p => p.TeacherID == TeacherId && p.ISClass.Active == true && p.Active == true).Select(s => s.ClassID).ToList();
-                List<MISClass> Filterresponce = responce.Where(w => classList.Any(c => c == w.ID)).ToList();
+                List<MISClass> Filterresponce = classList.Count > 0 ? responce.Where(w => classList.Any(c => c == w.ID)).ToList() : new List<MISClass>();
 
                 return new ReturnResponce(Filterresponce, EntityJsonIgnore.ClassesIgnore);
             }
@@ -148,7 +148,7 @@ namespace SchoolApp.API.Services
                 List<MISClass> Serviceresponce = objClassManagement.ClassListByFilter(SchoolID, Year, ClassTypeId, Status);
 
                 var classList = entity.ISTeacherClassAssignments.Where(p => p.TeacherID == TeacherId && p.ISClass.Active == true && p.Active == true).Select(s => s.ClassID).ToList();
-                List<MISClass> responce = Serviceresponce.Where(w => classList.Any(c => c == w.ID)).ToList();
+                List<MISClass> responce = classList.Count > 0 ?  Serviceresponce.Where(w => classList.Any(c => c == w.ID)).ToList() : new List<MISClass>();
 
                 if (ClassName != "")
                 {

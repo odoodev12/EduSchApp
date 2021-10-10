@@ -121,7 +121,7 @@ namespace SchoolApp.API.Services
             }
         }
 
-        public ReturnResponce GetClassList(int SchoolId, int TeacherId, string year = null, int ClassTypeId)
+        public ReturnResponce GetClassList(int SchoolId, int TeacherId, string year, int ClassTypeId)
         {
             try
             {

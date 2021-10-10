@@ -67,13 +67,88 @@ namespace SchoolApp.API.Services
                 throw;
             }
         }
-        public ReturnResponce GetClassListByFilter(int SchoolID, string Year, int ClassTypeId,string ClassName, string Status, bool IsAscending, string SortBy = "Date")
+        public ReturnResponce GetClassListByFilter(int SchoolID, string Year, int ClassTypeId, string ClassName, string Status, bool IsAscending, string SortBy = "Date")
         {
             try
             {
                 ClassManagement objClassManagement = new ClassManagement();
                 List<MISClass> responce = objClassManagement.ClassListByFilter(SchoolID, Year, ClassTypeId, Status);
 
+
+                if (ClassName != "")
+                {
+                    responce = responce.Where(w => w.Name.ToLower().Contains(ClassName.Trim().ToLower())).ToList();
+                }
+
+
+                if (SortBy == "Date")
+                {
+
+                    if (IsAscending)
+                        responce = responce.OrderBy(o => o.CreatedDateTime).ToList();
+                    else
+                        responce = responce.OrderByDescending(o => o.CreatedDateTime).ToList();
+
+                }
+                else if (SortBy == "IdNo")
+                {
+                    if (IsAscending)
+                        responce = responce.OrderBy(o => o.ID).ToList();
+                    else
+                        responce = responce.OrderByDescending(o => o.ID).ToList();
+                }
+                else if (SortBy == "TeacherName")
+                {
+                    if (IsAscending)
+                        responce = responce.OrderBy(o => o.TeacherName).ToList();
+                    else
+                        responce = responce.OrderByDescending(o => o.TeacherName).ToList();
+                }
+                else if (SortBy == "RoleName")
+                {
+                    if (IsAscending)
+                        responce = responce.OrderBy(o => o.Name).ToList();
+                    else
+                        responce = responce.OrderBy(o => o.Name).ToList();
+                }
+
+                return new ReturnResponce(responce, EntityJsonIgnore.ClassesIgnore);
+            }
+            catch (Exception ex)
+            {
+                return new ReturnResponce(ex.Message);
+                throw;
+            }
+        }
+
+        public ReturnResponce GetClassList(int SchoolId, int TeacherId, string year = null, int ClassTypeId)
+        {
+            try
+            {
+                ClassManagement objClassManagement = new ClassManagement();
+                List<MISClass> responce = objClassManagement.ClassList(SchoolId, year, ClassTypeId);
+
+
+                var classList = entity.ISTeacherClassAssignments.Where(p => p.TeacherID == TeacherId && p.ISClass.Active == true && p.Active == true).Select(s => s.ClassID).ToList();
+                List<MISClass> Filterresponce = responce.Where(w => classList.Any(c => c == w.ID)).ToList();
+
+                return new ReturnResponce(Filterresponce, EntityJsonIgnore.ClassesIgnore);
+            }
+            catch (Exception ex)
+            {
+                return new ReturnResponce(ex.Message);
+                throw;
+            }
+        }
+        public ReturnResponce GetClassListByFilter(int SchoolID, int TeacherId, string Year, int ClassTypeId, string ClassName, string Status, bool IsAscending, string SortBy = "Date")
+        {
+            try
+            {
+                ClassManagement objClassManagement = new ClassManagement();
+                List<MISClass> Serviceresponce = objClassManagement.ClassListByFilter(SchoolID, Year, ClassTypeId, Status);
+
+                var classList = entity.ISTeacherClassAssignments.Where(p => p.TeacherID == TeacherId && p.ISClass.Active == true && p.Active == true).Select(s => s.ClassID).ToList();
+                List<MISClass> responce = Serviceresponce.Where(w => classList.Any(c => c == w.ID)).ToList();
 
                 if (ClassName != "")
                 {

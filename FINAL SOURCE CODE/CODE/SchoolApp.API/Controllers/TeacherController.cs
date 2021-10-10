@@ -99,7 +99,7 @@ namespace SchoolApp.API.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [Route("Teacher/Teacher")]
+        [Route("Teacher/Add")]
         [HttpPost]
         public ReturnResponce AddTeacher(AddTeacherViewModel model)
         {
@@ -111,8 +111,8 @@ namespace SchoolApp.API.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [Route("Teacher/Teacher")]
-        [HttpPut]
+        [Route("Teacher/Update")]
+        [HttpPost]
         public ReturnResponce UpdateTeacher(UpdateTeacherViewModel model)
         {
             return model.TeacherId > 0 && model.ValidModel() ? service.UpdateTeacher(model) : new ReturnResponce("Primary id must be grater then 0");
@@ -212,17 +212,17 @@ namespace SchoolApp.API.Controllers
                 SchoolAppEntities DB = new SchoolAppEntities();
                 string Class = "";
                 string ClassName = "";
-               
-                    var obj = DB.ISTeacherClassAssignments.Where(p => p.TeacherID == TeacherId && p.ISClass.Active == true && p.Active == true).ToList();
-                    if (obj.Count > 0)
+
+                var obj = DB.ISTeacherClassAssignments.Where(p => p.TeacherID == TeacherId && p.ISClass.Active == true && p.Active == true).ToList();
+                if (obj.Count > 0)
+                {
+                    foreach (var items in obj)
                     {
-                        foreach (var items in obj)
-                        {
-                            Class += items.ISClass.Name + ", ";
-                        }
-                        ClassName = Class.Remove(Class.Length - 2);
+                        Class += items.ISClass.Name + ", ";
                     }
-                
+                    ClassName = Class.Remove(Class.Length - 2);
+                }
+
                 return new ReturnResponce(ClassName,null);
 
 

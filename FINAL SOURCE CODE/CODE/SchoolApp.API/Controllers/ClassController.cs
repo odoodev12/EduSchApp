@@ -54,9 +54,25 @@ namespace SchoolApp.API.Controllers
         /// <returns></returns>
         [Route("Classes/BySchoolId")]
         [HttpGet]
-        public ReturnResponce ClassListBySchoolId(int SchoolId, string year = "", int ClassTypeId = 0)
+        public ReturnResponce ClassListBySchoolId(int SchoolId, string year = null, int? ClassTypeId = null)
         {
-            return service.GetClassList(SchoolId, year, ClassTypeId);
+            return service.GetClassList(SchoolId, year ?? "", ClassTypeId ?? 0);
+        }
+
+
+        /// <summary>
+        /// To Get class list by SchoolId,TeacherId, Year and ClassTypeId
+        /// </summary>
+        /// <param name="SchoolId"></param>
+        /// <param name="TeacherId"></param>
+        /// <param name="year"></param>
+        /// <param name="ClassTypeId"></param>
+        /// <returns></returns>
+        [Route("Classes/ByTeacherId")]
+        [HttpGet]
+        public ReturnResponce ClassListByTeacherId(int SchoolId, int TeacherId, string year = null, int? ClassTypeId = null)
+        {
+            return service.GetClassList(SchoolId, TeacherId, year??"", ClassTypeId ?? 0);
         }
 
         /// <summary>
@@ -73,7 +89,7 @@ namespace SchoolApp.API.Controllers
         [AllowAnonymous]
         [Route("Classes/ByFilter")]
         [HttpGet]
-        public ReturnResponce ClassListByFilter(int SchoolID, string Year = "", int ClassTypeId = 0, string SortBy = "Date",string ClassName="", bool IsAscending = false, bool? IsActive = null)
+        public ReturnResponce ClassListByFilter(int SchoolID, int TeacherID, string Year = "", int ClassTypeId = 0, string SortBy = "Date", string ClassName = "", bool IsAscending = false, bool? IsActive = null)
         {
             string Status = "";
             if (IsActive != null)
@@ -84,9 +100,14 @@ namespace SchoolApp.API.Controllers
                     Status = "2";
             }
 
-
-
-            return service.GetClassListByFilter(SchoolID, Year, ClassTypeId,ClassName, Status, IsAscending, SortBy);
+            if (TeacherID > 0)
+            {
+                return service.GetClassListByFilter(SchoolID, TeacherID, Year, ClassTypeId, ClassName, Status, IsAscending, SortBy);
+            }
+            else
+            {
+                return service.GetClassListByFilter(SchoolID, Year, ClassTypeId, ClassName, Status, IsAscending, SortBy);
+            }
         }
 
 
@@ -130,8 +151,8 @@ namespace SchoolApp.API.Controllers
         /// <param name="LoginUserId"></param>
         /// <returns></returns>
         [Route("Class/Update")]
-        [HttpPut]
-        public ReturnResponce UpdateClass(int ClassID, int SchoolID, string Name, int LoginUserId, int ClassTypeID, bool Active, bool ISNonListed,string Year = "", string AfterSchoolType="", string ExternalOrganisation="",  string EndDate="",  int CreateType=0)
+        [HttpPost]
+        public ReturnResponce UpdateClass(int ClassID, int SchoolID, string Name, int LoginUserId, int ClassTypeID, bool Active, bool ISNonListed, string Year = "", string AfterSchoolType = "", string ExternalOrganisation = "", string EndDate = "", int CreateType = 0)
         {
 
             return (ClassID > 0 && LoginUserId > 0) ? service.UpdateClass(ClassID, SchoolID, Name, Year, ClassTypeID, AfterSchoolType, ExternalOrganisation, Active, EndDate, ISNonListed, CreateType, LoginUserId) : new ReturnResponce("Primary id or logged in id  must be greater then 0 ");

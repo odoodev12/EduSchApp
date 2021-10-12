@@ -261,8 +261,6 @@ namespace SchoolApp.API.Services
                 if (StudID != 0)
                 {
                     ISStudent objStudent = entity.ISStudents.SingleOrDefault(p => p.ID == ID);
-
-                    //objList = objList.Where(p => p.ParantEmail1 == (entity.) || p.ParantEmail2 == Authentication.LoginParentEmail).GroupBy(r => r.StudentID).Select(r => r.First()).ToList();
                 }
             }
             if (StudentID != 0)
@@ -335,12 +333,12 @@ namespace SchoolApp.API.Services
         #endregion
 
         #region PickupReport
-        public ReturnResponce GetPickupReport()
+        public ReturnResponce GetPickupReport(int LogginParentId, string LoginParentEmail)
         {
             try
             {
-                int ID = Authentication.LogginParent.ID;
-                List<MISStudent> response = (from item in entity.ISStudents.Where(p => (p.ParantEmail1.ToLower() == Authentication.LoginParentEmail.ToLower() || p.ParantEmail2.ToLower() == Authentication.LoginParentEmail.ToLower())
+                
+                List<MISStudent> response = (from item in entity.ISStudents.Where(p => (p.ParantEmail1.ToLower() == LoginParentEmail.ToLower() || p.ParantEmail2.ToLower() == LoginParentEmail.ToLower())
                                           && p.StartDate == null && p.Active == true && p.Deleted == true).ToList()
                                              select new MISStudent
                                              {

@@ -101,14 +101,16 @@ namespace SchoolApp.API.Controllers
 
         #region Pickup Report
         /// <summary>
-        /// Get Pickup Report
+        /// Get Pickup Report for Parent Login
         /// </summary>
+        /// <param name="LogginParentId"></param>
+        /// <param name="LoginParentEmail"></param>
         /// <returns></returns>
         [HttpGet]
         [Route("Parent/PickUpReport")]
-        public ReturnResponce GetPickupReport()
+        public ReturnResponce GetPickupReport(int LogginParentId, string LoginParentEmail)
         {
-            return service.GetPickupReport();
+            return (LogginParentId > 0 && !string.IsNullOrWhiteSpace(LoginParentEmail)) ? service.GetPickupReport(LogginParentId, LoginParentEmail) : new ReturnResponce("LoginParentId and Email is required.");
         }
         #endregion
 

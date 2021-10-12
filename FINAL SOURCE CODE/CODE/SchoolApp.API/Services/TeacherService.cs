@@ -445,7 +445,7 @@ namespace SchoolApp.API.Services
                 if (objTeacher != null)
                 {
                     objTeacher.Password = EncryptionHelper.Encrypt(NewPassword);
-                    objTeacher.ModifyBy = Authentication.LogginTeacher.ID;
+                    objTeacher.ModifyBy = TeacherID;
                     objTeacher.ModifyDateTime = DateTime.Now;
                     entity.SaveChanges();
 

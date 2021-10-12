@@ -512,7 +512,7 @@ namespace SchoolApp.API.Services
                         {
                             if (ClassTypeID == (int)EnumsManagement.CLASSTYPE.AfterSchool)
                             {
-                                List<ISClass> ObjClass = entity.ISClasses.Where(p => p.ID != ID && p.SchoolID == Authentication.SchoolID && p.TypeID == (int)EnumsManagement.CLASSTYPE.AfterSchool && p.Active == true).ToList();
+                                List<ISClass> ObjClass = entity.ISClasses.Where(p => p.ID != ID && p.SchoolID == SchoolID && p.TypeID == (int)EnumsManagement.CLASSTYPE.AfterSchool && p.Active == true).ToList();
                                 if (ObjClass.Count <= 0)
                                 {
                                     if (entity.ISStudents.Where(p => p.ClassID == ID && p.Active == true && p.Deleted == true).Count() > 0)

@@ -149,12 +149,11 @@ namespace SchoolApp.API.Controllers
         /// <param name="ISNonListed"></param>
         /// <param name="CreateType"></param>
         /// <param name="LoginUserId"></param>
-        /// <returns></returns>
+        /// <returns></returns>        
         [Route("Class/Update")]
         [HttpPost]
         public ReturnResponce UpdateClass(int ClassID, int SchoolID, string Name, int LoginUserId, int ClassTypeID, bool Active, bool ISNonListed, string Year = "", string AfterSchoolType = "", string ExternalOrganisation = "", string EndDate = "", int CreateType = 0)
         {
-
             return (ClassID > 0 && LoginUserId > 0) ? service.UpdateClass(ClassID, SchoolID, Name, Year, ClassTypeID, AfterSchoolType, ExternalOrganisation, Active, EndDate, ISNonListed, CreateType, LoginUserId) : new ReturnResponce("Primary id or logged in id  must be greater then 0 ");
         }
 

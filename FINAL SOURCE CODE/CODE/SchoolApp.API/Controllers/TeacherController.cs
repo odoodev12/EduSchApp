@@ -95,7 +95,7 @@ namespace SchoolApp.API.Controllers
 
 
         /// <summary>
-        /// To Add Teacher details 
+        /// To Add Teacher details (UserType (1= Teacher and 2=NonTeacher)
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -103,7 +103,8 @@ namespace SchoolApp.API.Controllers
         [HttpPost]
         public ReturnResponce AddTeacher(AddTeacherViewModel model)
         {
-            return model.ValidModel() ? service.AddTeacher(model) : new ReturnResponce("Invalid request");
+            var ErrorMessage = "";
+            return model.ValidModel(out ErrorMessage) ? service.AddTeacher(model) : new ReturnResponce("Invalid request :- " + ErrorMessage);
         }
 
         /// <summary>
@@ -115,7 +116,19 @@ namespace SchoolApp.API.Controllers
         [HttpPost]
         public ReturnResponce UpdateTeacher(UpdateTeacherViewModel model)
         {
-            return model.TeacherId > 0 && model.ValidModel() ? service.UpdateTeacher(model) : new ReturnResponce("Primary id must be grater then 0");
+            var ErrorMessage = "";
+            if (model.TeacherId <=0)
+            {
+                ErrorMessage = "TeacherId must be grater then 0";
+                new ReturnResponce(ErrorMessage);
+            }
+
+            if (!model.ValidModel(out ErrorMessage))
+            {
+                new ReturnResponce(ErrorMessage);
+            }
+
+            return service.UpdateTeacher(model);
         }
 
 

@@ -264,7 +264,7 @@ namespace SchoolApp.API.Services
                             entity.SaveChanges();
 
                             ISSchool ObjSchools = entity.ISSchools.SingleOrDefault(p => p.ID == SchoolID && p.Deleted == true);
-                            LogManagement.AddLogs("Class Created Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
+                            //LogManagement.AddLogs("Class Created Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
                             return new ReturnResponce(obj, EntityJsonIgnore.ClassesIgnore);
 
                         }
@@ -306,7 +306,7 @@ namespace SchoolApp.API.Services
                         entity.ISClasses.Add(obj);
                         entity.SaveChanges();
                         ISSchool ObjSchools = entity.ISSchools.SingleOrDefault(p => p.ID == SchoolID && p.Deleted == true);
-                        LogManagement.AddLogs("Class Created Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
+                        //LogManagement.AddLogs("Class Created Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
 
                         return new ReturnResponce(obj, EntityJsonIgnore.ClassesIgnore);
                     }
@@ -314,7 +314,7 @@ namespace SchoolApp.API.Services
             }
             catch (Exception ex)
             {
-                ErrorLogManagement.AddLog(ex);
+                //ErrorLogManagement.AddLog(ex);
                 return new ReturnResponce(ex.Message);
             }
         }
@@ -350,7 +350,7 @@ namespace SchoolApp.API.Services
                                         {
                                             var response = objClassManagement.CreateorUpdateClass(ID, SchoolID, ClassName, Year, ClassTypeID, AfterSchoolType, ExtOrganisation, Active);
                                             ISSchool ObjSchools = entity.ISSchools.SingleOrDefault(p => p.ID == SchoolID && p.Deleted == true);
-                                            LogManagement.AddLogs("Class Updated Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
+                                            //LogManagement.AddLogs("Class Updated Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
 
                                             return new ReturnResponce(response, EntityJsonIgnore.ClassesIgnore);
                                         }
@@ -359,7 +359,7 @@ namespace SchoolApp.API.Services
                                     {
                                         var response = objClassManagement.CreateorUpdateClass(ID, SchoolID, ClassName, Year, ClassTypeID, AfterSchoolType, ExtOrganisation, Active);
                                         ISSchool ObjSchools = entity.ISSchools.SingleOrDefault(p => p.ID == SchoolID && p.Deleted == true);
-                                        LogManagement.AddLogs("Class Updated Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
+                                        //LogManagement.AddLogs("Class Updated Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
                                         return new ReturnResponce(response, EntityJsonIgnore.ClassesIgnore);
                                     }
                                 }
@@ -380,7 +380,7 @@ namespace SchoolApp.API.Services
                                     {
                                         var response = objClassManagement.CreateorUpdateClass(ID, SchoolID, ClassName, Year, ClassTypeID, AfterSchoolType, ExtOrganisation, Active);
                                         ISSchool ObjSchools = entity.ISSchools.SingleOrDefault(p => p.ID == SchoolID && p.Deleted == true);
-                                        LogManagement.AddLogs("Class Updated Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
+                                        //LogManagement.AddLogs("Class Updated Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
                                         return new ReturnResponce(response, EntityJsonIgnore.ClassesIgnore);
                                     }
                                 }
@@ -388,7 +388,7 @@ namespace SchoolApp.API.Services
                                 {
                                     var response = objClassManagement.CreateorUpdateClass(ID, SchoolID, ClassName, Year, ClassTypeID, AfterSchoolType, ExtOrganisation, Active);
                                     ISSchool ObjSchools = entity.ISSchools.SingleOrDefault(p => p.ID == SchoolID && p.Deleted == true);
-                                    LogManagement.AddLogs("Class Updated Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
+                                    //LogManagement.AddLogs("Class Updated Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
                                     return new ReturnResponce(response, EntityJsonIgnore.ClassesIgnore);
                                 }
                             }
@@ -407,7 +407,7 @@ namespace SchoolApp.API.Services
             }
             catch (Exception ex)
             {
-                ErrorLogManagement.AddLog(ex);
+                //ErrorLogManagement.AddLog(ex);
                 return new ReturnResponce(ex.Message);
             }
         }

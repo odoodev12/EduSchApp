@@ -296,17 +296,17 @@ namespace SchoolApp.API.Services
                         objClass1.Out = 0;
                         objClass1.Outbit = false;
                         entity.ISTeacherClassAssignments.Add(objClass1);
-                        entity.SaveChanges();
                     }
+                    entity.SaveChanges();
 
-                    LogManagement.AddLog("Teacher Created Successfully " + "Name : " + objTeacher.Name + " Document Category : Teacher", "Teacher");
+                    //LogManagement.AddLog("Teacher Created Successfully " + "Name : " + objTeacher.Name + " Document Category : Teacher", "Teacher");
                     return new ReturnResponce(objTeacher, "Teacher Created Successfully ", EntityJsonIgnore.TeacherIgnore);
                     //EmailManage(objTeacher);
                 }
             }
             catch (Exception ex)
             {
-                ErrorLogManagement.AddLog(ex);
+                //ErrorLogManagement.AddLog(ex);
                 return new ReturnResponce(ex.Message);
             }
         }
@@ -392,7 +392,7 @@ namespace SchoolApp.API.Services
             }
             catch (Exception ex)
             {
-                ErrorLogManagement.AddLog(ex);
+                //ErrorLogManagement.AddLog(ex);
                 return new ReturnResponce(ex.Message);
             }
         }
@@ -465,7 +465,7 @@ namespace SchoolApp.API.Services
             }
             catch (Exception ex)
             {
-                ErrorLogManagement.AddLog(ex);
+                //ErrorLogManagement.AddLog(ex);
                 return new ReturnResponce(ex.Message);
             }
 

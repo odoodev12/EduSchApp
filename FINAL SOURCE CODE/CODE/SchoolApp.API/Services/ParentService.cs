@@ -412,7 +412,7 @@ namespace SchoolApp.API.Services
                         }
                         catch (Exception ex)
                         {
-                            ErrorLogManagement.AddLog(ex);
+                            //ErrorLogManagement.AddLog(ex);
                         }
                         ISPickUpMessage ObjMessage = new ISPickUpMessage();
                         ObjMessage.SchoolID = ID;
@@ -511,7 +511,7 @@ namespace SchoolApp.API.Services
             }
             catch (Exception ex)
             {
-                ErrorLogManagement.AddLog(ex);
+                //ErrorLogManagement.AddLog(ex);
                 return new ReturnResponce(ex.Message);
             }
 

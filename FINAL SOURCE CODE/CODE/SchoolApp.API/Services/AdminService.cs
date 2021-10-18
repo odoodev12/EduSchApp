@@ -437,7 +437,7 @@ namespace SchoolApp.API.Services
                             entity.ISClasses.Add(obj);
                             entity.SaveChanges();
                             ISSchool ObjSchools = entity.ISSchools.SingleOrDefault(p => p.ID == SchoolID && p.Deleted == true);
-                            LogManagement.AddLogs("Class Created Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
+                            //LogManagement.AddLogs("Class Created Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
                             return new ReturnResponce(obj, EntityJsonIgnore.ClassesIgnore);
 
                         }
@@ -479,7 +479,7 @@ namespace SchoolApp.API.Services
                         entity.ISClasses.Add(obj);
                         entity.SaveChanges();
                         ISSchool ObjSchools = entity.ISSchools.SingleOrDefault(p => p.ID == SchoolID && p.Deleted == true);
-                        LogManagement.AddLogs("Class Created Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
+                        //LogManagement.AddLogs("Class Created Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
 
                         return new ReturnResponce(obj, EntityJsonIgnore.ClassesIgnore);
                     }
@@ -487,7 +487,7 @@ namespace SchoolApp.API.Services
             }
             catch (Exception ex)
             {
-                ErrorLogManagement.AddLog(ex);
+                //ErrorLogManagement.AddLog(ex);
                 return new ReturnResponce(ex.Message);
             }
         }
@@ -525,7 +525,7 @@ namespace SchoolApp.API.Services
                                         {
                                             var response = objClassManagement.CreateorUpdateClass(ID, SchoolID, ClassName, Year, ClassTypeID, AfterSchoolType, ExtOrganisation, Active);
                                             ISSchool ObjSchools = entity.ISSchools.SingleOrDefault(p => p.ID == SchoolID && p.Deleted == true);
-                                            LogManagement.AddLogs("Class Updated Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
+                                            //LogManagement.AddLogs("Class Updated Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
 
                                             return new ReturnResponce(response, EntityJsonIgnore.ClassesIgnore);
                                         }
@@ -534,7 +534,7 @@ namespace SchoolApp.API.Services
                                     {
                                         var response = objClassManagement.CreateorUpdateClass(ID, SchoolID, ClassName, Year, ClassTypeID, AfterSchoolType, ExtOrganisation, Active);
                                         ISSchool ObjSchools = entity.ISSchools.SingleOrDefault(p => p.ID == SchoolID && p.Deleted == true);
-                                        LogManagement.AddLogs("Class Updated Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
+                                        //LogManagement.AddLogs("Class Updated Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
                                         return new ReturnResponce(response, EntityJsonIgnore.ClassesIgnore);
                                     }
                                 }
@@ -555,7 +555,7 @@ namespace SchoolApp.API.Services
                                     {
                                         var response = objClassManagement.CreateorUpdateClass(ID, SchoolID, ClassName, Year, ClassTypeID, AfterSchoolType, ExtOrganisation, Active);
                                         ISSchool ObjSchools = entity.ISSchools.SingleOrDefault(p => p.ID == SchoolID && p.Deleted == true);
-                                        LogManagement.AddLogs("Class Updated Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
+                                        //LogManagement.AddLogs("Class Updated Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
                                         return new ReturnResponce(response, EntityJsonIgnore.ClassesIgnore);
                                     }
                                 }
@@ -563,7 +563,7 @@ namespace SchoolApp.API.Services
                                 {
                                     var response = objClassManagement.CreateorUpdateClass(ID, SchoolID, ClassName, Year, ClassTypeID, AfterSchoolType, ExtOrganisation, Active);
                                     ISSchool ObjSchools = entity.ISSchools.SingleOrDefault(p => p.ID == SchoolID && p.Deleted == true);
-                                    LogManagement.AddLogs("Class Updated Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
+                                    //LogManagement.AddLogs("Class Updated Successfully " + "Name : " + obj.Name + " Document Category : Class", ObjSchools.ID, ObjSchools.ID, String.Format("{0} {1}", ObjSchools.AdminFirstName, ObjSchools.AdminLastName), "Class");
                                     return new ReturnResponce(response, EntityJsonIgnore.ClassesIgnore);
                                 }
                             }
@@ -582,7 +582,7 @@ namespace SchoolApp.API.Services
             }
             catch (Exception ex)
             {
-                ErrorLogManagement.AddLog(ex);
+                //ErrorLogManagement.AddLog(ex);
                 return new ReturnResponce(ex.Message);
             }
         }
@@ -1074,122 +1074,7 @@ namespace SchoolApp.API.Services
                 throw;
             }
         }
-        #endregion
-
-        #region Holiday
-        public ReturnResponce GetHoliday(int HoliDayId)
-        {
-            try
-            {
-                var responce = entity.ISHolidays.Where(p => p.Deleted == true && p.ID == HoliDayId).ToList();
-                return new ReturnResponce(responce, new[] { "ISSchool" });
-            }
-            catch (Exception ex)
-            {
-                return new ReturnResponce(ex.Message);
-                throw;
-            }
-        }
-        public ReturnResponce GetHolidayList()
-        {
-            try
-            {
-                var responce = entity.ISHolidays.Where(p => p.Deleted == true).ToList();
-                return new ReturnResponce(responce, new[] { "ISSchool" });
-            }
-            catch (Exception ex)
-            {
-                return new ReturnResponce(ex.Message);
-                throw;
-            }
-        }
-        public ReturnResponce GetHolidayList(int SchoolId)
-        {
-            try
-            {
-                var responce = entity.ISHolidays.Where(p => p.Deleted == true && p.SchoolID == SchoolId).ToList();
-                return new ReturnResponce(responce, new[] { "ISSchool" });
-            }
-            catch (Exception ex)
-            {
-                return new ReturnResponce(ex.Message);
-                throw;
-            }
-        }
-
-        public ReturnResponce SetHoliday(ISHoliday model, int AdminId)
-        {
-            try
-            {
-                ISHoliday insertUpdate = new ISHoliday();
-
-                if (model.ID > 0)
-                {
-                    insertUpdate = entity.ISHolidays.Where(w => w.ID == model.ID).FirstOrDefault();
-                }
-
-                if (insertUpdate != null)
-                {
-                    if (insertUpdate.ID == 0) //// Insert
-                    {
-                        insertUpdate.CreatedDateTime = DateTime.Now;
-                        insertUpdate.CreatedBy = AdminId;
-                        entity.ISHolidays.Add(insertUpdate);
-                    }
-                    else if (insertUpdate.ID > 0) //// Update
-                    {
-                        insertUpdate.Name = model.Name;
-                        insertUpdate.DateFrom = model.DateFrom;
-                        insertUpdate.DateTo = model.DateTo;
-                        insertUpdate.Active = model.Active;
-                        insertUpdate.ModifyDateTime = model.ModifyDateTime;
-                        insertUpdate.ModifyBy = AdminId;
-                    }
-
-                    entity.SaveChanges();
-                    return new ReturnResponce(insertUpdate, new[] { "ISSchool" });
-                }
-                else
-                {
-                    ///// Error Responce that invalid data here
-                    return new ReturnResponce("Invalid model or data, Please try with valid data.");
-                }
-            }
-            catch (Exception ex)
-            {
-                return new ReturnResponce(ex.Message);
-                throw;
-            }
-        }
-        public ReturnResponce DeleteHoliday(int HolidayId, int AdminId)
-        {
-            try
-            {
-                ISHoliday insertUpdate = entity.ISHolidays.Where(w => w.ID == HolidayId).FirstOrDefault();
-
-                if (insertUpdate != null)
-                {
-                    insertUpdate.Deleted = true;
-                    insertUpdate.DeletedDateTime = DateTime.UtcNow;
-                    insertUpdate.DeletedBy = AdminId;
-
-                    entity.SaveChanges();
-                    return new ReturnResponce(insertUpdate, new[] { "ISSchool" });
-                }
-                else
-                {
-                    ///// Error Responce that invalid data here
-                    return new ReturnResponce("Invalid Holiday Id or AdminId, Please try with valid data.");
-                }
-            }
-            catch (Exception ex)
-            {
-                return new ReturnResponce(ex.Message);
-                throw;
-            }
-        }
-
-        #endregion
+        #endregion       
 
         #region Support
 
@@ -1497,138 +1382,6 @@ namespace SchoolApp.API.Services
         }
 
 
-        #endregion
-
-        #region Role
-
-        public ReturnResponce GetUsersRoleList(int SchoolId)
-        {
-            try
-            {
-                if (SchoolId > 0)
-                {
-                    var response = entity.ISUserRoles.Where(p => p.SchoolID == SchoolId && p.Deleted == true && p.Active == true).ToList();
-                    return new ReturnResponce(response, new[] { "ISSchool", "ISTeacher" });
-                }
-                else
-                {
-                    return new ReturnResponce("SchoolId must be grater than 0.");
-                }
-            }
-            catch (Exception ex)
-            {
-                return new ReturnResponce(ex.Message);
-                throw;
-            }
-        }
-
-        public ReturnResponce GetUserRoleDetails(int RoleId)
-        {
-            try
-            {
-                var response = entity.ISUserRoles.Where(p => p.Deleted == true && p.Active == true && p.ID == RoleId).SingleOrDefault();
-                return new ReturnResponce(response, new[] { "ISSchool", "ISTeacher" });
-            }
-            catch (Exception ex)
-            {
-                return new ReturnResponce(ex.Message);
-                throw;
-            }
-        }
-
-        public ReturnResponce AddUpdateUserRole(ISUserRole iSUserRole, int UserLoginId)
-        {
-            try
-            {
-                ISUserRole insertUpdate = new ISUserRole();
-
-                if (iSUserRole.ID > 0)
-                {
-                    insertUpdate = entity.ISUserRoles.Where(w => w.ID == iSUserRole.ID).FirstOrDefault();
-                }
-
-                if (insertUpdate != null)
-                {
-                    if (insertUpdate.ID == 0) //// Insert
-                    {
-                        insertUpdate.CreatedDateTime = DateTime.Now;
-                        insertUpdate.CreatedBy = UserLoginId;
-                        insertUpdate.RoleName = iSUserRole.RoleName;
-                        insertUpdate.RoleType = iSUserRole.RoleType;
-                        insertUpdate.SchoolID = iSUserRole.SchoolID;
-                        insertUpdate.ManageClassFlag = iSUserRole.ManageClassFlag;
-                        insertUpdate.ManageStudentFlag = iSUserRole.ManageStudentFlag;
-                        insertUpdate.ManageHolidayFlag = iSUserRole.ManageHolidayFlag;
-                        insertUpdate.ManageViewAccountFlag = iSUserRole.ManageViewAccountFlag;
-                        insertUpdate.ManageTeacherFlag = iSUserRole.ManageTeacherFlag;
-                        insertUpdate.ManageNonTeacherFlag = iSUserRole.ManageNonTeacherFlag;
-                        insertUpdate.ManageSupportFlag = iSUserRole.ManageSupportFlag;
-                        insertUpdate.Active = iSUserRole.Active;
-                        insertUpdate.Deleted = true;
-                        entity.ISUserRoles.Add(insertUpdate);
-                    }
-                    else if (insertUpdate.ID > 0) //// Update
-                    {
-
-                        insertUpdate.RoleName = iSUserRole.RoleName;
-                        insertUpdate.ManageClassFlag = iSUserRole.ManageClassFlag;
-                        insertUpdate.ManageStudentFlag = iSUserRole.ManageStudentFlag;
-                        insertUpdate.ManageHolidayFlag = iSUserRole.ManageHolidayFlag;
-                        insertUpdate.ManageViewAccountFlag = iSUserRole.ManageViewAccountFlag;
-                        insertUpdate.ManageTeacherFlag = iSUserRole.ManageTeacherFlag;
-                        insertUpdate.ManageNonTeacherFlag = iSUserRole.ManageNonTeacherFlag;
-                        insertUpdate.ManageSupportFlag = iSUserRole.ManageSupportFlag;
-                        insertUpdate.Active = iSUserRole.Active;
-                        insertUpdate.ModifyBy = UserLoginId;
-                        insertUpdate.ModifyDateTime = DateTime.Now;
-                    }
-                    entity.SaveChanges();
-                    return new ReturnResponce(insertUpdate, new[] { "ISSchool", "ISTeacher" });
-                }
-                else
-                {
-                    ///// Error Responce that invalid data here
-                    return new ReturnResponce("Invalid model or data, Please try with valid data.");
-                }
-            }
-            catch (Exception ex)
-            {
-                return new ReturnResponce(ex.Message);
-                throw;
-            }
-        }
-        public ReturnResponce DeleteUserRole(int RoleId, int UserLoginId)
-        {
-            try
-            {
-                ISUserRole insertUpdate = new ISUserRole();
-
-                if (RoleId > 0)
-                {
-                    insertUpdate = entity.ISUserRoles.Where(w => w.ID == RoleId).FirstOrDefault();
-                }
-
-                if (insertUpdate != null)
-                {
-                    insertUpdate.Deleted = false;
-                    insertUpdate.DeletedBy = UserLoginId;
-                    insertUpdate.DeletedDateTime = DateTime.Now;
-
-                    entity.SaveChanges();
-                    return new ReturnResponce(insertUpdate, new[] { "ISSchool", "ISTeacher" });
-                }
-                else
-                {
-                    ///// Error Responce that invalid data here
-                    return new ReturnResponce("Invalid model or data, Please try with valid data.");
-                }
-            }
-            catch (Exception ex)
-            {
-                return new ReturnResponce(ex.Message);
-                throw;
-            }
-        }
         #endregion
 
         #region NonTeaching

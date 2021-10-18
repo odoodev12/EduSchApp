@@ -9,11 +9,8 @@ namespace SchoolApp.API.Models.ViewModels
     {
         public int SchoolID { get; set; }
         public string Title { get; set; }
-
         public string Name { get; set; }
-
         public int RoleID { get; set; }
-
         public string Email { get; set; }
         public string PhoneNo { get; set; }
         public string TeacherNo { get; set; }
@@ -21,13 +18,36 @@ namespace SchoolApp.API.Models.ViewModels
         public int UserType { get; set; }
         public int LoginUserId { get; set; }
         public bool Active { get; set; }
-
-
-        public bool ValidModel()
+        public bool ValidModel(out string ErrorMessage)
         {
-            return (SchoolID > 0 && LoginUserId > 0 && UserType > 0 && !string.IsNullOrWhiteSpace(Title) && !string.IsNullOrWhiteSpace(Name) && !string.IsNullOrWhiteSpace(Email) && !string.IsNullOrWhiteSpace(PhoneNo)) ? true : false;
-        }
+            ErrorMessage = "";
+            if (SchoolID <= 0)
+                ErrorMessage += "SchoolID is required, ";
 
+            if (RoleID <= 0)
+                ErrorMessage += "RoleID is required, ";
+
+            if (LoginUserId <= 0)
+                ErrorMessage += "LoginUserId is required, ";
+
+            if (UserType <= 0)
+                ErrorMessage += "UserType is required (1=Teacher and 2=NonTeacher), ";
+
+            if (string.IsNullOrWhiteSpace(Title))
+                ErrorMessage += "Title is required, ";
+
+            if (string.IsNullOrWhiteSpace(Name))
+                ErrorMessage += "Name is required, ";
+
+            if (string.IsNullOrWhiteSpace(Email))
+                ErrorMessage += "Email is required, ";
+
+            if (string.IsNullOrWhiteSpace(PhoneNo))
+                ErrorMessage += "PhoneNo is required, ";
+
+
+            return (SchoolID > 0 && RoleID>0 && LoginUserId > 0 && UserType > 0 && !string.IsNullOrWhiteSpace(Title) && !string.IsNullOrWhiteSpace(Name) && !string.IsNullOrWhiteSpace(Email) && !string.IsNullOrWhiteSpace(PhoneNo)) ? true : false;
+        }
     }
     public class UpdateTeacherViewModel : AddTeacherViewModel
     {

@@ -5,19 +5,31 @@ using System.Web;
 
 namespace SchoolApp.API.Models.ViewModels
 {
-    public class AddTeacherViewModel
+    public class AddNonTeacherViewModel
     {
         public int SchoolID { get; set; }
-        public string Title { get; set; }
-        public string Name { get; set; }
-        public int RoleID { get; set; }
-        public string Email { get; set; }
-        public string PhoneNo { get; set; }
-        public string TeacherNo { get; set; }
         public int[] ClassIDs { get; set; }
-        public int LoginUserType { get; set; }
+        public int RoleID { get; set; }
+        public string TeacherNo { get; set; }
+        public string Title { get; set; }
+        public string Name { get; set; }        
+        public string Email { get; set; }
+        public string PhoneNo { get; set; } 
         public int LoginUserId { get; set; }
-        public bool Active { get; set; }
+        public int LoginUserType { get; set; }
+
+        
+        
+
+        //public DateTime? EndDate { get; set; }
+        //public string Password { get; set; }
+        //public string Photo { get; set; }
+        //public Nullable<bool> Deleted { get; set; }
+        //public Nullable<bool> ISActivated { get; set; }
+        //public string IsActivationID { get; set; }
+        //public string MemorableQueAnswer { get; set; }
+        //public Nullable<bool> IsBell { get; set; }
+
         public bool ValidModel(out string ErrorMessage)
         {
             ErrorMessage = "";
@@ -46,11 +58,13 @@ namespace SchoolApp.API.Models.ViewModels
                 ErrorMessage += "PhoneNo is required, ";
 
 
-            return (SchoolID > 0 && RoleID>0 && LoginUserId > 0 && LoginUserType > 0 && LoginUserType < 5 && !string.IsNullOrWhiteSpace(Title) && !string.IsNullOrWhiteSpace(Name) && !string.IsNullOrWhiteSpace(Email) && !string.IsNullOrWhiteSpace(PhoneNo)) ? true : false;
+            return (SchoolID > 0 && RoleID > 0 && LoginUserId > 0 && LoginUserType > 0 && LoginUserType < 5 && !string.IsNullOrWhiteSpace(Title) && !string.IsNullOrWhiteSpace(Name) && !string.IsNullOrWhiteSpace(Email) && !string.IsNullOrWhiteSpace(PhoneNo)) ? true : false;
         }
     }
-    public class UpdateTeacherViewModel : AddTeacherViewModel
+    public class UpdateNonTeacherViewModel : AddTeacherViewModel
     {
-        public int TeacherId { get; set; }
+        public int Id { get; set; }
+
+        public bool Active { get; set; }
     }
 }

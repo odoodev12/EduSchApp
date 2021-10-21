@@ -95,7 +95,7 @@ namespace SchoolApp.API.Controllers
 
 
         /// <summary>
-        /// To Add Teacher details (UserType (1= Teacher and 2=NonTeacher)
+        /// To Add Teacher details (UserType ---- 1=Admin, 2=School, Teacher=3, NonTeacher=4)
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>

@@ -61,7 +61,7 @@ namespace SchoolApp.API.Services
                 insertUpdate.CreatedDateTime = DateTime.Now;
                 insertUpdate.DateFrom = model.DateFrom;
                 insertUpdate.DateTo = model.DateTo;
-                insertUpdate.Deleted = false;
+                insertUpdate.Deleted = true;
                 entity.ISHolidays.Add(insertUpdate);
 
                 entity.SaveChanges();

@@ -279,7 +279,7 @@ namespace SchoolApp.API.Services
                     objTeacher.Deleted = model.Active;
                     objTeacher.CreatedBy = model.LoginUserId;
                     objTeacher.CreatedDateTime = DateTime.Now;
-                    objTeacher.CreatedByType = model.UserType;
+                    objTeacher.CreatedByType = model.LoginUserType;
                     entity.ISTeachers.Add(objTeacher);
                     entity.SaveChanges();
 
@@ -291,7 +291,7 @@ namespace SchoolApp.API.Services
                         objClass1.TeacherID = objTeacher.ID;
                         objClass1.Active = model.Active;
                         objClass1.Deleted = model.Active;
-                        objClass1.CreatedBy = model.UserType;
+                        objClass1.CreatedBy = model.LoginUserType;
                         objClass1.CreatedDateTime = DateTime.Now;
                         objClass1.Out = 0;
                         objClass1.Outbit = false;
@@ -361,7 +361,7 @@ namespace SchoolApp.API.Services
                             var NewClassId = model.ClassIDs.Length >= i ? model.ClassIDs[i] : 0;
                             if (NewClassId > 0)
                             {
-                                objTeacherManagement.TeacherReassignment(model.SchoolID, model.TeacherId, objList[i].ClassID, NewClassId, model.UserType, model.LoginUserId);
+                                objTeacherManagement.TeacherReassignment(model.SchoolID, model.TeacherId, objList[i].ClassID, NewClassId, model.LoginUserType, model.LoginUserId);
                             }
 
                         }

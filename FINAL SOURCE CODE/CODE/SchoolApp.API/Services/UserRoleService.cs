@@ -41,6 +41,51 @@ namespace SchoolApp.API.Services
                 return new ReturnResponce(ex.Message);
             }
         }
+
+        public ReturnResponce GetAdminRoleList(int SchoolId, string RoleName, int RoleTypeId, bool? Active)
+        {
+            try
+            {
+                if (SchoolId > 0)
+                {
+                    RolesManagement objRolesManagement = new RolesManagement();
+                    List<MISUserRole> ObjList = objRolesManagement.AdminRoleList(SchoolId);
+
+                    if (RoleName != "")
+                    {
+                        ObjList = ObjList.Where(p => p.RoleName.ToLower() == RoleName.ToLower()).ToList();
+                    }
+
+                    if (RoleTypeId > 0)
+                    {
+                        ObjList = ObjList.Where(p => p.RoleType == RoleTypeId).ToList();
+                    }
+
+                    if (Active != null)
+                    {
+                        if (Active.Value == true)
+                        {
+                            ObjList = ObjList.Where(p => p.Active == true).ToList();
+                        }
+                        else
+                        {
+                            ObjList = ObjList.Where(p => p.Active == false).ToList();
+                        }
+                    }
+
+                    return new ReturnResponce(ObjList, EntityJsonIgnore.MISUserRoleIgnore);
+                }
+                else
+                {
+                    return new ReturnResponce("SchoolId must be grater than 0.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ReturnResponce(ex.Message);
+            }
+        }
+
         public ReturnResponce GetUserRoleDetails(int UserRoleId)
         {
             try

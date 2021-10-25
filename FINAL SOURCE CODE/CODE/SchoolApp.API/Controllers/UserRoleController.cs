@@ -113,6 +113,22 @@ namespace SchoolApp.API.Controllers
         {
             return (UserRoleId > 0 && UserLoginId > 0) ? service.DeleteUserRole(UserRoleId, UserLoginId) : new ReturnResponce("UserRoleId must be gretar then 0 and UserLoginId is required.");
         }
+
+
+        /// <summary>
+        /// Get AdminRole list by SchoolId and with Filter options.
+        /// </summary>
+        /// <param name="SchoolId"></param>
+        /// <param name="RoleName"></param>
+        /// <param name="RoleTypeId"></param>
+        /// <param name="Active"></param>
+        /// <returns></returns>
+        [Route("AdminRole")]
+        [HttpGet]
+        public ReturnResponce AdminRoleList(int SchoolId, string RoleName, int RoleTypeId, bool? Active)
+        {
+            return service.GetAdminRoleList(SchoolId, RoleName, RoleTypeId, Active);
+        }
         #endregion
 
 

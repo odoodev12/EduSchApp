@@ -98,5 +98,12 @@ namespace SchoolApp.API.Models
             }
         }
 
+        public static string[] MISUserRoleIgnore
+        {
+            get
+            {
+                return new[] { "ISSchool", "ISTeachers" };
+            }
+        }
     }
 }

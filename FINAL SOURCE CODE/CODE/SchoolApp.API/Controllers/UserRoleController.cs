@@ -72,7 +72,7 @@ namespace SchoolApp.API.Controllers
         [HttpGet]
         public ReturnResponce GetUserRole(int UserRoleId)
         {
-            return (UserRoleId> 0) ? service.GetUserRoleDetails(UserRoleId) : new ReturnResponce("UserRoleId should be greater than 0 !. ");
+            return (UserRoleId > 0) ? service.GetUserRoleDetails(UserRoleId) : new ReturnResponce("UserRoleId should be greater than 0 !. ");
         }
 
         /// <summary>
@@ -116,19 +116,33 @@ namespace SchoolApp.API.Controllers
 
 
         /// <summary>
-        /// Get AdminRole list by SchoolId and with Filter options.
+        /// Get AdminRole list by SchoolId.
         /// </summary>
         /// <param name="SchoolId"></param>
-        /// <param name="RoleName"></param>
-        /// <param name="RoleTypeId"></param>
-        /// <param name="Active"></param>
         /// <returns></returns>
         [Route("AdminRole")]
         [HttpGet]
-        public ReturnResponce AdminRoleList(int SchoolId, string RoleName, int RoleTypeId, bool? Active)
+        public ReturnResponce AdminRoleList(int SchoolId)
         {
-            return service.GetAdminRoleList(SchoolId, RoleName, RoleTypeId, Active);
+            return (SchoolId > 0) ? service.GetAdminRoleList(SchoolId, null) : new ReturnResponce("SchoolId should be greater than 0 !. ");        
         }
+
+
+        /// <summary>
+        /// Get AdminRole list by SchoolId with Filter Options.
+        /// </summary>
+        /// <param name="SchoolId"></param>
+        /// <param name="Active"></param>
+        /// <param name="RoleName"></param>
+        /// <param name="RoleTypeId"></param>
+        /// <returns></returns>
+        [Route("AdminRole/Filter")]
+        [HttpGet]
+        public ReturnResponce AdminRoleListWithFilter(int SchoolId, bool? Active, string RoleName = "", int? RoleTypeId = 0)
+        {
+            return (SchoolId > 0) ? service.GetAdminRoleList(SchoolId, Active, RoleName, RoleTypeId) : new ReturnResponce("SchoolId should be greater than 0 !. ");            
+        }
+
         #endregion
 
 

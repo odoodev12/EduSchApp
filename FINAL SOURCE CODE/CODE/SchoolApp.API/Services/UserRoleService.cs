@@ -42,7 +42,7 @@ namespace SchoolApp.API.Services
             }
         }
 
-        public ReturnResponce GetAdminRoleList(int SchoolId, string RoleName, int RoleTypeId, bool? Active)
+        public ReturnResponce GetAdminRoleList(int SchoolId, bool? Active, string RoleName="", int? RoleTypeId=0)
         {
             try
             {

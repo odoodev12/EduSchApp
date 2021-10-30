@@ -39,7 +39,7 @@ namespace SchoolApp.API.Controllers
 
         #region Holiday
 
-        
+
         /// <summary>
         /// Get Holiday details By Id
         /// </summary>
@@ -64,6 +64,25 @@ namespace SchoolApp.API.Controllers
             return service.GetHolidayList(SchoolId);
         }
 
+
+        /// <summary>
+        /// Get All holiday List by School Id with Filter options.
+        /// Status (1= Active, 2= Non-Active and Null= Both)
+        /// </summary>
+        /// <param name="SchoolId"></param>
+        /// <param name="Name"></param>
+        /// <param name="Datefrom"></param>
+        /// <param name="Dateto"></param>
+        /// <param name="Status"></param>
+        /// <returns></returns>
+        [Route("Holiday/FilterList")]
+        [HttpGet]
+        public ReturnResponce GetHolidayFilterListBySchoolId(int SchoolId, string Name = "", DateTime? Datefrom = null, DateTime? Dateto = null, int? Status = null)
+        {
+            return service.GetHolidayFilterList(SchoolId, Name, Datefrom, Dateto, Status);
+        }
+
+
         /// <summary>
         /// Add new Holiday details
         /// </summary>
@@ -74,7 +93,7 @@ namespace SchoolApp.API.Controllers
         public ReturnResponce AddHoliday(HolidayAdd model)
         {
             var ErrorMessage = "";
-            return model.ValidAddModel(out ErrorMessage) ? service.AddHoliday(model) : new ReturnResponce("Invalid request :- " + ErrorMessage);            
+            return model.ValidAddModel(out ErrorMessage) ? service.AddHoliday(model) : new ReturnResponce("Invalid request :- " + ErrorMessage);
         }
 
 
@@ -99,7 +118,7 @@ namespace SchoolApp.API.Controllers
                 new ReturnResponce(ErrorMessage);
             }
 
-            return service.UpdateHoliday(model);            
+            return service.UpdateHoliday(model);
         }
 
         /// <summary>
@@ -114,6 +133,9 @@ namespace SchoolApp.API.Controllers
         {
             return (holidayId > 0 && LoginUserId > 0) ? service.DeleteHoliday(holidayId, LoginUserId) : new ReturnResponce("HoliDayId or LoginUserId must be grater then 0");
         }
+
+
+
         #endregion
     }
 }

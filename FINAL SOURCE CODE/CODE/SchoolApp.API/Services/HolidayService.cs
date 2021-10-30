@@ -49,6 +49,60 @@ namespace SchoolApp.API.Services
             }
         }
 
+
+        public ReturnResponce GetHolidayFilterList(int SchoolId, string Name, DateTime? Datefrom = null, DateTime? Dateto = null, int? Status= null)
+        {
+            try
+            {
+                List<MISHoliday> objList = new List<MISHoliday>();
+                objList = (from Obj in entity.ISHolidays.Where(p => p.SchoolID == SchoolId && p.Deleted == true).ToList()
+                           select new MISHoliday
+                           {
+                               ID = Obj.ID,
+                               Name = Obj.Name,                               
+                               FromDate = Obj.DateFrom.Value.ToString("dd/MM/yyyy"),
+                               ToDate = Obj.DateTo.Value.ToString("dd/MM/yyyy"),
+                               DateFrom = Obj.DateFrom,
+                               DateTo = Obj.DateTo,
+                               Active = Obj.Active,
+                               ActiveStatus = Obj.Active == true ? "Active" : "InActive"
+                           }).ToList();
+                if (!string.IsNullOrWhiteSpace(Name))
+                {
+                    objList = objList.Where(p => p.Name.Trim().ToLower().Contains(Name.Trim().ToLower())).ToList();
+                }
+                if (Datefrom != null)
+                {
+                    objList = objList.Where(p => p.DateFrom >= Datefrom).ToList();
+                }
+                if (Dateto != null)
+                {
+                    objList = objList.Where(p => p.DateTo <= Dateto).ToList();
+                }
+
+                if (Status != null)
+                {
+                    if (Status == 1)
+                    {
+                        objList = objList.Where(p => p.Active == true).ToList();
+                    }
+                    else
+                    {
+                        objList = objList.Where(p => p.Active == false).ToList();
+                    }
+                }
+
+               var responce = objList.OrderByDescending(p => p.DateFrom).ToList();
+
+                return new ReturnResponce(responce, new[] { "ISSchool" });
+            }
+            catch (Exception ex)
+            {
+                return new ReturnResponce(ex.Message);
+                throw;
+            }            
+        }
+
         public ReturnResponce AddHoliday(HolidayAdd model)
         {
             try
@@ -92,7 +146,7 @@ namespace SchoolApp.API.Services
                     insertUpdate.Active = model.Active;
                     insertUpdate.ModifyDateTime = DateTime.Now;
                     insertUpdate.ModifyBy = model.LoginUserId;
-                    insertUpdate.Deleted = false;
+                    insertUpdate.Deleted = true;
 
                     entity.SaveChanges();
                     return new ReturnResponce(insertUpdate, new[] { "ISSchool" });

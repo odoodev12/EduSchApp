@@ -13,12 +13,14 @@ namespace SchoolApp.API.Services
 {
     public class NonTeacherService
     {
-        public SchoolAppEntities entity;
+        private SchoolAppEntities entity;
+        private TeacherManagement objTeacherManagement;
 
         public NonTeacherService()
         {
             entity = new SchoolAppEntities();
             entity.Configuration.ProxyCreationEnabled = false;
+            objTeacherManagement = new TeacherManagement();
         }
 
         #region NonTeaching
@@ -26,8 +28,8 @@ namespace SchoolApp.API.Services
         {
             try
             {
-                var responce = entity.ISTeachers.Where(p => p.Deleted == true && p.Active == true && p.SchoolID == SchoolId && p.Role == (int)EnumsManagement.ROLETYPE.NONTEACHING).ToList();
-                return new ReturnResponce(responce, EntityJsonIgnore.TeacherIgnore);
+                List<MISTeacher> objList = objTeacherManagement.NonTeacherList(SchoolId, "", "", "");
+                return new ReturnResponce(objList, EntityJsonIgnore.MISTeacherIgnore);
             }
             catch (Exception ex)
             {
@@ -35,12 +37,40 @@ namespace SchoolApp.API.Services
                 throw;
             }
         }
-        public ReturnResponce GetNonTeacher(int TeacherId)
+        public ReturnResponce GetNonTeacher(int TeacherID)
         {
             try
             {
-                var responce = entity.ISTeachers.Where(p => p.Deleted == true && p.Active == true && p.ID == TeacherId && p.Role == (int)EnumsManagement.ROLETYPE.NONTEACHING).ToList();
-                return new ReturnResponce(responce, EntityJsonIgnore.TeacherIgnore);
+                var Obj = objTeacherManagement.GetNonTeacher(TeacherID);
+
+                TeacherDetailsViewModel objMISTeacher = new TeacherDetailsViewModel();
+
+                if (Obj != null)
+                {
+                    objMISTeacher.ID = Obj.ID;
+                    objMISTeacher.TeacherNo = Obj.TeacherNo;
+                    objMISTeacher.Name = Obj.Name;
+                    objMISTeacher.Title = Obj.Title;
+                    objMISTeacher.Role = Obj.Role;
+                    objMISTeacher.RoleName = Obj.ISUserRole.RoleName;
+                    objMISTeacher.Email = Obj.Email;
+                    objMISTeacher.PhoneNo = Obj.PhoneNo;
+                    objMISTeacher.Photo = Obj.Photo;
+                    objMISTeacher.EndDate = Obj.EndDate;
+                    objMISTeacher.Status = Obj.Active == true ? "Active" : "InActive";
+                    objMISTeacher.Active = Obj.Active;
+                    objMISTeacher.Password = EncryptionHelper.Decrypt(Obj.Password);
+                    objMISTeacher.TeacherEndDate = Obj.EndDate != null ? Obj.EndDate.Value.ToString("dd/MM/yyyy") : "";
+                    objMISTeacher.RoleID = Obj.RoleID;
+                    objMISTeacher.ClassName = Obj.ClassName;
+                    objMISTeacher.ClassID1 = Obj.ClassID1;
+                    objMISTeacher.ClassID2 = Obj.ClassID2;
+                    objMISTeacher.ClassName1 = Obj.ClassName1;
+                    objMISTeacher.ClassName2 = Obj.ClassName2;
+
+                }
+
+                return new ReturnResponce(objMISTeacher, EntityJsonIgnore.TeacherIgnore);
             }
             catch (Exception ex)
             {
@@ -73,7 +103,7 @@ namespace SchoolApp.API.Services
                     return new ReturnResponce("Not Allowed. At least one class should select.");
                 }
                 else
-                {                   
+                {
                     ISTeacher objTeacher = new ISTeacher();
                     objTeacher.SchoolID = model.SchoolID;
                     objTeacher.ClassID = model.ClassIDs[0];
@@ -111,8 +141,8 @@ namespace SchoolApp.API.Services
                         entity.ISTeacherClassAssignments.Add(objClass1);
                     }
                     entity.SaveChanges();
-                                        
-                    return new ReturnResponce(objTeacher, "Non Teacher Created Successfully ", EntityJsonIgnore.TeacherIgnore);                    
+
+                    return new ReturnResponce(objTeacher, "Non Teacher Created Successfully ", EntityJsonIgnore.TeacherIgnore);
                 }
             }
             catch (Exception ex)
@@ -195,7 +225,7 @@ namespace SchoolApp.API.Services
                         entity.ISTeacherClassAssignments.Add(objClass);
                         entity.SaveChanges();
                     }
-                    
+
                     return new ReturnResponce(objTeacher, "NonTeacher Updated Successfully", EntityJsonIgnore.TeacherIgnore);
                 }
             }
@@ -209,8 +239,7 @@ namespace SchoolApp.API.Services
         {
             try
             {
-                TeacherManagement objTeacherManagement = new TeacherManagement();
-                List<MISTeacher> objList = objTeacherManagement.NonTeacherList(SchoolID, TeacherName,OrderBy,SortBy );
+                List<MISTeacher> objList = objTeacherManagement.NonTeacherList(SchoolID, TeacherName, OrderBy, SortBy);
                 return new ReturnResponce(objList, EntityJsonIgnore.MISTeacherIgnore);
             }
             catch (Exception ex)
@@ -252,7 +281,7 @@ namespace SchoolApp.API.Services
             }
 
         }
-        
+
         public ReturnResponce AddClassAssign(int SchoolID, int TeacherId, int[] ClassIds, int LogInUserType, int LoginUserId)
         {
             try
@@ -301,9 +330,9 @@ namespace SchoolApp.API.Services
                     entity.SaveChanges();
                 }
 
-                ISTeacher ObjTeacher = entity.ISTeachers.SingleOrDefault(p => p.ID == TeacherId);                
+                ISTeacher ObjTeacher = entity.ISTeachers.SingleOrDefault(p => p.ID == TeacherId);
                 return new ReturnResponce(ObjTeacher, "NonTeacher Class Re-Assign Successfully", EntityJsonIgnore.TeacherIgnore);
-                
+
             }
             catch (Exception ex)
             {

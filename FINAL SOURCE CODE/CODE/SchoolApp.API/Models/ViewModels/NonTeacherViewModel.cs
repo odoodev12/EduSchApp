@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolApp.ClassLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,14 +13,14 @@ namespace SchoolApp.API.Models.ViewModels
         public int RoleID { get; set; }
         public string TeacherNo { get; set; }
         public string Title { get; set; }
-        public string Name { get; set; }        
+        public string Name { get; set; }
         public string Email { get; set; }
-        public string PhoneNo { get; set; } 
+        public string PhoneNo { get; set; }
         public int LoginUserId { get; set; }
         public int LoginUserType { get; set; }
 
-        
-        
+
+
 
         //public DateTime? EndDate { get; set; }
         //public string Password { get; set; }
@@ -66,5 +67,28 @@ namespace SchoolApp.API.Models.ViewModels
         public int Id { get; set; }
 
         public bool Active { get; set; }
+    }
+    public class TeacherDetailsViewModel
+    {
+        public int ID { get; set; }
+        public string TeacherNo { get; set; }
+        public string Name { get; set; }
+        public string Title { get; set; }
+        public Nullable<int> Role { get; set; }
+        public string RoleName { get; set; }
+        public string Email { get; set; }
+        public string PhoneNo { get; set; }
+        public string Photo { get; set; }
+        public Nullable<System.DateTime> EndDate { get; set; }
+        public string Status { get; set; }
+        public Nullable<bool> Active { get; set; }
+        public string Password { get; set; }
+        public string TeacherEndDate { get; set; }
+        public int RoleID { get; set; }
+        public string ClassName { get; set; }
+        public int? ClassID1 { get; set; }
+        public int? ClassID2 { get; set; }
+        public string ClassName1 { get; set; }
+        public string ClassName2 { get; set; }       
     }
 }

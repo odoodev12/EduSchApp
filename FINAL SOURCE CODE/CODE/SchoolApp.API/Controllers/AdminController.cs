@@ -219,258 +219,258 @@ namespace SchoolApp.API.Controllers
 
         #endregion
 
-        #region Teacher 
-
-        /// <summary>
-        /// To Get Teachers list by SchoolId
-        /// </summary>
-        /// <param name="SchoolId"></param>
-        /// <returns></returns>
-        [Route("Admin/TeacherListBySchoolId")]
-        [HttpGet]
-        public ReturnResponce TeacherListBySchoolId(int SchoolId)
-        {
-            return service.GetTeacherList(SchoolId, "", 0, "", "", "", 0, "0");
-        }
-
-        /// <summary>
-        /// To Get Teachers List With Optional Filters
-        /// </summary>
-        /// <param name="SchoolId"></param>
-        /// <param name="Year"></param>
-        /// <param name="ClassID"></param>
-        /// <param name="TeacherName"></param>
-        /// <param name="OrderBy"></param>
-        /// <param name="SortBy"></param>
-        /// <param name="classTypeID"></param>
-        /// <param name="Status"></param>
-        /// <returns></returns>
-        [Route("Admin/TeacherListWithFilters")]
-        [HttpGet]
-        public ReturnResponce TeacherListWithFilters(int SchoolId, string Year = "", int ClassID = 0, string TeacherName = "", string OrderBy = "", string SortBy = "", int classTypeID = 0, string Status = "")
-        {
-            return service.GetTeacherList(SchoolId, Year, ClassID, TeacherName, OrderBy, SortBy, classTypeID, Status);
-        }
-
-        /// <summary>
-        /// To Get Teacher details by TeacherId
-        /// </summary>
-        /// <param name="TeacherId"></param>
-        /// <returns></returns>
-        [Route("Admin/GetTeacher")]
-        [HttpGet]
-        public ReturnResponce GetTeacher(int TeacherId)
-        {
-            return service.GetTeacher(TeacherId);
-        }
-
-        /// <summary>
-        /// To Get Teacher list by SchoolId and ClassId
-        /// </summary>
-        /// <param name="SchoolId"></param>
-        /// <param name="ClassId"></param>
-        /// <returns></returns>
-        [Route("Admin/GetTeachersWithClassId")]
-        [HttpGet]
-        public ReturnResponce GetTeacherBySchoolOrClassId(int SchoolId, int ClassId)
-        {
-            return service.GetTeacherList(SchoolId, "", ClassId, "", "", "", 0, "0");
-        }
-
-        /// <summary>
-        /// To Add Teacher details 
-        /// </summary>
-        /// <param name="model"></param>
-        /// <param name="AdminId"></param>
-        /// <returns></returns>
-        [Route("Admin/Teacher")]
-        [HttpPost]
-        public ReturnResponce AddTeacher(ISTeacher model, int AdminId)
-        {
-            return model.ID == 0 ? service.AddUpdateTeacher(model, AdminId) : new ReturnResponce("Invalid request");
-        }
-
-        /// <summary>
-        /// To Update Teacher details 
-        /// </summary>
-        /// <param name="model"></param>
-        /// <param name="AdminId"></param>
-        /// <returns></returns>
-        [Route("Admin/Teacher")]
-        [HttpPut]
-        public ReturnResponce UpdateTeacher(ISTeacher model, int AdminId)
-        {
-            return model.ID > 0 ? service.AddUpdateTeacher(model, AdminId) : new ReturnResponce("Primary id must be grater then 0");
-        }
+        //#region Teacher 
 
         ///// <summary>
-        ///// To ReAssign Teacher Class
+        ///// To Get Teachers list by SchoolId
         ///// </summary>
-        ///// <param name="SchoolID"></param>
-        ///// <param name="TeacherID"></param>
-        ///// <param name="OldClassID"></param>
-        ///// <param name="NewClassID"></param>
-        ///// <param name="UserType"></param>
-        ///// <param name="SenderID"></param>
+        ///// <param name="SchoolId"></param>
         ///// <returns></returns>
-        //[Route("Admin/TeacherReassignment")]
-        //[HttpPost]
-        //public ReturnResponce TeacherReassignment(int SchoolID, int TeacherID, int OldClassID, int NewClassID, int UserType, int SenderID)
+        //[Route("Admin/TeacherListBySchoolId")]
+        //[HttpGet]
+        //public ReturnResponce TeacherListBySchoolId(int SchoolId)
         //{
-        //    return (SchoolID > 0 && TeacherID > 0 && OldClassID > 0 && NewClassID > 0 && UserType > 0 && SenderID > 0) ? service.ReAssignTeacher(SchoolID, TeacherID, OldClassID, NewClassID, UserType, SenderID) : new ReturnResponce("Invalid request");
+        //    return service.GetTeacherList(SchoolId, "", 0, "", "", "", 0, "0");
         //}
 
-        #endregion
+        ///// <summary>
+        ///// To Get Teachers List With Optional Filters
+        ///// </summary>
+        ///// <param name="SchoolId"></param>
+        ///// <param name="Year"></param>
+        ///// <param name="ClassID"></param>
+        ///// <param name="TeacherName"></param>
+        ///// <param name="OrderBy"></param>
+        ///// <param name="SortBy"></param>
+        ///// <param name="classTypeID"></param>
+        ///// <param name="Status"></param>
+        ///// <returns></returns>
+        //[Route("Admin/TeacherListWithFilters")]
+        //[HttpGet]
+        //public ReturnResponce TeacherListWithFilters(int SchoolId, string Year = "", int ClassID = 0, string TeacherName = "", string OrderBy = "", string SortBy = "", int classTypeID = 0, string Status = "")
+        //{
+        //    return service.GetTeacherList(SchoolId, Year, ClassID, TeacherName, OrderBy, SortBy, classTypeID, Status);
+        //}
 
-        #region Student
+        ///// <summary>
+        ///// To Get Teacher details by TeacherId
+        ///// </summary>
+        ///// <param name="TeacherId"></param>
+        ///// <returns></returns>
+        //[Route("Admin/GetTeacher")]
+        //[HttpGet]
+        //public ReturnResponce GetTeacher(int TeacherId)
+        //{
+        //    return service.GetTeacher(TeacherId);
+        //}
 
-        /// <summary>
-        /// Get All Student Details
-        /// </summary>
-        /// <returns></returns>
-        [Route("Admin/GetAllStudents")]
-        [HttpGet]
-        public ReturnResponce GetAllStudents()
-        {
-            return service.GetStudentList();
-        }
+        ///// <summary>
+        ///// To Get Teacher list by SchoolId and ClassId
+        ///// </summary>
+        ///// <param name="SchoolId"></param>
+        ///// <param name="ClassId"></param>
+        ///// <returns></returns>
+        //[Route("Admin/GetTeachersWithClassId")]
+        //[HttpGet]
+        //public ReturnResponce GetTeacherBySchoolOrClassId(int SchoolId, int ClassId)
+        //{
+        //    return service.GetTeacherList(SchoolId, "", ClassId, "", "", "", 0, "0");
+        //}
 
-        /// <summary>
-        /// Get All Student Respective to School
-        /// </summary>
-        /// <param name="SchooolId"></param>
-        /// <returns></returns>
-        [Route("Admin/GetSchoolStudents")]
-        [HttpGet]
-        public ReturnResponce GetSchoolStudents(int SchooolId)
-        {
-            return service.GetStudentList(SchooolId);
-        }
+        ///// <summary>
+        ///// To Add Teacher details 
+        ///// </summary>
+        ///// <param name="model"></param>
+        ///// <param name="AdminId"></param>
+        ///// <returns></returns>
+        //[Route("Admin/Teacher")]
+        //[HttpPost]
+        //public ReturnResponce AddTeacher(ISTeacher model, int AdminId)
+        //{
+        //    return model.ID == 0 ? service.AddUpdateTeacher(model, AdminId) : new ReturnResponce("Invalid request");
+        //}
 
-        /// <summary>
-        /// Get All Student of class Respective to School
-        /// </summary>
-        /// <param name="ClassId"></param>
-        /// <param name="SchoolId"></param>
-        /// <returns></returns>
-        [Route("Admin/GetClassStudentsBySchoolId")]
-        [HttpGet]
-        public ReturnResponce GetClassStudentsBySchoolId(int SchoolId, int ClassId)
-        {
-            return service.GetStudentList(SchoolId, ClassId);
-        }
+        ///// <summary>
+        ///// To Update Teacher details 
+        ///// </summary>
+        ///// <param name="model"></param>
+        ///// <param name="AdminId"></param>
+        ///// <returns></returns>
+        //[Route("Admin/Teacher")]
+        //[HttpPut]
+        //public ReturnResponce UpdateTeacher(ISTeacher model, int AdminId)
+        //{
+        //    return model.ID > 0 ? service.AddUpdateTeacher(model, AdminId) : new ReturnResponce("Primary id must be grater then 0");
+        //}
 
-        /// <summary>
-        /// Add Student detail
-        /// </summary>
-        /// <param name="student"></param>
-        /// <param name="AdminId"></param>
-        /// <returns></returns>
-        [Route("Admin/Student")]
-        [HttpPost]
-        public ReturnResponce AddStudent(ISStudent student, int AdminId)
-        {
-            return (student.ID == 0 && AdminId > 0) ? service.AddUpdateStudent(student, AdminId) : new ReturnResponce("Invalid request or logged in id  must be greater then 0 ");
-        }
+        /////// <summary>
+        /////// To ReAssign Teacher Class
+        /////// </summary>
+        /////// <param name="SchoolID"></param>
+        /////// <param name="TeacherID"></param>
+        /////// <param name="OldClassID"></param>
+        /////// <param name="NewClassID"></param>
+        /////// <param name="UserType"></param>
+        /////// <param name="SenderID"></param>
+        /////// <returns></returns>
+        ////[Route("Admin/TeacherReassignment")]
+        ////[HttpPost]
+        ////public ReturnResponce TeacherReassignment(int SchoolID, int TeacherID, int OldClassID, int NewClassID, int UserType, int SenderID)
+        ////{
+        ////    return (SchoolID > 0 && TeacherID > 0 && OldClassID > 0 && NewClassID > 0 && UserType > 0 && SenderID > 0) ? service.ReAssignTeacher(SchoolID, TeacherID, OldClassID, NewClassID, UserType, SenderID) : new ReturnResponce("Invalid request");
+        ////}
 
-        /// <summary>
-        /// update Student detail
-        /// </summary>
-        /// <param name="student"></param>
-        /// <param name="AdminId"></param>
-        /// <returns></returns>
-        [Route("Admin/Student")]
-        [HttpPut]
-        public ReturnResponce SetStudent(ISStudent student, int AdminId)
-        {
-            return (student.ID > 0 && AdminId > 0) ? service.AddUpdateStudent(student, AdminId) : new ReturnResponce("Primary id or logged in id  must be greater then 0 ");
-        }
-        #endregion       
+        //#endregion
 
-        #region Support
-        /// <summary>
-        /// Get All Support List
-        /// </summary>
-        /// <returns></returns>
-        [Route("Admin/GetSupportList")]
-        [HttpGet]
-        public ReturnResponce GetSupportList()
-        {
-            return service.GetSupportList();
-        }
+        //#region Student
 
-        /// <summary>
-        /// Get Support details By id
-        /// </summary>
-        /// <param name="SupportId"></param>
-        /// <returns></returns>
-        [Route("Admin/GetSupportById")]
-        [HttpGet]
-        public ReturnResponce GetSupportById(int SupportId)
-        {
-            return service.GetSupport(SupportId);
-        }
+        ///// <summary>
+        ///// Get All Student Details
+        ///// </summary>
+        ///// <returns></returns>
+        //[Route("Admin/GetAllStudents")]
+        //[HttpGet]
+        //public ReturnResponce GetAllStudents()
+        //{
+        //    return service.GetStudentList();
+        //}
 
-        /// <summary>
-        /// Get Support List Respective to SchoolId
-        /// </summary>
-        /// <param name="SchoolId"></param>
-        /// <returns></returns>
-        [Route("Admin/GetSchoolSupportList")]
-        [HttpGet]
-        public ReturnResponce GetSchoolSupportList(int SchoolId)
-        {
-            return service.GetSupportList(SchoolId);
-        }
+        ///// <summary>
+        ///// Get All Student Respective to School
+        ///// </summary>
+        ///// <param name="SchooolId"></param>
+        ///// <returns></returns>
+        //[Route("Admin/GetSchoolStudents")]
+        //[HttpGet]
+        //public ReturnResponce GetSchoolStudents(int SchooolId)
+        //{
+        //    return service.GetStudentList(SchooolId);
+        //}
 
-        /// <summary>
-        /// Get Organization Users List 
-        /// </summary>
-        /// <param name="RoleId"></param>
-        /// <returns></returns>
-        [Route("Admin/OrganizationUsersList")]
-        [HttpGet]
-        public ReturnResponce OrganizationUsersList(int RoleId)
-        {
-            return service.GetOrganizationUsersList(RoleId);
-        }
+        ///// <summary>
+        ///// Get All Student of class Respective to School
+        ///// </summary>
+        ///// <param name="ClassId"></param>
+        ///// <param name="SchoolId"></param>
+        ///// <returns></returns>
+        //[Route("Admin/GetClassStudentsBySchoolId")]
+        //[HttpGet]
+        //public ReturnResponce GetClassStudentsBySchoolId(int SchoolId, int ClassId)
+        //{
+        //    return service.GetStudentList(SchoolId, ClassId);
+        //}
 
-        /// <summary>
-        /// Get Organization User details by Id
-        /// </summary>
-        /// <param name="OrganizationUserId"></param>
-        /// <returns></returns>
-        [Route("Admin/OrganizationUser")]
-        [HttpGet]
-        public ReturnResponce OrganizationUser(int OrganizationUserId)
-        {
-            return service.GetOrganizationUser(OrganizationUserId);
-        }
-        /// <summary>
-        /// Add Post Replay
-        /// </summary>
-        /// <param name="details"></param>
-        /// <returns></returns>
-        [Route("Admin/PostReplay")]
-        [HttpPost]
-        public ReturnResponce PostReplay(ReplayMessage details)
-        {
-            return service.PostReplay(details);
-        }
+        ///// <summary>
+        ///// Add Student detail
+        ///// </summary>
+        ///// <param name="student"></param>
+        ///// <param name="AdminId"></param>
+        ///// <returns></returns>
+        //[Route("Admin/Student")]
+        //[HttpPost]
+        //public ReturnResponce AddStudent(ISStudent student, int AdminId)
+        //{
+        //    return (student.ID == 0 && AdminId > 0) ? service.AddUpdateStudent(student, AdminId) : new ReturnResponce("Invalid request or logged in id  must be greater then 0 ");
+        //}
 
-        /// <summary>
-        /// Set support ticket details
-        /// </summary>
-        /// <param name="details"></param>
-        /// <param name="LogedInUser"></param>
-        /// <returns></returns>
-        [Route("Admin/Support")]
-        [HttpPut]
-        public ReturnResponce SetSupportTicket(ISSupport details, int LogedInUser)
-        {
-            return (details.ID > 0 && LogedInUser > 0) ? service.SetSupport(details, LogedInUser) : new ReturnResponce("Primary id or Logged in user id must be greate then 0");
-        }
-        #endregion
+        ///// <summary>
+        ///// update Student detail
+        ///// </summary>
+        ///// <param name="student"></param>
+        ///// <param name="AdminId"></param>
+        ///// <returns></returns>
+        //[Route("Admin/Student")]
+        //[HttpPut]
+        //public ReturnResponce SetStudent(ISStudent student, int AdminId)
+        //{
+        //    return (student.ID > 0 && AdminId > 0) ? service.AddUpdateStudent(student, AdminId) : new ReturnResponce("Primary id or logged in id  must be greater then 0 ");
+        //}
+        //#endregion       
+
+        //#region Support
+        ///// <summary>
+        ///// Get All Support List
+        ///// </summary>
+        ///// <returns></returns>
+        //[Route("Admin/GetSupportList")]
+        //[HttpGet]
+        //public ReturnResponce GetSupportList()
+        //{
+        //    return service.GetSupportList();
+        //}
+
+        ///// <summary>
+        ///// Get Support details By id
+        ///// </summary>
+        ///// <param name="SupportId"></param>
+        ///// <returns></returns>
+        //[Route("Admin/GetSupportById")]
+        //[HttpGet]
+        //public ReturnResponce GetSupportById(int SupportId)
+        //{
+        //    return service.GetSupport(SupportId);
+        //}
+
+        ///// <summary>
+        ///// Get Support List Respective to SchoolId
+        ///// </summary>
+        ///// <param name="SchoolId"></param>
+        ///// <returns></returns>
+        //[Route("Admin/GetSchoolSupportList")]
+        //[HttpGet]
+        //public ReturnResponce GetSchoolSupportList(int SchoolId)
+        //{
+        //    return service.GetSupportList(SchoolId);
+        //}
+
+        ///// <summary>
+        ///// Get Organization Users List 
+        ///// </summary>
+        ///// <param name="RoleId"></param>
+        ///// <returns></returns>
+        //[Route("Admin/OrganizationUsersList")]
+        //[HttpGet]
+        //public ReturnResponce OrganizationUsersList(int RoleId)
+        //{
+        //    return service.GetOrganizationUsersList(RoleId);
+        //}
+
+        ///// <summary>
+        ///// Get Organization User details by Id
+        ///// </summary>
+        ///// <param name="OrganizationUserId"></param>
+        ///// <returns></returns>
+        //[Route("Admin/OrganizationUser")]
+        //[HttpGet]
+        //public ReturnResponce OrganizationUser(int OrganizationUserId)
+        //{
+        //    return service.GetOrganizationUser(OrganizationUserId);
+        //}
+        ///// <summary>
+        ///// Add Post Replay
+        ///// </summary>
+        ///// <param name="details"></param>
+        ///// <returns></returns>
+        //[Route("Admin/PostReplay")]
+        //[HttpPost]
+        //public ReturnResponce PostReplay(ReplayMessage details)
+        //{
+        //    return service.PostReplay(details);
+        //}
+
+        ///// <summary>
+        ///// Set support ticket details
+        ///// </summary>
+        ///// <param name="details"></param>
+        ///// <param name="LogedInUser"></param>
+        ///// <returns></returns>
+        //[Route("Admin/Support")]
+        //[HttpPut]
+        //public ReturnResponce SetSupportTicket(ISSupport details, int LogedInUser)
+        //{
+        //    return (details.ID > 0 && LogedInUser > 0) ? service.SetSupport(details, LogedInUser) : new ReturnResponce("Primary id or Logged in user id must be greate then 0");
+        //}
+        //#endregion
 
         #region Payment
         /// <summary>

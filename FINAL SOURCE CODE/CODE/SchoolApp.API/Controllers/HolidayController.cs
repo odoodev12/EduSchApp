@@ -21,7 +21,7 @@ namespace SchoolApp.API.Controllers
     /// <summary>
     /// Holiday APIs
     /// </summary>
-    //[Authorize]    
+    [Authorize]    
     public class HolidayController : ApiController
     {
         /// <summary>

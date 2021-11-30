@@ -42,7 +42,7 @@ namespace SchoolApp.API.Services
             }
         }
 
-        public ReturnResponce GetAdminRoleList(int SchoolId, bool? Active, string RoleName="", int? RoleTypeId=0)
+        public ReturnResponce GetAdminRoleList(int SchoolId, bool? Active, string RoleName = "", int? RoleTypeId = 0)
         {
             try
             {
@@ -107,7 +107,7 @@ namespace SchoolApp.API.Services
                 List<ISUserRole> obj = entity.ISUserRoles.Where(p => p.RoleName == model.RoleName && p.RoleType == RID && p.SchoolID == model.SchoolID && p.Deleted == true).ToList();
                 if (obj.Count > 0)
                 {
-                    return new ReturnResponce("Role Already Exists!!!");                    
+                    return new ReturnResponce("Role Already Exists!!!");
                 }
                 else
                 {
@@ -138,9 +138,9 @@ namespace SchoolApp.API.Services
                     else
                     {
                         return new ReturnResponce("Please keep atleast one manage Role selected!!!");
-                    }                   
+                    }
                 }
-               
+
             }
             catch (Exception ex)
             {
@@ -234,6 +234,30 @@ namespace SchoolApp.API.Services
                 return new ReturnResponce(ex.Message);
                 throw;
             }
+        }
+
+
+        public string GetLoginUserRole(int UserTypeId)
+        {
+            string UserType = "";
+            if (UserTypeId == (int)EnumsManagement.USERTYPE.TEACHER)
+            {
+                UserType = "Teacher";
+            }
+            else if (UserTypeId == (int)EnumsManagement.USERTYPE.SCHOOL)
+            {
+                UserType = "School";
+            }
+            else if (UserTypeId == (int)EnumsManagement.USERTYPE.ADMIN)
+            {
+                UserType = "Admin";
+            }
+            else if (UserTypeId == (int)EnumsManagement.USERTYPE.PARENT)
+            {
+                UserType = "Parent";
+            }
+
+            return UserType;
         }
         #endregion
     }

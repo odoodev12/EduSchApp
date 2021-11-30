@@ -23,20 +23,20 @@ namespace SchoolApp.API.Models
             }
         }
 
+        public static string[] TeacherIgnore
+        {
+            get
+            {
+                return new[] { "ISAttendances", "ISCompleteAttendanceRuns", "ISCompletePickupRuns", "ISPickups", "ISSchool", "ISUserRole", "ISTeacherClassAssignments", "ISClass", "ISTeacher" };
+            }
+        }
+
 
         public static string[] MISTeacherIgnore
         {
             get
             {
-                return new[] { "ObjList" };
-            }
-        }
-
-    public static string[] TeacherIgnore
-        {
-            get
-            {
-                return new[] { "ISAttendances", "ISCompleteAttendanceRuns", "ISCompletePickupRuns", "ISPickups", "ISSchool", "ISUserRole", "ISTeacherClassAssignments" , "ISClass", "ISTeacher" };
+                return new[] { "ObjList", "ISAttendances", "ISCompleteAttendanceRuns", "ISCompletePickupRuns", "ISPickups", "ISSchool", "ISUserRole", "ISTeacherClassAssignments", "ISClass", "ISTeacher" };
             }
         }
         public static string[] StudentIgnore
@@ -57,7 +57,7 @@ namespace SchoolApp.API.Models
         public static string[] OrganisationUserIgnore
         {
             get
-            {               
+            {
                 return new[] { "ISCountry", "ISRole", "ISSchools" };
             }
         }
@@ -73,7 +73,7 @@ namespace SchoolApp.API.Models
         {
             get
             {
-                return new[] { "ISStudent", "ISSchool", "ISTrasectionType" , "ISPickup" };
+                return new[] { "ISStudent", "ISSchool", "ISTrasectionType", "ISPickup" };
             }
         }
         public static string[] ClassesIgnore

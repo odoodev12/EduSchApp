@@ -34,7 +34,7 @@ namespace SchoolApp.API.Services
                 throw;
             }
         }
-       
+
         public ReturnResponce GetHolidayList(int SchoolId)
         {
             try
@@ -50,7 +50,7 @@ namespace SchoolApp.API.Services
         }
 
 
-        public ReturnResponce GetHolidayFilterList(int SchoolId, string Name, DateTime? Datefrom = null, DateTime? Dateto = null, int? Status= null)
+        public ReturnResponce GetHolidayFilterList(int SchoolId, string Name, DateTime? Datefrom = null, DateTime? Dateto = null, int? Status = null)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace SchoolApp.API.Services
                            select new MISHoliday
                            {
                                ID = Obj.ID,
-                               Name = Obj.Name,                               
+                               Name = Obj.Name,
                                FromDate = Obj.DateFrom.Value.ToString("dd/MM/yyyy"),
                                ToDate = Obj.DateTo.Value.ToString("dd/MM/yyyy"),
                                DateFrom = Obj.DateFrom,
@@ -92,7 +92,7 @@ namespace SchoolApp.API.Services
                     }
                 }
 
-               var responce = objList.OrderByDescending(p => p.DateFrom).ToList();
+                var responce = objList.OrderByDescending(p => p.DateFrom).ToList();
 
                 return new ReturnResponce(responce, new[] { "ISSchool" });
             }
@@ -100,7 +100,7 @@ namespace SchoolApp.API.Services
             {
                 return new ReturnResponce(ex.Message);
                 throw;
-            }            
+            }
         }
 
         public ReturnResponce AddHoliday(HolidayAdd model)
@@ -171,7 +171,8 @@ namespace SchoolApp.API.Services
 
                 if (insertUpdate != null)
                 {
-                    insertUpdate.Deleted = true;
+                    insertUpdate.Active = false;
+                    insertUpdate.Deleted = false;
                     insertUpdate.DeletedDateTime = DateTime.UtcNow;
                     insertUpdate.DeletedBy = LoginUserId;
 

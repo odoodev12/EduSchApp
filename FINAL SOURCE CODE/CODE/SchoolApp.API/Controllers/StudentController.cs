@@ -87,6 +87,31 @@ namespace SchoolApp.API.Controllers
         }
 
 
+        /// <summary>
+        /// To Get Student Profil Data By StudentId
+        /// </summary>
+        /// <param name="StudentId"></param>
+        /// <returns></returns>
+        [Route("Student/ProfileData")]
+        [HttpGet]
+        public ReturnResponce GetStudentProfileData(int StudentId)
+        {
+            return (StudentId > 0) ? service.GetStudentProfileData(StudentId) : new ReturnResponce("Invalid request or StudentId must be greater then 0 ");
+        }
+
+        /// <summary>
+        /// To Delete Student By StudentId and LoginUserId
+        /// </summary>
+        /// <param name="StudentId"></param>
+        /// <param name="LoginUserId"></param>
+        /// <returns></returns>
+        [Route("Student/Delete")]
+        [HttpPost]
+        public ReturnResponce DeleteStudentData(int StudentId, int LoginUserId)
+        {
+            return (StudentId > 0 && LoginUserId > 0) ? service.DeleteStudent(StudentId, LoginUserId) : new ReturnResponce("StudentId and LoginUserId must be greater then 0 ");
+        }
+
         ///// <summary>
         ///// To Get All Student Details
         ///// </summary>

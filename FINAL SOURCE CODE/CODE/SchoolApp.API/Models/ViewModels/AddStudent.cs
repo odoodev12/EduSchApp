@@ -41,4 +41,32 @@ namespace SchoolApp.API.Models.ViewModels
         public int LoginUserId { get; set; }
         public int LoginUserTypeId { get; set; }
     }
+
+    public class StudentProfileData 
+    {
+        public int StudentId { get; set; }
+        public string ParantName1 { get; set; }
+
+        public string ParantEmail1 { get; set; }
+        public string ParantPhone1 { get; set; }
+        public string ParantRelation1 { get; set; }
+
+        public string ParantName2 { get; set; }
+
+        public string ParantEmail2 { get; set; }
+        public string ParantPhone2 { get; set; }
+        public string ParantRelation2 { get; set; }
+
+     
+        public string ClassName { get; set; }
+
+        public string StudentName { get; set; }
+        public string StudentNo { get; set; }
+
+
+        public string ProfilePhoto { get; set; }
+
+        public int? ClassID { get; set; }
+
+    }
 }

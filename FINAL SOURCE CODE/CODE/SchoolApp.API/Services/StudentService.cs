@@ -274,6 +274,75 @@ namespace SchoolApp.API.Services
             }
         }
 
+        public ReturnResponce GetStudentProfileData(int StudentId)
+        {
+            try
+            {
+                StudentProfileData studentProfileData = new StudentProfileData();
+
+                ClassManagement objClassManagement = new ClassManagement();
+                MISStudent Obj = objClassManagement.GetStudentInfo(StudentId);
+                if (Obj != null)
+                {
+                    studentProfileData.StudentId = StudentId;
+                    studentProfileData.ParantName1 = Obj.ParantName1;
+                    studentProfileData.ParantEmail1 = Obj.ParantEmail1;
+                    studentProfileData.ParantPhone1 = Obj.ParantPhone1;
+                    studentProfileData.ParantRelation1 = Obj.ParantRelation1;
+                    studentProfileData.ParantName2 = Obj.ParantName2;
+                    studentProfileData.ParantEmail2 = Obj.ParantEmail2;
+                    studentProfileData.ParantPhone2 = Obj.ParantPhone2;
+                    studentProfileData.ParantRelation2 = Obj.ParantRelation2;
+                    studentProfileData.ClassName = Obj.ClassName;
+                    studentProfileData.StudentName = Obj.StudentName;
+                    studentProfileData.StudentNo = Obj.StudentNo;
+                    studentProfileData.ProfilePhoto = Obj.Photo;
+                    studentProfileData.ClassID = Obj.ClassID;
+
+                    return new ReturnResponce(studentProfileData, "Success");
+
+                }
+                else
+                {
+                    return new ReturnResponce("Student Profile not found with provided student Id");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return new ReturnResponce("Error:- " + ex.Message);
+            }
+
+        }
+
+        public ReturnResponce DeleteStudent(int StudentId, int LoginUserId)
+        {
+
+            try
+            {
+                ISStudent objStudent = entity.ISStudents.SingleOrDefault(p => p.ID == StudentId);
+                if (objStudent != null)
+                {
+                    objStudent.Active = false;
+                    objStudent.Deleted = false;
+                    objStudent.DeletedBy = LoginUserId;
+                    objStudent.DeletedDateTime = DateTime.Now;
+                    entity.SaveChanges();
+                    LogManagement.AddLog("Student Deleted Successfully " + "ID : " + StudentId + " Document Category : StudentProfile", "Student");
+
+                    return new ReturnResponce(null, "Student Deleted Successfully");
+                }
+                else
+                {
+                    return new ReturnResponce("Student Profile not found with provided student Id");
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ReturnResponce("Error:- " + ex.Message);
+            }
+        }
+
         public ReturnResponce UpdateStudentNew(AddEditStudentModel model)
         {
             try
